@@ -1,52 +1,48 @@
-{% extends 'html/base.html' %}
+{% extends 'html/base2.html' %}
 {% load static %}
 
 {% block head %}
-  <title>LUXA Collection</title>
+  <title>LUXA Collection | Home</title>
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  
 {% endblock %}
 
 {% block content %}
-
-<div class="offers">
-
+ 
+  <div class="offers">
     <div class="offer-card">
-        <img src="{% static 'image/offer1.jpg' %}" alt="Offer 1">
+      <img src="{% static 'image/offer1.jpg' %}" alt="Offer 1" />
 
-        <div class="offer-overlay">
-            <h1>LUXA COLLECTION</h1>
-            <p>Festive Fashion Sale</p>
-            <p>Flat 50% OFF</p>
+      <div class="offer-overlay">
+        <h1>Diwali Festive Fashion Sale</h1>
+        
+        <p>Flat 50% OFF</p>
 
-            <a href="#" class="shop-btn">Shop Now</a>
-        </div>
+        <a href="#" class="shop-btn">Shop Now</a>
+      </div>
     </div>
 
     <div class="offer-card">
-        <img src="{% static 'image/offer2.jpg' %}" alt="Offer 2">
+      <img src="{% static 'image/offer2.jpg' %}" alt="Offer 2" />
 
-        <div class="offer-overlay">
-            <h1>LUXA COLLECTION</h1>
-            <h1>Wedding Collection</h1>
-            <p>Buy 20,000 ₹ Up to 60% OFF</p>
-            <p>Exclusive Designer Sarees</p>
+      <div class="offer-overlay">
+        <h1>Rakhi Sale</h1>
+        <p>Buy 20,000 ₹ Up to 60% OFF</p>
+        <p>Exclusive Designer dress</p>
 
-            <a href="#" class="shop-btn">Shop Now</a>
-        </div>
+        <a href="#" class="shop-btn">Shop Now</a>
+      </div>
     </div>
 
     <div class="offer-card">
-        <img src="{% static 'image/offer3.jpg' %}" alt="Offer 3">
+      <img src="{% static 'image/new.jpg' %}" alt="Offer 3" />
 
-        <div class="offer-overlay">
-            <h1>LUXA COLLECTION</h1>
-            <h1>Fresh Picks For You</h1>
-            <p>Discover New Styles, New Trends New Confidence</p>
+      <div class="offer-overlay">
+        <h1>Fresh Picks For You</h1>
+        <p>Discover New Styles, New Trends New Confidence</p>
 
-            <a href="#" class="shop-btn">Explore Collection Now</a>
-        </div>
+        <a href="#" class="shop-btn">Explore Collection Now</a>
+      </div>
     </div>
-
-</div>
-
-{% endblock content %}
+  </div>
+{% endblock %}

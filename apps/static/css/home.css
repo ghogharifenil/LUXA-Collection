@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 /* ==========================
    OFFER SECTION
 ========================== */
@@ -47,7 +54,7 @@
 .offer-overlay h1{
     font-size:65px;
     font-weight:700;
-    color:#d4af37;
+    color:#7e6514;
     line-height:1.1;
     margin-bottom:10px;
     text-shadow:2px 2px 10px rgba(0,0,0,0.3);
@@ -55,7 +62,7 @@
 
 .offer-overlay p{
     font-size:22px;
-    color:white;
+    color:rgb(0, 0, 0);
     margin-bottom:25px;
     text-shadow:2px 2px 8px rgba(0,0,0,0.4);
 }

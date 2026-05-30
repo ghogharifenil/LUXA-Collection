@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/base2.css" %}">
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+    
+  <nav class="navbar">
+
+    <div class="logo-section">
+       
+        <div class="logo-icon">L</div>
+        <div class="logo-text">
+            <h2>LUXA</h2>
+            <span>COLLECTION</span>
+        </div>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{% url "home" %}">Home</a></li>
+        <li class="dropdown">
+            <a href="#">Product ▾</a>
+
+            <ul class="dropdown-menu">
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Pants</a></li>
+                <li><a href="#">Shoes</a></li>
+                <li><a href="#">Dress</a></li>
+                <li><a href="#">Jewellery</a></li>
+                <li><a href="#">Footwear</a></li>
+                <li><a href="#">Saree</a></li>
+                <li><a href="#">Heels</a></li>
+            </ul>
+        </li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+</nav>
+    {% block content %}
+    {% endblock content %}
+    <footer></footer>
+</body>
+</html>
