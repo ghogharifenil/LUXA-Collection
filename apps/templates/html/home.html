@@ -1,0 +1,52 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>LUXA Collection</title>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="offers">
+
+    <div class="offer-card">
+        <img src="{% static 'image/offer1.jpg' %}" alt="Offer 1">
+
+        <div class="offer-overlay">
+            <h1>LUXA COLLECTION</h1>
+            <p>Festive Fashion Sale</p>
+            <p>Flat 50% OFF</p>
+
+            <a href="#" class="shop-btn">Shop Now</a>
+        </div>
+    </div>
+
+    <div class="offer-card">
+        <img src="{% static 'image/offer2.jpg' %}" alt="Offer 2">
+
+        <div class="offer-overlay">
+            <h1>LUXA COLLECTION</h1>
+            <h1>Wedding Collection</h1>
+            <p>Buy 20,000 ₹ Up to 60% OFF</p>
+            <p>Exclusive Designer Sarees</p>
+
+            <a href="#" class="shop-btn">Shop Now</a>
+        </div>
+    </div>
+
+    <div class="offer-card">
+        <img src="{% static 'image/offer3.jpg' %}" alt="Offer 3">
+
+        <div class="offer-overlay">
+            <h1>LUXA COLLECTION</h1>
+            <h1>Fresh Picks For You</h1>
+            <p>Discover New Styles, New Trends New Confidence</p>
+
+            <a href="#" class="shop-btn">Explore Collection Now</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

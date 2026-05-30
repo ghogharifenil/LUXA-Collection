@@ -1,0 +1,36 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>LUXA Collection</title>
+<link rel="stylesheet" href="{% static 'css/luxa.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <img src="{% static 'image/home.png' %}" alt="LUXA Collection">
+
+    <div class="hero-content">
+        <h1>LUXA COLLECTION</h1>
+
+        <p class="subtitle">
+            Collection For Luxury Design
+        </p>
+
+        <a href="/products/" class="shop-btn">
+            Shop Now
+        </a>
+     <div class="auth-buttons">
+        <a href="/login/" class="register-btn">
+            Login
+        </a>
+
+        <a href="/register/" class="register-btn">
+            Registration
+        </a>
+    </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>LUXA Collection | Collection Department</title>
+<link rel="stylesheet" href="{% static 'css/collection_department.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <nav class="navbar">
+
+    <div class="logo-section">
+       
+        <div class="logo-icon">L</div>
+        <div class="logo-text">
+            <h2>LUXA</h2>
+            <span>COLLECTION</span>
+        </div>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{% url "home" %}">Home</a></li>
+        <li class="dropdown">
+            <a href="#">Product ▾</a>
+
+            <ul class="dropdown-menu">
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Pants</a></li>
+                <li><a href="#">Shoes</a></li>
+                <li><a href="#">Dress</a></li>
+                <li><a href="#">Jewellery</a></li>
+                <li><a href="#">Footwear</a></li>
+                <li><a href="#">Saree</a></li>
+                <li><a href="#">Heels</a></li>
+            </ul>
+        </li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+</nav>
+
+<div class="container">
+    <h1>Shop Collections</h1>
+
+    <div class="collection-grid">
+
+        <div class="card">
+            <img src="{% static "product\pent\brown butiful pent.jfif" %}" alt="">
+            <h3>Pants</h3>
+            <button>View Collection</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static "product\shert\onlyshert.png" %}" alt="">
+            <h3>Shirts</h3>
+            <button>View Collection</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'product/shoes/bleck shoes.jfif' %}" alt="">
+            <h3>Shoes</h3>
+            <button>View Collection</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static "product\dress\yellow dress.jfif" %}" alt="">
+            <h3>Dress</h3>
+            <button>View Collection</button>
+        </div>
+
+         <div class="card">
+            <img src="{% static "product\jwelary\dimond pair of jewelry.jfif" %}" alt="">
+            <h3>Jwellery</h3>
+            <button>View Collection</button>
+        </div>
+
+         <div class="card">
+            <img src="{% static "product\footwear\sky blue sliper.jfif" %}" alt="">
+            <h3>Footwear</h3>
+            <button>View Collection</button>
+        </div>
+         <div class="card">
+            <img src="{% static "product\saree\soft brown saree.jfif" %}" alt="">
+            <h3>Saree</h3>
+            <button>View Collection</button>
+        </div>
+         <div class="card">
+            <img src="{% static "product\heals\soft golden heals.jfif" %}" alt="">
+            <h3>Heals</h3>
+            <button>View Collection</button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
