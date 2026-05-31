@@ -1,0 +1,23 @@
+{% extends 'html/base2.html' %}
+{% load static %}
+
+{% block head %}
+<title>LUXA Collection | Add Product </title>
+ <link rel="stylesheet" href="{% static 'css/addpro.css' %}"> 
+{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.category }}
+    {{ form.name }}
+    {{ form.price }}
+    {{ form.description }}
+    {{ form.image }}
+
+    <button type="submit">
+        Add Product
+    </button>
+</form>
+{% endblock %}

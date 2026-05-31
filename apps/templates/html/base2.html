@@ -1,49 +1,80 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "css/base2.css" %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/base2.css' %}" />
     {% block head %}
-    {% endblock head %}
-</head>
-<body>
-    
-  <nav class="navbar">
 
-    <div class="logo-section">
-       
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-section">
         <div class="logo-icon">L</div>
         <div class="logo-text">
-            <h2>LUXA</h2>
-            <span>COLLECTION</span>
+          <h2>LUXA</h2>
+          <span>COLLECTION</span>
         </div>
-    </div>
+      </div>
 
-    <ul class="nav-links">
-        <li><a href="{% url "home" %}">Home</a></li>
-        <li class="dropdown">
-            <a href="#">Product ▾</a>
-
-            <ul class="dropdown-menu">
-                <li><a href="#">Shirts</a></li>
-                <li><a href="#">Pants</a></li>
-                <li><a href="#">Shoes</a></li>
-                <li><a href="#">Dress</a></li>
-                <li><a href="#">Jewellery</a></li>
-                <li><a href="#">Footwear</a></li>
-                <li><a href="#">Saree</a></li>
-                <li><a href="#">Heels</a></li>
-            </ul>
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'home' %}">Home</a>
         </li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
-    </ul>
+        <li class="dropdown">
+          <a href="#">Product ▾</a>
 
-</nav>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{% url "shert" %}">Shirts</a>
+            </li>
+            <li>
+              <a href="{% url "pent" %}">Pants</a>
+            </li>
+            <li>
+              <a href="{% url "shoes" %}">Shoes</a>
+            </li>
+            <li>
+              <a href="{% url "dress" %}">Dress</a>
+            </li>
+            <li>
+              <a href="{% url "jwelery" %}">Jewellery</a>
+            </li>
+            <li>
+              <a href="{% url 'footwear' %}">Footwear</a>
+            </li>
+            <li>
+              <a href="{% url "saree" %}">Saree</a>
+            </li>
+            <li>
+              <a href="{% url "heals" %}">Heels</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+        </li>
+        <li>
+          <a href="/contact/">Contact</a>
+        </li>
+         <li>
+          <a href="{% url 'add_product' %}">Add Products</a>
+        </li>
+      </ul>
+    </nav>
+      {% comment %} <footer>
+      <div class="footer">
+        <p>Mobile : 9963254187</p>
+        <p>Email : luxacollection@gmail.com</p>
+        <p>We provide elegant and stylish jewellery collections designed for girls and women. Quality, beauty and affordability are our priority.</p>
+        <p>© 2026 Luxa Collection Collection. All Rights Reserved.</p>
+      </div>
+    </footer> {% endcomment %}
     {% block content %}
-    {% endblock content %}
-    <footer></footer>
-</body>
+
+    {% endblock %}
+  
+  </body>
 </html>

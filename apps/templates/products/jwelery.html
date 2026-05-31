@@ -1,0 +1,27 @@
+{% extends 'html/base2.html' %}
+{% load static %}
+
+{% block head %}
+  <title>LUXA Collection | Jwellary</title>
+  <link rel="stylesheet" href="{% static 'css/product.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="product-container">
+    {% for product in products %}
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="{{ product.image.url }}" alt="" />
+        </div>
+
+        <div class="product-content">
+          <h3 class="product-title">{{ product.name }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+          <p class="product-price">₹{{ product.price }}</p>
+
+          <a href="#" class="detail-btn">Get Details</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
