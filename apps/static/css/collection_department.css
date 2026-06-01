@@ -76,13 +76,12 @@ body{
 }
 
 /* ================= BUTTON ================= */
-
-.card button{
+.view-btn{
+    display: inline-block;
+    text-decoration: none;
     margin: 20px 0 25px;
     padding: 12px 28px;
-    border: none;
     border-radius: 50px;
-    cursor: pointer;
     font-size: 15px;
     font-weight: 600;
     color: white;
@@ -95,11 +94,14 @@ body{
     transition: .3s;
 }
 
-.card button:hover{
+.view-btn:hover{
     transform: scale(1.08);
     box-shadow: 0 10px 25px rgba(212,175,55,0.4);
 }
-
+.card-link{
+    text-decoration: none;
+    color: inherit;
+}
 /* ================= GOLD LINE EFFECT ================= */
 
 .card::before{
