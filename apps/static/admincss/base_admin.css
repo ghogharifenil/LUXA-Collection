@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100%;
+    height:90px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 7%;
+    box-shadow:0 3px 20px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/* ================= LOGO ================= */
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-icon{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        #b8860b,
+        #d4af37,
+        #f5d67b
+    );
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:800;
+    box-shadow:0 5px 15px rgba(212,175,55,.35);
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text h2{
+    color:#b8860b;
+    font-size:30px;
+    letter-spacing:2px;
+    line-height:1;
+}
+
+.logo-text span{
+    color:#666;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-top:2px;
+}
+
+.admin-text{
+    color:#111;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:5px;
+    margin-top:3px;
+}
+
+/* ================= MENU ================= */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    list-style:none;
+    gap:35px;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+/* Hover Effect */
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:3px;
+    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        #b8860b,
+        #f5d67b
+    );
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#b8860b;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:55px;
+    left:0;
+
+    min-width:230px;
+
+    background:white;
+
+    border-radius:15px;
+
+    list-style:none;
+
+    padding:10px 0;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:.35s ease;
+
+    z-index:1000;
+}
+
+.dropdown-menu::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    border-radius:15px 15px 0 0;
+
+    background:linear-gradient(
+        90deg,
+        #b8860b,
+        #f5d67b
+    );
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:12px 22px;
+    color:#333;
+    font-size:15px;
+    transition:.3s;
+}
+
+.dropdown-menu a:hover{
+    background:linear-gradient(
+        135deg,
+        #b8860b,
+        #d4af37,
+        #f5d67b
+    );
+
+    color:white;
+
+    padding-left:30px;
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-btn{
+    background:#ef4444;
+    color:white !important;
+    padding:10px 18px;
+    border-radius:8px;
+}
+
+.logout-btn::after{
+    display:none;
+}
+
+.logout-btn:hover{
+    background:#dc2626;
+    color:white !important;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+    .navbar{
+        padding:0 5%;
+        height:80px;
+    }
+
+    .logo-icon{
+        width:50px;
+        height:50px;
+        font-size:24px;
+    }
+
+    .logo-text h2{
+        font-size:24px;
+    }
+
+    .nav-links{
+        gap:18px;
+    }
+
+    .nav-links a{
+        font-size:14px;
+    }
+
+    .dropdown-menu{
+        min-width:190px;
+    }
+}

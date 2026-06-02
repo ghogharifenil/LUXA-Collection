@@ -1,0 +1,198 @@
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #fdfdfd;
+}
+.dashboard-container{
+    width:95%;
+    margin:120px auto;
+}
+
+.dashboard-container h2{
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th{
+    background:#111;
+    color:white;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+td img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.edit-btn{
+    background:#4CAF50;
+    color:white;
+    padding:8px 15px;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.delete-btn{
+    background:#f44336;
+    color:white;
+    padding:8px 15px;
+    text-decoration:none;
+    border-radius:5px;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+.dashboard-container{
+    width:95%;
+    margin:25px auto 40px;
+}
+
+.dashboard-container h2{
+    font-size:32px;
+    font-weight:700;
+    color:#1a1a1a;
+    margin-bottom:25px;
+}
+
+/* TABLE BOX */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+
+thead{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+}
+
+th{
+    color:white;
+    padding:18px;
+    font-size:15px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* BODY */
+
+td{
+    padding:18px;
+    text-align:center;
+    border-bottom:1px solid #ececec;
+    color:#444;
+    font-size:14px;
+}
+
+tbody tr{
+    transition:.3s;
+}
+
+tbody tr:hover{
+    background:#f8faff;
+    transform:scale(1.005);
+}
+
+/* IMAGE */
+
+td img{
+    width:75px;
+    height:75px;
+    object-fit:cover;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+/* PRICE */
+
+.price{
+    font-weight:700;
+    color:#111;
+}
+
+.discount{
+    color:#16a34a;
+    font-weight:600;
+}
+
+/* BUTTONS */
+
+.edit-btn,
+.delete-btn{
+    padding:10px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.edit-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.edit-btn:hover{
+    transform:translateY(-2px);
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+}
+
+.delete-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .dashboard-container{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:900px;
+    }
+
+}

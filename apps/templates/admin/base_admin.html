@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static "admincss/base_admin.css" %}">
+    {% block head %}
+    {% endblock head %}
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-section">
+        <div class="logo-icon">L</div>
+
+        <div class="logo-text">
+          <h2>LUXA</h2>
+          <span>COLLECTION</span>
+          <p class="admin-text">ADMIN</p>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="{% url "dashboard" %}">Dashboard</a>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">Manage ▾</a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{% url 'add_product' %}">Add Product</a>
+            </li>
+
+            <li>
+              <a href="{% url "view_product" %}">View Products</a>
+            </li>
+
+            <li>
+              <a href="#">Orders</a>
+            </li>
+
+            <li>
+              <a href="#">Customers</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">Logout</a>
+        </li>
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>

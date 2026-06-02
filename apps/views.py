@@ -6,6 +6,9 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate 
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_decode
 
 def luxa(request):
     return render(request, "html/luxa.html")
@@ -36,20 +39,34 @@ def add_product(request):
 
     return render(
         request,
-        'html/addpro.html',{'form': form})
+        'admin/addpro.html',{'form': form})
+
 
 def detail(request , name):
     product = get_object_or_404(Product , name=name)
-
     return render(request , "html/product_detail.html",{"product": product })
     
 
 def adminuser(request):
     if request.method == 'POST':
-        email = request.POST("email")
-        password = request.POST("email")
+        email = request.POST.get("email")
+        password = request.POST.get("email")
 
-    user.at
+    user = authenticate(request,email = email , password = password)
+
+    if user is not None and user.is_seller:
+        auth_login(request,user)
+        return redirect("/deshboard/")
+    return render(request , "admin/adminlogin.html")
+
+
+def dashboard(request):
+    products = Product.objects.all() 
+    return render(request , 'admin/dashboard.html',{"products":products})
+
+
+def viewpro(request):
+    return render(request, "admin/viewproduct.html")
 
 # --------------------------------------------------------------
 # ---------------------  Product -------------------------------

@@ -1,7 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
-# Create your models here.
 
+# ----------------------------------------------------------------------------
+# -------------------------- Product LIsting ---------------------------------
+# ----------------------------------------------------------------------------
 
 class Product(models.Model):
 
@@ -39,3 +42,61 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# ----------------------------------------------------------------------------
+# ------------------------------  Admin Model  -------------------------------
+# ----------------------------------------------------------------------------
+
+class UserManager(BaseUserManager):
+    def create_user(self , email , name , city , password = None):
+        if not email:
+            raise ValueError("Email is required")
+        user = self.model(
+            email=self.normalize_email(email),
+            name=name,
+            city=city
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user  
+    
+    def create_superuser(self, email, name, city, password=None):
+        user = self.create_user(
+            email=email,
+            name=name,
+            city=city,
+            password=password
+        )
+        user.is_superuser = True
+        user.is_staff = True
+        user.is_active = True
+        user.is_seller = True
+        user.save(using=self._db)
+        return user
+
+
+class User(AbstractBaseUser):
+    email  = models.EmailField( max_length=254)
+    name = models.TextField(max_length=250)
+    city = models.TextField(max_length=250)
+    
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_seller = models.BooleanField(default=False)
+    
+    objects = UserManager()
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ['name', 'city']
+
+    def __str__(self):
+        return self.email
+
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
+    

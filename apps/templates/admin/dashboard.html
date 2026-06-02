@@ -1,0 +1,68 @@
+{% extends "admin/base_admin.html" %}
+{% load static %}
+{% block head %}
+<title>LUXA collection | Dashboard </title>
+<link rel="stylesheet" href="{% static 'admincss/dashboard.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="dashboard-container">
+
+    <h2>✨ Product Dashboard</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Main Price</th>
+                <th>Discount</th>
+                <th>Offer Price</th>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for product in products %}
+
+            <tr>
+
+                <td>
+                    <img src="{{ product.image.url }}" alt="">
+                </td>
+
+                <td>{{ product.name }}</td>
+
+                <td>₹{{ product.mainprice }}</td>
+
+                <td>{{ product.discount_percentage }}% OFF</td>
+
+
+                <td>₹{{ product.price }}</td>
+
+                <td>{{ product.category }}</td>
+
+                <td>
+                   <a href="#" class="edit-btn"> 
+                        Edit
+                    </a>
+                </td>
+
+                <td>
+                    <a href="#" class="delete-btn"> 
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+{% endblock content %}
+{% comment %} {% url 'delete_product' product.id %}{% url 'edit_product' product.id %} {% endcomment %}
