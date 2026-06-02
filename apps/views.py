@@ -3,8 +3,9 @@ from .models import Product
 from django.shortcuts import render, redirect
 from .models import Product
 from django.shortcuts import render, get_object_or_404
-# Create your views here.
-
+from django.contrib.auth import authenticate 
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 
 def luxa(request):
     return render(request, "html/luxa.html")
@@ -42,6 +43,14 @@ def detail(request , name):
 
     return render(request , "html/product_detail.html",{"product": product })
     
+
+def adminuser(request):
+    if request.method == 'POST':
+        email = request.POST("email")
+        password = request.POST("email")
+
+    user.at
+
 # --------------------------------------------------------------
 # ---------------------  Product -------------------------------
 # --------------------------------------------------------------
