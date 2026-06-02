@@ -1,6 +1,7 @@
 from django import forms
 from .models import Product
 
+
 class ProductForm(forms.ModelForm):
 
     class Meta:
@@ -11,7 +12,8 @@ class ProductForm(forms.ModelForm):
             'name',
             'price',
             'description',
-            'image'
+            'image',
+            'mainprice'
         ]
 
         widgets = {
@@ -37,5 +39,9 @@ class ProductForm(forms.ModelForm):
 
             'image': forms.FileInput(attrs={
                 'class': 'form-control'
+            }),
+            'mainprice': forms.NumberInput(attrs={
+                'class': 'old-price',
+                'placeholder': 'Old Price'
             }),
         }

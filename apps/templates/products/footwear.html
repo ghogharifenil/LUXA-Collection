@@ -2,44 +2,37 @@
 {% load static %}
 
 {% block head %}
-<title>LUXA Collection | Footwear </title>
-<link rel="stylesheet" href="{% static 'css/product.css' %}">
+  <title>LUXA Collection | Footwear </title>
+  <link rel="stylesheet" href="{% static 'css/product.css' %}" />
 {% endblock %}
-
 {% block content %}
-<div class="product-container">
-
+  <div class="product-container">
     {% for product in products %}
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">{{ product.name }}</h3>
 
-    <div class="product-card">
+          <div class="price-box">
+            <span class="old-price">₹{{ product.mainprice }}</span>
+            <span class="discount">{{ product.discount_percentage }}% OFF</span>
+          </div>
 
-    <div class="image-wrapper">
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-    </div>
+          <p class="product-price">₹{{ product.price }}</p>
 
-    <div class="product-content">
+          <div class="button-group">
+            <a href="#" class="buy-btn">Buy Now</a>
 
-        <h3 class="product-title">
-            {{ product.name }}
-        </h3>
+            <div class="bottom-btns">
+              <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
 
-        <p class="product-description">
-            {{ product.description }}
-        </p>
-
-        <p class="product-price">
-            ₹{{ product.price }}
-        </p>
-
-        <a href="#" class="detail-btn">
-            Get Details
-        </a>
-
-    </div>
-
-</div>
-
+              <a href="#" class="small-btn">Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
     {% endfor %}
-
-</div>
+  </div>
 {% endblock %}

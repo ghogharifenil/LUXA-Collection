@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.detail-container{
+    width: 90%;
+    max-width: 1400px;
+    margin: 120px auto 50px;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.detail-image{
+    flex: 1;
+}
+
+.detail-image img{
+    width: 450px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.detail-info{
+    flex: 2;
+}
+
+.detail-info h1{
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.price-section{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.discount-price{
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+}
+
+.main-price{
+    font-size: 22px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.offer{
+    color: green;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.description{
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.buy-btn{
+    flex:2;
+    text-decoration:none;
+    text-align:center;
+
+    padding:11px;
+
+    border:2px solid #d4af37;
+    border-radius:8px;
+
+    
+    color:#d4af37;
+    background:transparent;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.buy-btn:hover{
+    background:#d4af37;
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+@media(max-width: 768px){
+
+    .detail-container{
+        flex-direction: column;
+        margin-top: 100px;
+    }
+
+    .detail-info h1{
+        font-size: 30px;
+    }
+
+    .discount-price{
+        font-size: 26px;
+    }
+
+}

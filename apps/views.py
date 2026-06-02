@@ -2,6 +2,7 @@ from .forms import ProductForm
 from .models import Product
 from django.shortcuts import render, redirect
 from .models import Product
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
 
 
@@ -36,6 +37,14 @@ def add_product(request):
         request,
         'html/addpro.html',{'form': form})
 
+def detail(request , name):
+    product = get_object_or_404(Product , name=name)
+
+    return render(request , "html/product_detail.html",{"product": product })
+    
+# --------------------------------------------------------------
+# ---------------------  Product -------------------------------
+# --------------------------------------------------------------
 
 def dress(request):
     products = Product.objects.filter(
@@ -128,3 +137,5 @@ def shoes(request):
             'products': products
         }
     )
+# --------------------------------------------------------------
+# --------------------------------------------------------------

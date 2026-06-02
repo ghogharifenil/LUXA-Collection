@@ -2,22 +2,21 @@
 {% load static %}
 
 {% block head %}
-<title>LUXA Collection | Add Product </title>
- <link rel="stylesheet" href="{% static 'css/addpro.css' %}"> 
+  <title>LUXA Collection | Add Product</title>
+  <link rel="stylesheet" href="{% static 'css/addpro.css' %}" />
 {% endblock %}
 
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    {{ form.category }}
     {{ form.name }}
-    {{ form.price }}
     {{ form.description }}
+    {{ form.mainprice }}
+    {{ form.price }}
+    {{ form.category }}
     {{ form.image }}
 
-    <button type="submit">
-        Add Product
-    </button>
-</form>
+    <button type="submit">Add Product</button>
+  </form>
 {% endblock %}

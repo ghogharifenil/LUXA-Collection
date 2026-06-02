@@ -16,8 +16,8 @@
           <h3 class="product-title">{{ product.name }}</h3>
 
           <div class="price-box">
-            <span class="old-price">₹2900</span>
-            <span class="discount">20% OFF</span>
+            <span class="old-price">₹{{ product.mainprice }}</span>
+            <span class="discount">{{ product.discount_percentage }}% OFF</span>
           </div>
 
           <p class="product-price">₹{{ product.price }}</p>
@@ -26,8 +26,7 @@
             <a href="#" class="buy-btn">Buy Now</a>
 
             <div class="bottom-btns">
-              <a href="#" class="small-btn">Details</a>
-
+             <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
               <a href="#" class="small-btn">Add To Cart</a>
             </div>
           </div>
@@ -36,39 +35,3 @@
     {% endfor %}
   </div>
 {% endblock %}
-
-{% comment %} {% extends 'base/base2.html' %}
-{% load static %}
-
-{% block head %}
-  <title>LUXA Collection | Saree</title>
-  <link rel="stylesheet" href="{% static 'css/product.css' %}" />
-{% endblock %}
-
-{% block content %}
-  <div class="product-container">
-    {% for product in products %}
-      <div class="product-card">
-        <div class="image-wrapper">
-          <img src="{{ product.image.url }}" alt="" />
-        </div>
-
-        <div class="product-content">
-          <h3 class="product-title">{{ product.name }}</h3>
-          {% comment %} <p class="product-description">{{ product.description }}</p>
-          <div class="price-box">
-            <span class="old-price">₹2900</span>
-            <span class="discount">20% OFF</span>
-          </div>
-
-          <p class="product-price">₹{{ product.price }}</p>
-          <div class="button-group">
-            <a href="#" class="btn btn-detail">Details</a>
-            <a href="#" class="btn btn-cart">Add To Cart</a>
-            <a href="#" class="btn btn-buy">Buy Now</a>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-{% endblock %} {% endcomment %}
