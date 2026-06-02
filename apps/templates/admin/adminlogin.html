@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>LUXA Collection | Admin Login</title>
+<link rel="stylesheet" href="{% static 'admincss/adminlogin.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Login Section -->
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h1>LUXA ADMIN</h1>
+
+        <p class="sub-title">
+            Sign in to access the management dashboard.
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label>Emial</label>
+                <input
+                    type="email"
+                    name="emial"
+                    placeholder="Enter Emial"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter Password"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Login To Dashboard
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Information Section -->
+<section class="admin-about">
+
+    <div class="about-container">
+
+        <h2>Why Use LUXA Seller ?</h2>
+
+        <p>
+            Manage products, update stock, edit prices, and organize categories
+            from one simple dashboard.
+        </p>
+
+        <p>
+            Add new collections quickly and keep your store inventory up to date
+            for customers.
+        </p>
+
+        <p>
+            Monitor product availability and maintain a professional shopping
+            experience with easy management tools.
+        </p>
+
+        <p>
+            Secure access is provided only to authorized store administrators.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

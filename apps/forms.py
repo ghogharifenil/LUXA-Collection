@@ -13,7 +13,8 @@ class ProductForm(forms.ModelForm):
             'price',
             'description',
             'image',
-            'mainprice'
+            'mainprice',
+            'stock',
         ]
 
         widgets = {
@@ -40,8 +41,14 @@ class ProductForm(forms.ModelForm):
             'image': forms.FileInput(attrs={
                 'class': 'form-control'
             }),
+
             'mainprice': forms.NumberInput(attrs={
                 'class': 'old-price',
                 'placeholder': 'Old Price'
+            }),
+            
+            'stock': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Storing Stock '
             }),
         }

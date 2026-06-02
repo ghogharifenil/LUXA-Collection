@@ -29,6 +29,7 @@ class Product(models.Model):
     mainprice = models.IntegerField(default=None)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='product/')
+    stock = models.TextField(max_length=210)
     description = models.TextField()
 
     @property
@@ -77,7 +78,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    email  = models.EmailField( max_length=254)
+    email  = models.EmailField( max_length=254 , unique=True)
     name = models.TextField(max_length=250)
     city = models.TextField(max_length=250)
     

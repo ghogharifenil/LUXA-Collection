@@ -3,12 +3,13 @@ from .models import Product
 from django.shortcuts import render, redirect
 from .models import Product
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth import authenticate 
+from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.http import urlsafe_base64_decode
+
 
 def luxa(request):
     return render(request, "html/luxa.html")
@@ -39,38 +40,140 @@ def add_product(request):
 
     return render(
         request,
-        'admin/addpro.html',{'form': form})
+        'admin/addpro.html', {'form': form})
 
 
-def detail(request , name):
-    product = get_object_or_404(Product , name=name)
-    return render(request , "html/product_detail.html",{"product": product })
-    
+# --------------------------------------------------------------------------------
+# ----------------------------  Edit Product Stock -------------------------------
+# --------------------------------------------------------------------------------
+
+def editstock(request, name):
+
+    product = get_object_or_404(Product, name=name)
+
+    if request.method == 'POST':
+        product.stock = request.POST.get("stock")
+        product.save()
+
+        if product.category == "Dress":
+            return redirect('admin_dress')
+
+        elif product.category == "Saree":
+            return redirect('admin_saree')
+
+        elif product.category == "Heels":
+            return redirect('admin_heals')
+
+        elif product.category == "Shoes":
+            return redirect('admin_shoes')
+
+        elif product.category == "Shirt":
+            return redirect('admin_shirt')
+
+        elif product.category == "Pant":
+            return redirect('admin_pant')
+
+        elif product.category == "Jewellery":
+            return redirect('admin_jewellery')
+
+        elif product.category == "Footwear":
+            return redirect('admin_footwear')
+
+    return render(request, "admin/editstock.html", {"product": product})
+
+
+def detail(request, name):
+    product = get_object_or_404(Product, name=name)
+    return render(request, "html/product_detail.html", {"product": product})
+
 
 def adminuser(request):
+
     if request.method == 'POST':
+
         email = request.POST.get("email")
-        password = request.POST.get("email")
+        password = request.POST.get("password")
 
-    user = authenticate(request,email = email , password = password)
+        user = authenticate(
+            request,
+            email=email,
+            password=password
+        )
 
-    if user is not None and user.is_seller:
-        auth_login(request,user)
-        return redirect("/deshboard/")
-    return render(request , "admin/adminlogin.html")
+        if user is not None and user.is_seller:
+            auth_login(request, user)
+            return redirect('/deshboard/')
+
+    return render(
+        request,
+        "admin/adminlogin.html"
+    )   
 
 
 def dashboard(request):
-    products = Product.objects.all() 
-    return render(request , 'admin/dashboard.html',{"products":products})
+    products = Product.objects.all()
+    return render(request, 'admin/dashboard.html', {"products": products})
 
 
 def viewpro(request):
     return render(request, "admin/viewproduct.html")
 
+# --------------------------------------------------------------------------------
+# --------------------- Admin Product for View Shtock ----------------------------
+# --------------------------------------------------------------------------------
+
+
+def admin_dress(request):
+    products = Product.objects.filter(category='dress')
+    return render(request, 'adminproducts/dress.html',
+                  {'products': products})
+
+
+def admin_saree(request):
+    products = Product.objects.filter(category='Saree')
+    return render(request, 'adminproducts/saree.html',
+                  {'products': products})
+
+
+def admin_heels(request):
+    products = Product.objects.filter(category='Heals')
+    return render(request, 'adminproducts/heels.html',
+                  {'products': products})
+
+
+def admin_jwelery(request):
+    products = Product.objects.filter(category='Jwelery')
+    return render(request, 'adminproducts/jwelery.html',
+                  {'products': products})
+
+
+def admin_foowear(request):
+    products = Product.objects.filter(category='Footwear')
+    return render(request, 'adminproducts/footwear.html',
+                  {'products': products})
+
+
+def admin_pent(request):
+    products = Product.objects.filter(category='Pent')
+    return render(request, 'adminproducts/pent.html',
+                  {'products': products})
+
+
+def admin_shert(request):
+    products = Product.objects.filter(category='Shert')
+    return render(request, 'adminproducts/shert.html',
+                  {'products': products})
+
+
+def admin_shoes(request):
+    products = Product.objects.filter(category='Shoes')
+    return render(request, 'adminproducts/shoes.html',
+                  {'products': products})
+
 # --------------------------------------------------------------
 # ---------------------  Product -------------------------------
 # --------------------------------------------------------------
+
 
 def dress(request):
     products = Product.objects.filter(
@@ -78,7 +181,7 @@ def dress(request):
     )
     return render(
         request,
-        'products/dress.html',{'products': products})
+        'products/dress.html', {'products': products})
 
 
 def footwear(request):
@@ -88,7 +191,7 @@ def footwear(request):
     )
     return render(
         request,
-        'products/footwear.html',{'products': products})
+        'products/footwear.html', {'products': products})
 
 
 def heals(request):
@@ -97,7 +200,7 @@ def heals(request):
     )
     return render(
         request,
-        'products/heals.html',{'products': products})
+        'products/heals.html', {'products': products})
 
 
 def jwelery(request):

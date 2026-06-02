@@ -20,9 +20,21 @@ urlpatterns = [
     path('collection_department/shoes/', views.shoes, name='shoes'),
 
 
-    path('admin/', views.adminuser, name='admin'),
+    path('admin_login/', views.adminuser, name='admin'),
     path('admin/add_product/', views.add_product, name='add_product'),
     path('admin/viewpro', views.viewpro, name='view_product'),
+
+
+    path('editstock/<str:name>',views.editstock,name="editstock"),
+
+    path('admin/admin_dress/', views.admin_dress, name='admin_dress'),
+    path('admin/admin_foowear/', views.admin_foowear, name='admin_foowear'),
+    path('admin/admin_heels/', views.admin_heels, name='admin_heels'),
+    path('admin/admin_jwelery', views.admin_jwelery, name='admin_jwelery'),
+    path('admin/admin_pent/', views.admin_pent, name='admin_pent'),
+    path('admin/admin_saree/', views.admin_saree, name='admin_saree'),
+    path('admin/admin_shert/', views.admin_shert, name='admin_shert'),
+    path('admin/admin_shoes/', views.admin_shoes, name='admin_shoes'),
 
 
     path('product_detail/<str:name>/', views.detail, name="product_detail"),

@@ -1,0 +1,33 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block head %}
+  <title>LUXA Collection | Admin | Saree</title>
+  <link rel="stylesheet" href="{% static 'css/product.css' %}" />
+{% endblock %}
+{% block content %}
+  <div class="product-container">
+    {% for product in products %}
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">{{ product.name }}</h3>
+
+          <div class="price-box">
+            <span class="old-price">₹{{ product.mainprice }}</span>
+            <span class="discount">{{ product.discount_percentage }}% OFF</span>
+          </div>
+
+          <p class="product-price">₹{{ product.price }}</p>
+          <p class="stock">Stock : {{product.stock }}  Pieces </p>
+          
+          <div class="button-group">
+            <a href="{% url "editstock" product.name %}" class="buy-btn">Edit Stock</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
