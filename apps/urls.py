@@ -27,6 +27,8 @@ urlpatterns = [
     path('admin/add_product/', views.add_product, name='add_product'),
     path('admin/viewpro', views.viewpro, name='view_product'),
     path('dashboard/', views.dashboard, name="dashboard"),
+    path('order/', views.order , name="order"),
+
 
     path('editstock/<str:name>', views.editstock, name="editstock"),
     path('editproduct/<str:name>', views.editproduct, name="editproduct"),

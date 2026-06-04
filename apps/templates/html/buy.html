@@ -1,9 +1,9 @@
 {% extends 'base/base2.html' %}
 {% load static %}
 {% block head %}
-<title>lUXA Collection | Buy </title>
-<link rel="stylesheet" href="{% static "css/buy.css" %}">
-{% endblock head %}
+  <title>lUXA Collection | Buy</title>
+  <link rel="stylesheet" href="{% static 'css/buy.css' %}" />
+{% endblock %}
 {% block content %}
   <div class="buy-container">
     <div class="product-section">
@@ -82,5 +82,26 @@
       </form>
     </div>
   </div>
-  <script src="{% static 'script/buy.js' %}"></script>
+  <script>
+    let qty = 1
+    const price = parseInt(document.getElementById('price').value)
+    
+    function updateTotal() {
+      document.getElementById('qty').innerText = qty
+      document.getElementById('total').innerText = price * qty
+      document.getElementById('quantity_input').value = qty
+    }
+    
+    function increase() {
+      qty++
+      updateTotal()
+    }
+    
+    function decrease() {
+      if (qty > 1) {
+        qty--
+        updateTotal()
+      }
+    }
+  </script>
 {% endblock %}

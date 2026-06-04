@@ -48,7 +48,7 @@ def buy(request, name):
 
         quantity = int(request.POST.get("quantity", 1))
 
-        total_price = product.discount_price * quantity
+        total_price = product.price * quantity
 
         screenshot = request.FILES.get("payment_screenshot")
 
@@ -262,6 +262,22 @@ def logout(request):
 @seller_required
 def viewpro(request):
     return render(request, "admin/viewproduct.html")
+
+# --------------------------------------------------------------------------------
+# ---------------------------+ Show Order +---------------------------------------
+# --------------------------------------------------------------------------------
+@seller_required
+def order(request):
+    orders = Order.objects.select_related(
+        'user',
+        'product'
+    )
+
+    return render(
+        request,
+        'admin/order.html',
+        {'orders': orders}
+    )
 
 # --------------------------------------------------------------------------------
 # -------------------------+ Admin Add Product +----------------------------------

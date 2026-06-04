@@ -50,8 +50,6 @@ class Product(models.Model):
 # ----------------------------------------------------------------------------
 
 
-
-
 class Order(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
