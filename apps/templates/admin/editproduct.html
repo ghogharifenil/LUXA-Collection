@@ -1,0 +1,33 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block head %}
+  <title>LUXA Collection | Admin | Edit Product</title>
+  <link rel="stylesheet" href="{% static 'admincss/editstock.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="stock-container">
+    <div class="stock-card">
+      <img src="{{ product.image.url }}" alt="" />
+
+      <div class="stock-info">
+        <h2>{{ product.name }}</h2>
+
+        <p class="current-stock">Current Stock : {{ product.stock }}</p>
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <input type="text" name="name" value="{{ product.name }}"  required />
+          <input type="text" name="description" value="{{ product.description }}"  required />
+          <input type="number" name="mainprice" value="{{ product.mainprice }}" min="0" required />
+          <input type="number" name="price" value="{{ product.price }}" min="0" required />
+          <input type="number" name="stock" value="{{ product.stock }}" min="0" required />
+
+          <button type="submit">Update Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

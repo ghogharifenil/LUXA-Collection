@@ -9,6 +9,7 @@ from django.contrib.auth import logout as auth_logout
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.http import urlsafe_base64_decode
+from .decorators import seller_required
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -166,7 +167,6 @@ def shoes(request):
 #--------------------------------------------------------------------------------------------------------------------------------------------------------- 
  
 
-
 # --------------------------------------------------------------------------------
 # ---------------------------+ Admin login +------------------------------------
 # --------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ def adminuser(request):
 
         if user is not None and user.is_seller:
             auth_login(request, user)
-            return redirect('/deshboard/')
+            return redirect('dashboard')
 
     return render(
         request,
@@ -198,14 +198,25 @@ def adminuser(request):
 # ----------------------------+ Admin Dashboard +---------------------------------
 # --------------------------------------------------------------------------------
 
+@seller_required
 def dashboard(request):
+    if not request.user.is_seller:
+        return redirect('home')
     products = Product.objects.all()
     return render(request, 'admin/dashboard.html', {"products": products})
+
+
+# -------------------------------+ Logout +---------------------------------------
+
+@seller_required
+def logout(request):
+    auth_logout(request)
+    return redirect('home')
 
 # --------------------------------------------------------------------------------
 # ------------------+ Admin Product for View Product Collection +-----------------
 # --------------------------------------------------------------------------------
-
+@seller_required
 def viewpro(request):
     return render(request, "admin/viewproduct.html")
 
@@ -213,7 +224,7 @@ def viewpro(request):
 # -------------------------+ Admin Add Product +----------------------------------
 # --------------------------------------------------------------------------------
 
-
+@seller_required
 def add_product(request):
 
     if request.method == "POST":
@@ -237,7 +248,7 @@ def add_product(request):
 # --------------------------------------------------------------------------------
 # ---------------------------+  Edit Product Stock +------------------------------
 # --------------------------------------------------------------------------------
-
+@seller_required
 def editstock(request, name):
 
     product = get_object_or_404(
@@ -280,11 +291,61 @@ def editstock(request, name):
             "product": product
         }
     )
+
+
+# --------------------------------------------------------------------------------
+# ------------------------------+ Edit Product +----------------------------------
+# --------------------------------------------------------------------------------
+@seller_required
+def editproduct(request , name):
+
+    product = get_object_or_404(Product,name = name)
+
+    if request.method == 'POST':
+        product.name = request.POST.get("name")
+        product.description = request.POST.get("description")
+        product.mainprice = request.POST.get("mainprice")
+        product.price = request.POST.get("price")
+        product.stock = request.POST.get("stock")
+        product.save()
+
+
+        if product.category == "Dress":
+            return redirect('admin_dress')
+
+        elif product.category == "Saree":
+            return redirect('admin_saree')
+
+        elif product.category == "Heels":
+            return redirect('admin_heals')
+
+        elif product.category == "Shoes":
+            return redirect('admin_shoes')
+
+        elif product.category == "Shirt":
+            return redirect('admin_shirt')
+
+        elif product.category == "Pant":
+            return redirect('admin_pant')
+
+        elif product.category == "Jewellery":
+            return redirect('admin_jewellery')
+
+        elif product.category == "Footwear":
+            return redirect('admin_footwear')
+
+    return render(
+        request,
+        "admin/editproduct.html",
+        {
+            "product": product
+        }
+    )
 # --------------------------------------------------------------------------------
 # --------------------- Admin Product for View Shtock ----------------------------
 # --------------------------------------------------------------------------------
 
-
+@seller_required
 def admin_dress(request):
     products = Product.objects.filter(
         category='dress'
@@ -297,7 +358,7 @@ def admin_dress(request):
         }
     )
 
-
+@seller_required
 def admin_saree(request):
     products = Product.objects.filter(
         category='Saree'
@@ -310,7 +371,7 @@ def admin_saree(request):
         }
     )
 
-
+@seller_required
 def admin_heels(request):
     products = Product.objects.filter(
         category='Heals'
@@ -323,7 +384,7 @@ def admin_heels(request):
         }
     )
 
-
+@seller_required
 def admin_jwelery(request):
     products = Product.objects.filter(
         category='Jwelery'
@@ -336,7 +397,7 @@ def admin_jwelery(request):
         }
     )
 
-
+@seller_required
 def admin_foowear(request):
     products = Product.objects.filter(
         category='Footwear'
@@ -349,7 +410,7 @@ def admin_foowear(request):
         }
     )
 
-
+@seller_required
 def admin_pent(request):
     products = Product.objects.filter(
         category='Pent'
@@ -362,7 +423,7 @@ def admin_pent(request):
         }
     )
 
-
+@seller_required
 def admin_shert(request):
     products = Product.objects.filter(
         category='Shert'
@@ -375,7 +436,7 @@ def admin_shert(request):
         }
     )
 
-
+@seller_required
 def admin_shoes(request):
 
     products = Product.objects.filter(

@@ -21,11 +21,14 @@ urlpatterns = [
 
 
     path('admin/', views.adminuser, name='admin'),
+    path('logout/', views.logout, name="logout"),
     path('admin/add_product/', views.add_product, name='add_product'),
     path('admin/viewpro', views.viewpro, name='view_product'),
-
+    path('dashboard/', views.dashboard, name="dashboard"),
 
     path('editstock/<str:name>',views.editstock,name="editstock"),
+    path('editproduct/<str:name>',views.editproduct,name="editproduct"),
+
 
     path('admin/admin_dress/', views.admin_dress, name='admin_dress'),
     path('admin/admin_foowear/', views.admin_foowear, name='admin_foowear'),
@@ -38,7 +41,7 @@ urlpatterns = [
 
 
     path('product_detail/<str:name>/', views.detail, name="product_detail"),
-    path('dashboard/', views.dashboard, name="dashboard"),
+   
 
 
 ]
