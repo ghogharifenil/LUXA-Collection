@@ -1,6 +1,6 @@
 from django import forms
 from .models import Product
-
+from .models import User
 
 class ProductForm(forms.ModelForm):
 
@@ -52,3 +52,11 @@ class ProductForm(forms.ModelForm):
                 'placeholder': 'Storing Stock '
             }),
         }
+
+
+class CustomerRegistrationForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['name', 'email', 'city', 'password']

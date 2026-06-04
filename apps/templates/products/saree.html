@@ -23,7 +23,7 @@
           <p class="product-price">₹{{ product.price }}</p>
 
           <div class="button-group">
-            <a href="#" class="buy-btn">Buy Now</a>
+            <a href="{% url 'buy' product.name %}" class="buy-btn">Buy Now</a>
 
             <div class="bottom-btns">
              <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>

@@ -1,0 +1,86 @@
+{% extends 'base/base2.html' %}
+{% load static %}
+{% block head %}
+<title>lUXA Collection | Buy </title>
+<link rel="stylesheet" href="{% static "css/buy.css" %}">
+{% endblock head %}
+{% block content %}
+  <div class="buy-container">
+    <div class="product-section">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+    </div>
+
+    <div class="order-section">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2>{{ product.name }}</h2>
+
+        <h4>Original Price :<del>₹{{ product.mainprice }}</del></h4>
+
+        <h4>
+          Discount :
+          {{ product.discount_percentage }}%
+        </h4>
+
+        <h3>Final Price : ₹{{ product.price }}</h3>
+
+        <input type="hidden" id="price" value="{{ product.price }}" />
+
+        <div class="quantity-box">
+          <button type="button" onclick="decrease()">-</button>
+
+          <span id="qty">1</span>
+
+          <button type="button" onclick="increase()">+</button>
+        </div>
+
+        <input type="hidden" name="quantity" id="quantity_input" value="1" />
+
+        <h2 class="total-h2">Total : ₹<span id="total">{{ product.price }}</span></h2>
+
+        <hr />
+        <h3>Scan & Pay</h3>
+
+        <img src="{% static 'image/qr.png' %}" width="220" alt="QR Code" />
+
+        <p>
+          <strong>UPI ID :</strong>
+          luxacollection@upi
+        </p>
+
+        <p>
+          <strong>Bank :</strong>
+          State Bank Of India
+        </p>
+
+        <p>
+          <strong>A/C :</strong>
+          1234567890
+        </p>
+
+        <p>
+          <strong>IFSC :</strong>
+          SBIN0001234
+        </p>
+
+        <hr />
+
+        <label>Upload Payment Screenshot</label>
+
+        <input type="file" name="payment_screenshot" required />
+
+        <div class="notes">
+          <p>✓ Please upload your payment screenshot after successful payment.</p>
+
+          <p>✓ Your order will be processed once the payment has been verified.</p>
+
+          <p>✓ Estimated delivery time: 3–7 business days.</p>
+        </div>
+
+        <button type="submit" class="confirm-btn">Confirm Order</button>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'script/buy.js' %}"></script>
+{% endblock %}

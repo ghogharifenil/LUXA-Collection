@@ -9,7 +9,6 @@ urlpatterns = [
     path('collection_department/', views.collection_department,
          name='collection_department'),
 
-
     path('collection_department/dress/', views.dress, name='dress'),
     path('collection_department/footwear/', views.footwear, name='footwear'),
     path('collection_department/heals/', views.heals, name='heals'),
@@ -20,14 +19,17 @@ urlpatterns = [
     path('collection_department/shoes/', views.shoes, name='shoes'),
 
 
+    path('buy/<str:name>', views.buy, name="buy"),
+
+
     path('admin/', views.adminuser, name='admin'),
     path('logout/', views.logout, name="logout"),
     path('admin/add_product/', views.add_product, name='add_product'),
     path('admin/viewpro', views.viewpro, name='view_product'),
     path('dashboard/', views.dashboard, name="dashboard"),
 
-    path('editstock/<str:name>',views.editstock,name="editstock"),
-    path('editproduct/<str:name>',views.editproduct,name="editproduct"),
+    path('editstock/<str:name>', views.editstock, name="editstock"),
+    path('editproduct/<str:name>', views.editproduct, name="editproduct"),
 
 
     path('admin/admin_dress/', views.admin_dress, name='admin_dress'),
@@ -41,7 +43,7 @@ urlpatterns = [
 
 
     path('product_detail/<str:name>/', views.detail, name="product_detail"),
-   
+
 
 
 ]
