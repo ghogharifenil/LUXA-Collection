@@ -6,8 +6,8 @@ urlpatterns = [
     path('home/', views.home, name='home'),
 
 
-    path('collection_department/', views.collection_department,
-         name='collection_department'),
+    path('new_products/', views.new_products,
+         name='new_products'),
 
     path('collection_department/dress/', views.dress, name='dress'),
     path('collection_department/footwear/', views.footwear, name='footwear'),
@@ -25,7 +25,6 @@ urlpatterns = [
     path('admin/', views.adminuser, name='admin'),
     path('logout/', views.logout, name="logout"),
     path('admin/add_product/', views.add_product, name='add_product'),
-    path('admin/viewpro', views.viewpro, name='view_product'),
     path('dashboard/', views.dashboard, name="dashboard"),
     path('order/', views.order , name="order"),
 

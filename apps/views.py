@@ -25,12 +25,20 @@ def luxa(request):
 def home(request):
     return render(request, "html/home.html")
 
-# ---------------+ Collection Department +----------------
+# # ---------------+ New Collection Department +----------------
 
 
-def collection_department(request):
-    return render(request, "html/collection_department.html")
+def new_products(request):
 
+    products = Product.objects.filter(
+        is_new=True
+    )
+
+    return render(
+        request,
+        'html/new_collection.html',
+        {'products': products}
+    )
 # ---------------+ Add to Cart With Login  +----------------
 
 
@@ -259,9 +267,9 @@ def logout(request):
 # --------------------------------------------------------------------------------
 
 
-@seller_required
-def viewpro(request):
-    return render(request, "admin/viewproduct.html")
+# @seller_required
+# def viewpro(request):
+#     return render(request, "admin/viewproduct.html")
 
 # --------------------------------------------------------------------------------
 # ---------------------------+ Show Order +---------------------------------------
@@ -294,7 +302,13 @@ def add_product(request):
         )
 
         if form.is_valid():
-            form.save()
+
+            product = form.save(commit=False)
+
+            product.is_new = True if request.POST.get("is_new") else False
+
+            product.save()
+
             return redirect('add_product')
 
     else:

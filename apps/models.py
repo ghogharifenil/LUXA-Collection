@@ -32,6 +32,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product/')
     stock = models.TextField(max_length=210)
     description = models.TextField()
+    is_new = models.BooleanField(default=False)
 
     @property
     def discount_percentage(self):

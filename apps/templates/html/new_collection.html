@@ -1,0 +1,36 @@
+{% extends 'base/base2.html' %}
+{% load static %}
+
+{% block head %}
+  <title>LUXA Collection | New Products</title>
+
+  <link rel="stylesheet" href="{% static 'css/new_products.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="product-container">
+    <h2 class="title">New Products</h2>
+
+    {% for product in products %}
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        </div>
+
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+
+          <p class="main-price">₹{{ product.mainprice }}</p>
+
+          <p class="discount-price">₹{{ product.price }}</p>
+
+          <a href="{% url 'buy' product.id %}" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    {% empty %}
+      <div class="no-product">
+        <h3>No New Products Available</h3>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
