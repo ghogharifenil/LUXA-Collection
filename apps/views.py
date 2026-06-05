@@ -10,6 +10,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.http import urlsafe_base64_decode
 from .decorators import seller_required, customer_login_required
+from django.db.models import Q
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -25,7 +26,36 @@ def luxa(request):
 def home(request):
     return render(request, "html/home.html")
 
-# # ---------------+ New Collection Department +----------------
+# ---------------+ Serch Bar +----------------------------
+
+
+def search_product(request):
+    query = request.GET.get('q', '').strip()
+
+    products = Product.objects.none()
+
+    if query:
+        words = query.split()
+
+        q_filter = Q()
+
+        for word in words:
+            q_filter &= (
+                Q(name__icontains=word) |
+                Q(tags__icontains=word) |
+                Q(description__icontains=word)
+            )
+
+        products = Product.objects.filter(q_filter)
+
+    context = {
+        'products': products,
+        'query': query
+    }
+
+    return render(request, 'html/search.html', context)
+
+# ---------------+ New Collection Department +----------------
 
 
 def new_products(request):
@@ -47,6 +77,7 @@ def add_to_cart(request):
     return render(request, "html/add_to_cart.html")
 
 # -----------------+ Buy with Login  +----------------------
+
 
 def buy(request, name):
 

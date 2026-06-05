@@ -2,34 +2,69 @@
 {% load static %}
 
 {% block head %}
-  <title>LUXA Collection | New Products</title>
+  <title>LUXA Collection | New Collection</title>
 
-  <link rel="stylesheet" href="{% static 'css/new_products.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/new_collection.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <div class="product-container">
-    <h2 class="title">New Products</h2>
+  <!-- Hero Banner -->
+  <section class="collection-banner">
+    <div class="banner-overlay">
+      <span class="new-tag">✨ JUST ARRIVED</span>
 
+      <h1>New Collection 2026</h1>
+
+      <p>Discover the latest arrivals crafted with elegance, style and luxury.</p>
+    </div>
+  </section>
+
+  <!-- Section Heading -->
+  <div class="section-header" id="products">
+    <h2>🔥 Trending New Arrivals</h2>
+    <p>Fresh styles added recently for fashion lovers.</p>
+  </div>
+
+  <!-- Products -->
+  <div class="product-container">
     {% for product in products %}
       <div class="product-card">
         <div class="image-wrapper">
+          <span class="product-badge">NEW</span>
+
           <img src="{{ product.image.url }}" alt="{{ product.name }}" />
         </div>
 
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
+        <div class="product-content">
+          <div class="top-info">
+            <span class="arrival-tag">✨ New Arrival</span>
+          </div>
 
-          <p class="main-price">₹{{ product.mainprice }}</p>
+          <h3 class="product-title">{{ product.name }}</h3>
 
-          <p class="discount-price">₹{{ product.price }}</p>
+          <div class="price-box">
+            <span class="old-price">₹{{ product.mainprice }}</span>
 
-          <a href="{% url 'buy' product.id %}" class="buy-btn">Buy Now</a>
+            <span class="discount">{{ product.discount_percentage }}% OFF</span>
+          </div>
+
+          <p class="product-price">₹{{ product.price }}</p>
+
+          <div class="button-group">
+            <a href="{% url 'buy' product.name %}" class="buy-btn">Buy Now</a>
+
+            <div class="bottom-btns">
+              <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
+
+              <a href="#" class="small-btn">Add To Cart</a>
+            </div>
+          </div>
         </div>
       </div>
     {% empty %}
-      <div class="no-product">
-        <h3>No New Products Available</h3>
+      <div class="empty-products">
+        <h2>No New Products Available</h2>
+        <p>Please check back later for fresh arrivals.</p>
       </div>
     {% endfor %}
   </div>

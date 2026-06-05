@@ -32,6 +32,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product/')
     stock = models.TextField(max_length=210)
     description = models.TextField()
+    tags = models.CharField(max_length=500, blank=True)
     is_new = models.BooleanField(default=False)
 
     @property

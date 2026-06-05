@@ -15,18 +15,20 @@
         <div class="product-content">
           <h3 class="product-title">{{ product.name }}</h3>
 
+          {% if mainprice == 0 %}{% endif %}
           <div class="price-box">
             <span class="old-price">₹{{ product.mainprice }}</span>
             <span class="discount">{{ product.discount_percentage }}% OFF</span>
           </div>
 
           <p class="product-price">₹{{ product.price }}</p>
+          <p class="product-description">{{ product.description }}</p>
 
           <div class="button-group">
-            <a href="#" class="buy-btn">Buy Now</a>
+            <a href="{% url 'buy' product.name %}" class="buy-btn">Buy Now</a>
 
             <div class="bottom-btns">
-             <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
+              <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
 
               <a href="#" class="small-btn">Add To Cart</a>
             </div>

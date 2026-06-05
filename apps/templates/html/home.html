@@ -11,7 +11,7 @@
  
   <div class="offers">
     <div class="offer-card">
-      <img src="{% static 'image/offer1.jpg' %}" alt="Offer 1" />
+      <a href="{% url 'saree' %}"><img src="{% static 'image/offer1.jpg' %}" alt="Offer 1" /></a>
 
       <div class="offer-overlay">
         <h1>Diwali Festive Fashion Sale</h1>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="offer-card">
-      <img src="{% static 'image/offer2.jpg' %}" alt="Offer 2" />
+     <a href="{% url "dress" %}"> <img src="{% static 'image/offer2.jpg' %}" alt="Offer 2" /></a>
 
       <div class="offer-overlay">
         <h1>Rakhi Sale</h1>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="offer-card">
-      <img src="{% static 'image/new.jpg' %}" alt="Offer 3" />
+      <a href="{% url "new_products" %}"><img src="{% static 'image/new.jpg' %}" alt="Offer 3" /></a>
 
       <div class="offer-overlay">
         <h1>Fresh Picks For You</h1>

@@ -15,6 +15,7 @@ class ProductForm(forms.ModelForm):
             'image',
             'mainprice',
             'stock',
+            'tags',
         ]
 
         widgets = {
@@ -50,6 +51,10 @@ class ProductForm(forms.ModelForm):
             'stock': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Storing Stock '
+            }),
+            'tags': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Add Tags'
             }),
         }
 

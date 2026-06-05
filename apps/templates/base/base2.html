@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base2.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     {% block head %}
 
     {% endblock %}
@@ -19,6 +20,36 @@
         </div>
       </div>
 
+      <form action="{% url 'search_product' %}" method="GET" style="
+      flex:1;
+      display:flex;
+      align-items:center;
+      margin:0 25px;
+      background:#ffffff;
+      border:2px solid #c3a506;
+      border-radius:40px;
+      overflow:hidden;
+      height:48px;
+">
+        <input type="text" name="q" placeholder="Search saree, jewellery, dress..." required style="
+        flex:1;
+        border:none;
+        outline:none;
+        background:transparent;
+        padding:0 20px;
+        font-size:15px;
+        color:#333;
+    " />
+
+        <button type="submit" style="
+        width:60px;
+        height:100%;
+        border:none;
+        background:#d1b934;
+        cursor:pointer;
+        font-size:18px;
+    "><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
       <ul class="nav-links">
         <li>
           <a href="{% url 'home' %}">Home</a>
@@ -28,28 +59,28 @@
 
           <ul class="dropdown-menu">
             <li>
-              <a href="{% url "shert" %}">Shirts</a>
+              <a href="{% url 'shert' %}">Shirts</a>
             </li>
             <li>
-              <a href="{% url "pent" %}">Pants</a>
+              <a href="{% url 'pent' %}">Pants</a>
             </li>
             <li>
-              <a href="{% url "shoes" %}">Shoes</a>
+              <a href="{% url 'shoes' %}">Shoes</a>
             </li>
             <li>
-              <a href="{% url "dress" %}">Dress</a>
+              <a href="{% url 'dress' %}">Dress</a>
             </li>
             <li>
-              <a href="{% url "jwelery" %}">Jewellery</a>
+              <a href="{% url 'jwelery' %}">Jewellery</a>
             </li>
             <li>
               <a href="{% url 'footwear' %}">Footwear</a>
             </li>
             <li>
-              <a href="{% url "saree" %}">Saree</a>
+              <a href="{% url 'saree' %}">Saree</a>
             </li>
             <li>
-              <a href="{% url "heals" %}">Heels</a>
+              <a href="{% url 'heals' %}">Heels</a>
             </li>
           </ul>
         </li>
@@ -59,12 +90,12 @@
         <li>
           <a href="/contact/">Contact</a>
         </li>
-         <li>
-          <a href="{% url 'add_product' %}">Add Products</a>
+        <li>
+          <a href="{% url 'new_products' %}">New Collection</a>
         </li>
       </ul>
     </nav>
-      {% comment %} <footer>
+    {% comment %} <footer>
       <div class="footer">
         <p>Mobile : 9963254187</p>
         <p>Email : luxacollection@gmail.com</p>
@@ -75,6 +106,5 @@
     {% block content %}
 
     {% endblock %}
-  
   </body>
 </html>
