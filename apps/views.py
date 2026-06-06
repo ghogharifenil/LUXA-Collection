@@ -11,6 +11,8 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.http import urlsafe_base64_decode
 from .decorators import seller_required, customer_login_required
 from django.db.models import Q
+from .forms import CustomerRegisterForm
+from django.contrib import messages
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -109,6 +111,44 @@ def buy(request, name):
             "product": product
         }
     )
+
+
+def register(request):
+    if request.method == "POST":
+        form = CustomerRegisterForm(request.POST)
+
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data["password"])
+            user.save()
+
+            return redirect("login")
+
+    else:
+        form = CustomerRegisterForm()
+
+    return render(request, "html/registration.html", {"form": form})
+
+
+# @customer_login_required
+def login(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+
+        user = authenticate(
+            request,
+            email=email,
+            password=password
+        )
+
+        if user:
+            auth_login(request, user)
+            return redirect("home")
+
+        messages.error(request, "Invalid Email or Password")
+
+    return render(request, "html/customer_login.html")
 
 # --------------------------------------------------------------------------------
 # ------------------------+ Customer Show Detail +--------------------------------

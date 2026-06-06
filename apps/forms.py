@@ -58,10 +58,25 @@ class ProductForm(forms.ModelForm):
             }),
         }
 
-
-class CustomerRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+class CustomerRegisterForm(forms.ModelForm):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Password'
+        })
+    )
 
     class Meta:
         model = User
         fields = ['name', 'email', 'city', 'password']
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'placeholder': 'Full Name'
+            }),
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'Email Address'
+            }),
+            'city': forms.TextInput(attrs={
+                'placeholder': 'City'
+            }),
+        }

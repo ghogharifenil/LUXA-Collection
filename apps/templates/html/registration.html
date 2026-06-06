@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>LUXA Collection | Register</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <div class="logo">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+
+        <h2>LUXA COLLECTION</h2>
+
+        <h3>CREATE ACCOUNT</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                {{ form.name }}
+            </div>
+
+            <div class="input-group">
+                {{ form.email }}
+            </div>
+
+            <div class="input-group">
+                {{ form.city }}
+            </div>
+
+            <div class="input-group">
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="login-btn">
+                REGISTER
+            </button>
+
+        </form>
+
+        <a href="{% url 'login' %}" class="forgot-pass">
+            Already have an account? Login
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

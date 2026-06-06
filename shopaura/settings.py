@@ -121,3 +121,7 @@ AUTH_USER_MODEL = 'apps.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTHENTICATION_BACKENDS = [
+    'apps.backends.EmailBackend',
+]
