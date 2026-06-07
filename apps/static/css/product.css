@@ -60,6 +60,7 @@ body{
   height: 280px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: no-drop;
 }
 
 /* ================= BADGE ================= */

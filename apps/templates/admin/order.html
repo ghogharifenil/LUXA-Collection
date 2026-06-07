@@ -27,7 +27,7 @@
         {% for order in orders %}
           <tr>
             <td>
-              <img src="{{ order.product.image.url }}" width="80" />
+            <a href="{% url "product_detail" product.name  %}">  <img src="{{ order.product.image.url }}" width="80" /></a>
             </td>
 
             <td>{{ order.user.name }}</td>

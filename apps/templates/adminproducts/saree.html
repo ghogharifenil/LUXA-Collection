@@ -10,7 +10,7 @@
     {% for product in products %}
       <div class="product-card">
         <div class="image-wrapper">
-          <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+          <a href="{% url "product_detail" product.name  %}"><img src="{{ product.image.url }}" alt="{{ product.name }}" /></a>
         </div>
         <div class="product-content">
           <h3 class="product-title">{{ product.name }}</h3>
