@@ -1,191 +1,163 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
-/* ==========================
-   OFFER SECTION
-========================== */
+
+body{
+    background:#f7f7f7;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* ================= OFFERS SECTION ================= */
 
 .offers{
     width:100%;
-    padding:40px 0;
-    background:#f8f8f8;
+    padding:60px 0;
+    background:#f7f7f7;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
 }
 
-/* ==========================
-   OFFER CARD
-========================== */
+/* ================= OFFER CARD ================= */
 
 .offer-card{
     position:relative;
     width:90%;
-    margin:0 auto 50px auto;
-    border-radius:20px;
+    border-radius:25px;
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+
+    background:#fff;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    transition:.4s ease;
 }
 
-/* ==========================
-   IMAGE
-========================== */
+.offer-card:hover{
+    transform:translateY(-8px);
+}
+
+/* IMAGE */
 
 .offer-card img{
     width:100%;
-    height:550px;
+    height:520px;
     object-fit:cover;
     display:block;
+    filter:brightness(.95);
 }
 
-/* ==========================
-   OVERLAY TEXT
-========================== */
+/* LIGHT OVERLAY */
+
+.offer-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,.85),
+        rgba(255,255,255,.4),
+        transparent
+    );
+    z-index:1;
+}
+
+/* ================= TEXT ================= */
 
 .offer-overlay{
     position:absolute;
     top:50%;
     left:8%;
     transform:translateY(-50%);
-    max-width:500px;
+    max-width:550px;
+    z-index:2;
 }
+
+/* TITLE */
 
 .offer-overlay h1{
-    font-size:65px;
-    font-weight:700;
-    color:#7e6514;
+    font-size:60px;
+    font-weight:800;
+    color:#2b2b2b;
     line-height:1.1;
-    margin-bottom:10px;
-    text-shadow:2px 2px 10px rgba(0,0,0,0.3);
+    margin-bottom:15px;
 }
+
+/* PARAGRAPH */
 
 .offer-overlay p{
-    font-size:22px;
-    color:rgb(0, 0, 0);
-    margin-bottom:25px;
-    text-shadow:2px 2px 8px rgba(0,0,0,0.4);
+    font-size:18px;
+    color:#555;
+    margin-bottom:10px;
 }
 
-/* ==========================
-   SHOP NOW BUTTON
-========================== */
+/* ================= BUTTON ================= */
 
 .shop-btn{
-    position:relative;
     display:inline-block;
+    padding:14px 35px;
 
-    padding:15px 40px;
-
-    background:#d4af37;
-    color:#000;
+    background:#111;
+    color:#fff;
 
     text-decoration:none;
-    font-size:18px;
+    font-size:15px;
     font-weight:600;
 
     border-radius:50px;
 
-    overflow:hidden;
-
-    transition:all .4s ease;
-
-    box-shadow:0 8px 20px rgba(212,175,55,.35);
+    transition:.3s ease;
 }
-
-/* Shine Effect */
-
-.shop-btn::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-120%;
-
-    width:60%;
-    height:100%;
-
-    background:rgba(255,255,255,.5);
-
-    transform:skewX(-25deg);
-
-    transition:.7s;
-}
-
-.shop-btn:hover::before{
-    left:130%;
-}
-
-/* Hover */
 
 .shop-btn:hover{
-    background:#000;
-    color:#d4af37;
-
-    transform:translateY(-5px) scale(1.05);
-
-    box-shadow:0 15px 30px rgba(0,0,0,.25);
+    background:#fff;
+    color:#111;
+    border:1px solid #111;
+    transform:translateY(-4px);
 }
 
-/* ==========================
-   TABLET
-========================== */
+/* ================= TABLET ================= */
 
 @media(max-width:992px){
-
-    .offer-card{
-        width:95%;
-    }
-
     .offer-card img{
-        height:420px;
+        height:400px;
     }
 
     .offer-overlay h1{
         font-size:45px;
     }
-
-    .offer-overlay p{
-        font-size:18px;
-    }
 }
 
-/* ==========================
-   MOBILE
-========================== */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
-    .offers{
-        padding:20px 0;
-    }
-
-    .offer-card{
-        width:96%;
-        margin-bottom:30px;
-        border-radius:15px;
-    }
-
     .offer-card img{
-        height:250px;
+        height:260px;
     }
 
     .offer-overlay{
         left:5%;
-        max-width:220px;
+        max-width:85%;
     }
 
     .offer-overlay h1{
-        font-size:24px;
-        margin-bottom:5px;
+        font-size:28px;
     }
 
     .offer-overlay p{
-        font-size:13px;
-        margin-bottom:12px;
+        font-size:14px;
     }
 
     .shop-btn{
-        padding:10px 20px;
+        padding:10px 22px;
         font-size:13px;
     }
 }

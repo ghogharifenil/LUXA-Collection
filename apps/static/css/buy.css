@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
@@ -10,57 +8,77 @@
 }
 
 body{
-    background:linear-gradient(135deg,#f7f7ff,#f3f4f6);
+    background:#ffffff;
+    color:#111;
 }
 
-/* MAIN CONTAINER */
+/* ================= MAIN CONTAINER ================= */
+
 .buy-container{
     max-width:1100px;
-    margin:50px auto;
+    margin:60px auto;
     padding:20px;
+
     display:flex;
     gap:30px;
 }
 
-/* IMAGE CARD */
+/* ================= PRODUCT IMAGE ================= */
+
 .product-section{
     flex:1;
+
     position:sticky;
     top:20px;
+
     height:fit-content;
+
     background:#fff;
+
+    border:1px solid #eee;
     border-radius:18px;
+
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
 .product-section img{
     width:100%;
-    height:690px;
+    height:650px;
     object-fit:cover;
     display:block;
 }
 
-/* ORDER CARD */
+/* ================= ORDER SECTION ================= */
+
 .order-section{
     flex:1.2;
+
     background:#fff;
+
     padding:30px;
+
     border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    border:1px solid #eee;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
 /* TITLE */
+
 .order-section h2{
     font-size:26px;
     margin-bottom:10px;
-    color:#222;
+    color:#111;
 }
 
-/* PRICE BOX */
+/* PRICE */
+
 .order-section h4{
     margin:8px 0;
-    font-size:16px;
+    font-size:15px;
     color:#555;
 }
 
@@ -70,17 +88,19 @@ body{
 
 .order-section h3{
     margin-top:10px;
-    color:#7c3aed;
+    color:#111;
     font-size:22px;
 }
 
-/* DISCOUNT STYLE */
+/* DISCOUNT */
+
 .discount-text{
-    color:#16a34a;
+    color:#111;
     font-weight:600;
 }
 
-/* QUANTITY */
+/* ================= QUANTITY ================= */
+
 .quantity-box{
     margin-top:20px;
     display:flex;
@@ -89,58 +109,77 @@ body{
 }
 
 .quantity-box button{
-    width:40px;
-    height:40px;
-    border:none;
+    width:38px;
+    height:38px;
+
+    border:1px solid #ddd;
     border-radius:50%;
-    background:#f5d67b;
-    color:#000;
+
+    background:#fff;
+    color:#111;
+
     font-size:18px;
-    font-weight:bold;
+    font-weight:700;
+
     cursor:pointer;
-    transition:0.2s;
+
+    transition:0.3s ease;
 }
 
 .quantity-box button:hover{
-    transform:scale(1.1);
+    background:#111;
+    color:#fff;
+    transform:scale(1.05);
 }
 
 #qty{
-    font-size:20px;
+    font-size:18px;
     font-weight:600;
 }
 
-/* TOTAL */
+/* ================= TOTAL ================= */
+
 .total-h2{
     margin-top:20px;
     font-size:22px;
-    color:#d1a626;
+    color:#111;
 }
 
-/* QR */
+/* ================= QR IMAGE ================= */
+
 .order-section img{
-    margin-top:10px;
+    margin-top:15px;
     border-radius:12px;
+    border:1px solid #eee;
 }
 
-/* FILE INPUT */
+/* ================= FILE INPUT ================= */
+
 input[type="file"]{
     width:100%;
     margin-top:15px;
     padding:12px;
-    border:2px dashed #c4b5fd;
+
+    border:1px dashed #ccc;
     border-radius:12px;
-    cursor:pointer;
+
     background:#fafafa;
+
+    cursor:pointer;
 }
 
-/* NOTES */
+/* ================= NOTES ================= */
+
 .notes{
     margin-top:20px;
-    background:#f9fafb;
+
+    background:#f9f9f9;
+
     padding:15px;
+
     border-radius:12px;
-    border-left:4px solid #d1a626;
+
+    border-left:4px solid #111;
 }
 
 .notes p{
@@ -149,27 +188,37 @@ input[type="file"]{
     margin:6px 0;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
+
 .confirm-btn{
     width:100%;
     margin-top:20px;
     padding:14px;
+
     border:none;
     border-radius:12px;
-    background:linear-gradient(135deg,#f5d67b,#d1a626);
-    color:#2b2200;
+
+    background:#111;
+    color:#fff;
+
     font-size:16px;
     font-weight:600;
+
     cursor:pointer;
-    transition:0.3s;
+
+    transition:0.3s ease;
 }
 
 .confirm-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    background:#fff;
+    color:#111;
+    border:1px solid #111;
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.08);
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
+
 @media(max-width:900px){
     .buy-container{
         flex-direction:column;

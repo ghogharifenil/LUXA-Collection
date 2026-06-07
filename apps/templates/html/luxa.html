@@ -9,28 +9,25 @@
 {% block content %}
 
 <section class="hero">
+
     <img src="{% static 'image/home.png' %}" alt="LUXA Collection">
 
     <div class="hero-content">
-        <h1>LUXA COLLECTION</h1>
+        <h1 class="luxa-title">LUXA COLLECTION</h1>
 
-        <p class="subtitle">
+        <p class="subtitle animate-subtitle">
             Collection For Luxury Design
         </p>
-
-        <a href="{% url "home" %}" class="shop-btn">
-            Shop Now
-        </a>
-     <div class="auth-buttons">
-        <a href="/login/" class="register-btn">
-            Login
-        </a>
-
-        <a href="/register/" class="register-btn">
-            Registration
-        </a>
     </div>
-    </div>
+
 </section>
+
+ <script>
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        window.location.href = "/home/";
+    }, 3500);
+});
+</script> 
 
 {% endblock %}

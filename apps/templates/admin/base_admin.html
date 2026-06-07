@@ -16,7 +16,7 @@
         <div class="logo-text">
           <h2>LUXA</h2>
           <span>COLLECTION</span>
-          <p class="admin-text">ADMIN</p>
+          <p class="admin-text">ADMIN - {{user.name}}</p>
         </div>
       </div>
 
@@ -34,10 +34,6 @@
             <li>
               <a href="{% url 'add_product' %}">Add Product</a>
             </li>
-
-            {% comment %} <li>
-              <a href="{% url "view_product" %}">View Products</a>
-            </li> {% endcomment %}
 
             <li>
               <a href="{% url 'order' %}">Orders</a>

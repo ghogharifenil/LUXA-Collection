@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
     margin:0;
@@ -7,6 +7,11 @@
     font-family:'Poppins',sans-serif;
 }
 
+body{
+    background:#f7f7f7;
+    color:#222;
+    overflow-x:hidden;
+}
 body{
     overflow-x:hidden;
 }

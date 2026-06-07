@@ -26,7 +26,7 @@
       align-items:center;
       margin:0 25px;
       background:#ffffff;
-      border:2px solid #c3a506;
+      border:2px solid #000000;
       border-radius:40px;
       overflow:hidden;
       height:48px;
@@ -45,7 +45,7 @@
         width:60px;
         height:100%;
         border:none;
-        background:#d1b934;
+        background:#00000085;
         cursor:pointer;
         font-size:18px;
     "><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -85,10 +85,10 @@
           </ul>
         </li>
         <li>
-          <a href="/about/">About</a>
+          <a href="{% url 'about' %}">About</a>
         </li>
         <li>
-          <a href="/contact/">Contact</a>
+          <a href="{% url 'contectus' %}">Contact</a>
         </li>
         <li>
           <a href="{% url 'new_products' %}">New Collection</a>

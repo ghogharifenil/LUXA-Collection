@@ -28,6 +28,13 @@ def luxa(request):
 def home(request):
     return render(request, "html/home.html")
 
+def about(request):
+    return render(request, "html/about.html")
+
+
+def contectus(request):
+    return render(request, "html/contectus.html")
+
 # ---------------+ Serch Bar +----------------------------
 
 

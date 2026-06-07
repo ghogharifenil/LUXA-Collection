@@ -4,44 +4,40 @@
 {% block head %}
   <title>LUXA Collection | Home</title>
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-  
 {% endblock %}
 
 {% block content %}
- 
   <div class="offers">
     <div class="offer-card">
       <a href="{% url 'saree' %}"><img src="{% static 'image/offer1.jpg' %}" alt="Offer 1" /></a>
 
       <div class="offer-overlay">
-        <h1>Diwali Festive Fashion Sale</h1>
-        
-        <p>Flat 50% OFF</p>
-
-        <a href="{% url "saree" %}" class="shop-btn">Shop Now</a>
+        <h1>Diwali Luxury Collection</h1>
+        <p>Celebrate the Festival in Style</p>
+        <p>Exclusive Offers Up To 50% OFF</p>
+        <a href="{% url 'saree' %}" class="shop-btn">Shop Collection</a>
       </div>
     </div>
 
     <div class="offer-card">
-     <a href="{% url "dress" %}"> <img src="{% static 'image/offer2.jpg' %}" alt="Offer 2" /></a>
+      <a href="{% url 'dress' %}"><img src="{% static 'image/offer2.jpg' %}" alt="Offer 2" /></a>
 
       <div class="offer-overlay">
-        <h1>Rakhi Sale</h1>
-        <p>Buy 20,000 ₹ Up to 60% OFF</p>
-        <p>Exclusive Designer dress</p>
-
-        <a href="{% url "dress" %}" class="shop-btn">Shop Now</a>
+        <h1>Rakhi Special Edition</h1>
+        <p>Elegant Dresses For Every Celebration</p>
+        <p>Shop Above ₹20,000 & Enjoy Up To 60% OFF</p>
+        <a href="{% url 'dress' %}" class="shop-btn">Explore Dresses</a>
       </div>
     </div>
 
     <div class="offer-card">
-      <a href="{% url "new_products" %}"><img src="{% static 'image/new.jpg' %}" alt="Offer 3" /></a>
+      <a href="{% url 'new_products' %}"><img src="{% static 'image/new.jpg' %}" alt="Offer 3" /></a>
 
       <div class="offer-overlay">
-        <h1>Fresh Picks For You</h1>
-        <p>Discover New Styles, New Trends New Confidence</p>
-
-        <a href="{% url "new_products" %}" class="shop-btn">Explore Collection Now</a>
+        <h1>New Arrivals 2026</h1>
+        <p>Fresh Styles Crafted For Modern Fashion</p>
+        <p>Discover The Latest Trends In Luxury Wear</p>
+        <a href="{% url 'new_products' %}" class="shop-btn">Discover Now</a>
       </div>
     </div>
   </div>
