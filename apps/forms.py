@@ -1,6 +1,6 @@
 from django import forms
 from .models import Product
-from .models import User
+from .models import User , CustomerModel
 
 class ProductForm(forms.ModelForm):
 
@@ -66,8 +66,8 @@ class CustomerRegisterForm(forms.ModelForm):
     )
 
     class Meta:
-        model = User
-        fields = ['name', 'email', 'city', 'password']
+        model = CustomerModel
+        fields = "__all__"
 
         widgets = {
             'name': forms.TextInput(attrs={

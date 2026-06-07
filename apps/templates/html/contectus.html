@@ -1,8 +1,6 @@
+{% extends "base/base2.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+{% block head %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | LUXA Collection</title>
 
@@ -173,10 +171,10 @@ footer{
   }
 }
 </style>
+{% endblock head %}
+{% block content %}
 
-</head>
 
-<body>
 
 <!-- HERO -->
 <section class="hero">
@@ -226,6 +224,4 @@ footer{
     <p>© 2026 All Rights Reserved</p>
   </div>
 </footer>
-
-</body>
-</html>
+{% endblock content %}

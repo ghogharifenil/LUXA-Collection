@@ -130,3 +130,25 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return self.is_superuser
+
+
+
+
+class CustomerModel(models.Model):
+    email = models.EmailField(max_length=254, unique=True)
+    name = models.TextField(max_length=250)
+    city = models.TextField(max_length=250)
+    password = models.TextField(null=False)
+    is_seller = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+class contectmassage(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=250)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.name

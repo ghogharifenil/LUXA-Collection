@@ -1,7 +1,9 @@
 from .forms import ProductForm
 from .models import Product
+from .models import Order 
+from .models import contectmassage
+from .models import CustomerModel
 from django.shortcuts import render, redirect
-from .models import Order
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -13,6 +15,7 @@ from .decorators import seller_required, customer_login_required
 from django.db.models import Q
 from .forms import CustomerRegisterForm
 from django.contrib import messages
+from django.contrib.auth.hashers import make_password
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -32,7 +35,17 @@ def about(request):
     return render(request, "html/about.html")
 
 
+
+@customer_login_required
 def contectus(request):
+    if request.method == "POST":
+        contectmassage.objects.create(
+            user=request.user,
+            subject=request.POST.get("subject"),
+            message=request.POST.get("message")
+        )
+        return redirect("contect")
+
     return render(request, "html/contectus.html")
 
 # ---------------+ Serch Bar +----------------------------
@@ -126,7 +139,11 @@ def register(request):
 
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data["password"])
+
+            user.password = make_password(
+                form.cleaned_data["password"]
+            )
+
             user.save()
 
             return redirect("login")
@@ -137,25 +154,35 @@ def register(request):
     return render(request, "html/registration.html", {"form": form})
 
 
-# @customer_login_required
+from django.contrib.auth.hashers import check_password
+
 def login(request):
     if request.method == "POST":
         email = request.POST.get("email")
         password = request.POST.get("password")
 
-        user = authenticate(
-            request,
-            email=email,
-            password=password
-        )
+        try:
+            user = CustomerModel.objects.get(email=email)
 
-        if user:
-            auth_login(request, user)
-            return redirect("home")
+            if check_password(password, user.password):
 
-        messages.error(request, "Invalid Email or Password")
+                request.session["customer_id"] = user.id
+                request.session["customer_name"] = user.name
+
+                return redirect("home")
+
+            else:
+                messages.error(request, "Invalid Password")
+
+        except CustomerModel.DoesNotExist:
+            messages.error(request, "Email Not Found")
 
     return render(request, "html/customer_login.html")
+
+
+def customerlogout(request):
+    auth_logout(request)
+    return redirect('home')
 
 # --------------------------------------------------------------------------------
 # ------------------------+ Customer Show Detail +--------------------------------
