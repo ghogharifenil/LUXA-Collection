@@ -7,68 +7,56 @@
 {% endblock %}
 
 {% block content %}
-  <div class="dashboard-container">
-    <h2>🛒 Order Dashboard</h2>
+<div class="dashboard-container">
+  <h2>🛒 Order Dashboard</h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Product Image</th>
-          <th>Customer</th>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-          <th>Payment Screenshot</th>
-          <th>Status</th>
-        </tr>
-      </thead>
+  <table class="order-table">
+    <thead>
+      <tr>
+        <th>Product Image</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
 
-      <tbody>
-        {% for order in orders %}
-          <tr>
-            <td>
-            <a href="{% url "product_detail" product.name  %}">  <img src="{{ order.product.image.url }}" width="80" /></a>
-            </td>
+    <tbody>
+      {% for order in orders %}
+      <tr class="{% if order.is_shipped %}shipped-row{% endif %}">
+        
+        <td>
+          <a href="{% url 'product_detail' order.product.name %}">
+            <img src="{{ order.product.image.url }}" width="80">
+          </a>
+        </td>
 
-            <td>{{ order.user.name }}</td>
+        <td>{{ order.user.name }}</td>
 
-            <td>{{ order.product.name }}</td>
+        <td>{{ order.product.name }}</td>
 
-            <td>{{ order.quantity }}</td>
+        <td>{{ order.quantity }}</td>
 
-            <td>₹{{ order.total_price }}</td>
+        <td>₹{{ order.total_price }}</td>
 
-            <td>
-              <a href="{{ order.payment_screenshot.url }}" target="_blank">View Screenshot</a>
-            </td>
+        <td>
+          {% if not order.is_shipped %}
+            <a href="{% url 'mark_shipped' order.id %}" class="ship-btn">
+              Ship
+            </a>
+          {% else %}
+            <span class="shipped-text">Shipped ✔</span>
+          {% endif %}
+        </td>
 
-            
-            <td>
-              <span class="
-        {% if order.status == 'Pending' %}
-                  
-            status-pending
-
-                {% elif order.status == 'Approved' %}
-                  
-            status-approved
-
-                {% else %}
-                  
-            status-rejected
-
-                {% endif %}
-    ">
-                {{ order.status }}
-              </span>
-            </td>
-          </tr>
-        {% empty %}
-          <tr>
-            <td colspan="7">No Orders Found</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">No Orders Found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

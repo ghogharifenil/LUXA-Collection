@@ -22,6 +22,7 @@ from django.http import JsonResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
+from django.core.mail import send_mail
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -634,6 +635,29 @@ def order(request):
         {'orders': orders}
     )
 
+def mark_shipped(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    order.is_shipped = True
+    order.save()
+
+    # email send
+    send_mail(
+        subject="Your Order is Shipped 🚚",
+        message=f"""
+Hi {order.user.name},
+
+Your product "{order.product.name}" is now shipped.
+Please collect it within 24 hours.
+
+Thank you for shopping with LUXA Collection.
+""",
+        from_email="yourshop@gmail.com",
+        recipient_list=[order.user.email],
+        fail_silently=False,
+    )
+
+    return redirect('order')
 # --------------------------------------------------------------------------------
 # -------------------------+ Admin Add Product +----------------------------------
 # --------------------------------------------------------------------------------
@@ -665,6 +689,12 @@ def add_product(request):
         request,
         'admin/addpro.html', {'form': form})
 
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    product.delete()
+
+    return redirect('dashboard')
 
 # --------------------------------------------------------------------------------
 # ---------------------------+  Edit Product Stock +------------------------------

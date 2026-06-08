@@ -144,7 +144,63 @@ tbody a:hover{
     padding:20px;
     color:#777;
 }
+.dashboard-container {
+  padding: 20px;
+}
 
+h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+/* TABLE DESIGN */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.order-table th,
+.order-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.order-table th {
+  background: black;
+  color: white;
+}
+
+/* SHIPPED ROW EFFECT (THIS IS MAIN) */
+.shipped-row td {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* SHIP BUTTON */
+.ship-btn {
+  padding: 6px 12px;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.ship-btn:hover {
+  background: #333;
+}
+
+/* SHIPPED TEXT */
+.shipped-text {
+  color: green;
+  font-weight: bold;
+}
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:992px){

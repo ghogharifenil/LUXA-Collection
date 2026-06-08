@@ -238,6 +238,23 @@
         font-size: 14px;
         font-weight: 600;
       }
+      .cart-icon{
+  position: relative;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.cart-badge{
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+}
     </style>
     {% block head %}
 
@@ -313,7 +330,7 @@
       <div class="nav-right">
        <a href="{% url 'cart' %}" class="cart-icon">
     <i class="fa-solid fa-cart-shopping"></i>
-    <span id="cart-count">{{ cart_count }}</span>
+    <span id="cart-badge">{{ cart_count }}</span>
 </a>
 
         <div class="profile-user">

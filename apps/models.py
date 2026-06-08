@@ -64,14 +64,7 @@ class Order(models.Model):
         decimal_places=2
     )
 
-    payment_screenshot = models.ImageField(
-        upload_to='payments/'
-    )
-
-    status = models.CharField(
-        max_length=20,
-        default='Pending'
-    )
+    is_shipped = models.BooleanField(default=False)
 
 
 class UserManager(BaseUserManager):
