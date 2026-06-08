@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
     margin:0;
@@ -8,209 +8,186 @@
 }
 
 body{
-    background:#f7f7f7;
-    color:#222;
+    background:#111;
     overflow-x:hidden;
 }
 
-/* ================= LOGIN SECTION ================= */
+/* ================= MAIN ================= */
 
-.auth-container{
+.login-container{
     width:100%;
-    min-height:75vh;
+    min-height:100vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    padding:50px 20px;
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.55)
+    ),
+    url("{% static 'image/benner1.png' %}");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
-.auth-card{
-    width:100%;
-    max-width:520px;
+/* ================= CARD ================= */
 
-    background:#fff;
+.login-card{
+    width:100%;
+    max-width:430px;
 
     padding:40px;
 
-    border-radius:25px;
+    background:rgba(255,255,255,.08);
 
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-    border:1px solid rgba(212,175,55,.15);
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.4);
 }
 
-.auth-card h2{
+/* ================= LOGO ================= */
+
+.logo{
     text-align:center;
+    margin-bottom:15px;
+}
 
-    color:#b8860b;
-
+.logo i{
     font-size:38px;
-
-    margin-bottom:10px;
+    color:#fff;
 }
 
-.sub-title{
+/* ================= TITLE ================= */
+
+.login-card h2{
     text-align:center;
-
-    color:#777;
-
-    font-size:15px;
-
-    margin-bottom:35px;
+    color:#fff;
+    font-size:28px;
+    margin-bottom:5px;
+    letter-spacing:2px;
 }
 
-/* ================= FORM ================= */
-
-.form-group{
-    margin-bottom:22px;
+.login-card h3{
+    text-align:center;
+    color:#d1d1d1;
+    font-size:13px;
+    font-weight:400;
+    margin-bottom:25px;
+    letter-spacing:3px;
 }
 
-.form-group input{
+/* ================= INPUT ================= */
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group input{
     width:100%;
+    padding:14px 18px;
 
-    padding:15px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.15);
 
-    border:1px solid #ddd;
-    border-radius:12px;
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+    font-size:14px;
 
     outline:none;
-
-    font-size:15px;
-
     transition:.3s;
 }
 
-.form-group input:focus{
-    border-color:#d4af37;
+.input-group input::placeholder{
+    color:#cfcfcf;
+}
 
-    box-shadow:0 0 12px rgba(212,175,55,.15);
+.input-group input:focus{
+    border-color:#fff;
+    box-shadow:
+    0 0 15px rgba(255,255,255,.15);
 }
 
 /* ================= BUTTON ================= */
 
-.auth-card button{
+.login-btn{
     width:100%;
 
-    padding:15px;
+    padding:14px;
 
     border:none;
-    border-radius:12px;
-
-    background:linear-gradient(
-        135deg,
-        #b8860b,
-        #d4af37,
-        #f5d67b
-    );
-
-    color:white;
-
-    font-size:16px;
-    font-weight:600;
+    border-radius:10px;
 
     cursor:pointer;
+
+    background:#fff;
+    color:#111;
+
+    font-size:15px;
+    font-weight:600;
 
     transition:.3s;
 }
 
-.auth-card button:hover{
-    transform:translateY(-2px);
+.login-btn:hover{
+    background:#111;
+    color:#fff;
 
-    box-shadow:0 10px 25px rgba(212,175,55,.25);
+    border:1px solid #fff;
+
+    transform:translateY(-3px);
 }
 
-/* ================= LINKS ================= */
+/* ================= LINK ================= */
 
-.auth-card p{
+.forgot-pass{
+    display:block;
     text-align:center;
 
-    color:#666;
+    margin-top:18px;
 
-    margin-top:20px;
-
-    font-size:14px;
-}
-
-.auth-card a{
-    color:#b8860b;
-
+    color:#fff;
     text-decoration:none;
 
-    font-weight:600;
-}
-
-.auth-card a:hover{
-    text-decoration:underline;
-}
-
-/* ================= DJANGO MESSAGES ================= */
-
-.msg{
-    background:#fff7e0;
-
-    color:#8a6500;
-
-    border:1px solid #f5d67b;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    margin-bottom:20px;
-
     font-size:14px;
+
+    transition:.3s;
 }
 
-/* ================= DJANGO ERRORS ================= */
+.forgot-pass:hover{
+    color:#cfcfcf;
+}
+
+/* ================= ERROR ================= */
 
 .errorlist{
     list-style:none;
-
-    color:#dc2626;
-
+    color:#ff6b6b;
     font-size:13px;
-
     margin-top:5px;
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width:768px){
+@media(max-width:500px){
 
-    .auth-card{
-        padding:30px;
+    .login-card{
+        width:92%;
+        padding:30px 20px;
     }
 
-    .auth-card h2{
-        font-size:30px;
-    }
-
-    .sub-title{
-        font-size:14px;
-    }
-
-}
-
-@media(max-width:480px){
-
-    .auth-card{
-        padding:25px;
-    }
-
-    .auth-card h2{
-        font-size:26px;
-    }
-
-    .form-group input{
-        padding:13px;
-    }
-
-    .auth-card button{
-        padding:13px;
+    .login-card h2{
+        font-size:24px;
     }
 
 }

@@ -1,227 +1,55 @@
-{% extends "base/base2.html" %}
+{% extends 'base/base2.html' %}
 {% load static %}
 {% block head %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | LUXA Collection</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
-}
-
-body{
-  background:#f5f6fa;
-}
-
-/* HERO */
-.hero{
-  background:url("{% static 'image/benner1.png' %}") center/cover no-repeat;
-  height:40vh;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.6);
-}
-
-.hero h1{
-  position:relative;
-  font-size:42px;
-}
-
-/* CONTACT SECTION */
-.contact-container{
-  max-width:1100px;
-  margin:60px auto;
-  display:flex;
-  gap:40px;
-  padding:20px;
-}
-
-/* LEFT INFO */
-.contact-info{
-  flex:1;
-  background:#fff;
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-.contact-info h2{
-  margin-bottom:20px;
-}
-
-.contact-info p{
-  margin-bottom:10px;
-  color:#555;
-  line-height:1.6;
-}
-
-/* RIGHT FORM */
-.contact-form{
-  flex:1;
-  background:#fff;
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-.contact-form h2{
-  margin-bottom:20px;
-}
-
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border:1px solid #ddd;
-  border-radius:8px;
-  outline:none;
-  font-size:14px;
-}
-
-.contact-form textarea{
-  resize:none;
-  height:120px;
-}
-
-.contact-form button{
-  width:100%;
-  padding:12px;
-  background:#ff3b3b;
-  border:none;
-  color:#fff;
-  font-size:16px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.contact-form button:hover{
-  background:#000;
-}
-
-/* MAP */
-.map{
-  width:100%;
-  height:300px;
-  margin-top:40px;
-}
-
-.map iframe{
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-/* FOOTER */
-footer{
-  background:#0f0f1a;
-  color:#fff;
-  padding:40px 20px;
-  margin-top:50px;
-}
-
-.footer{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
-}
-
-.footer h3{
-  font-size:22px;
-  margin-bottom:15px;
-  color:#ff3b3b;
-}
-
-.footer p{
-  margin:8px 0;
-  color:#ccc;
-  font-size:14px;
-}
-
-.footer .copy{
-  margin-top:20px;
-  font-size:12px;
-  color:#666;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .contact-container{
-    flex-direction:column;
-  }
-
-  .hero h1{
-    font-size:30px;
-  }
-}
-</style>
-{% endblock head %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | LUXA Collection</title>
+  <link rel="stylesheet" href="{% static "css/contectus.css" %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+{% endblock %}
 {% block content %}
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Contact Us</h1>
+  </section>
 
+  <!-- CONTACT -->
+  <section class="contact-container">
+    <!-- INFO -->
+    <div class="contact-info">
+      <h2>Get In Touch</h2>
 
+      <p>📞 Mobile: 9963254187</p>
+      <p>📧 Email: luxacollection@gmail.com</p>
+      <p>📍 Address: Surat, Gujarat, India</p>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Contact Us</h1>
-</section>
+      <p>We are always here to help you with your queries about products, orders or support.</p>
+    </div>
 
-<!-- CONTACT -->
-<section class="contact-container">
+    <!-- FORM -->
+    <div class="contact-form">
+      <h2>Send Message</h2>
 
-  <!-- INFO -->
-  <div class="contact-info">
-    <h2>Get In Touch</h2>
+      <form>
+        <input type="text" value="{{ customer.name }}" readonly />
 
-    <p>📞 Mobile: 9963254187</p>
-    <p>📧 Email: luxacollection@gmail.com</p>
-    <p>📍 Address: Surat, Gujarat, India</p>
+        <input type="email" value="{{ customer.email }}" readonly />
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-    <p>
-      We are always here to help you with your queries about products, orders or support.
-    </p>
+  <!-- MAP -->
+  <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18..."></iframe>
   </div>
 
-  <!-- FORM -->
-  <div class="contact-form">
-    <h2>Send Message</h2>
-
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="text" placeholder="Subject">
-      <textarea placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-
-</section>
-
-<!-- MAP -->
-<div class="map">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18..."></iframe>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer">
-    <h3>LUXA Collection</h3>
-    <p>© 2026 All Rights Reserved</p>
-  </div>
-</footer>
-{% endblock content %}
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer">
+      <h3>LUXA Collection</h3>
+      <p>© 2026 All Rights Reserved</p>
+    </div>
+  </footer>
+{% endblock %}

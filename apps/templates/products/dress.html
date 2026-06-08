@@ -2,22 +2,20 @@
 {% load static %}
 
 {% block head %}
-  <title>LUXA Collection | Dress </title>
+  <title>LUXA Collection | Dress</title>
   <link rel="stylesheet" href="{% static 'css/product.css' %}" />
-  <style>
-  </style>
+  <style></style>
 {% endblock %}
 {% block content %}
   <div class="product-container">
     {% for product in products %}
       <div class="product-card">
         <div class="image-wrapper">
-          <a href="{% url "product_detail" product.name %}"><img src="{{ product.image.url }}" alt="{{ product.name }} " /></a>
+          <a href="{% url 'product_detail' product.name %}"><img src="{{ product.image.url }}" alt="{{ product.name }} " /></a>
         </div>
         <div class="product-content">
           <h3 class="product-title">{{ product.name }}</h3>
 
-          {% if mainprice == 0 %}{% endif %}
           <div class="price-box">
             <span class="old-price">₹{{ product.mainprice }}</span>
             <span class="discount">{{ product.discount_percentage }}% OFF</span>
@@ -32,11 +30,25 @@
             <div class="bottom-btns">
               <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
 
-              <a href="#" class="small-btn">Add To Cart</a>
+              <a href="{% url 'add_to_cart' product.name %}" onclick="addToCart({{ product.id }})"  class="small-btn">Add To Cart</a>
             </div>
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
+<script>
+function addToCart(productId){
+
+    fetch(`/add-to-cart/${productId}/`)
+    .then(response => response.json())
+    .then(data => {
+
+        alert("Product Added To Cart");
+
+    });
+
+}
+</script>
+
 {% endblock %}

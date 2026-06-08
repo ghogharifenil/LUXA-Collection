@@ -2,32 +2,27 @@
 {% load static %}
 
 {% block head %}
-<title>LUXA Collection</title>
-<link rel="stylesheet" href="{% static 'css/luxa.css' %}">
+  <title>LUXA Collection</title>
+  <link rel="stylesheet" href="{% static 'css/luxa.css' %}" />
+  
 {% endblock %}
 
 {% block content %}
-
-<section class="hero">
-
-    <img src="{% static 'image/home.png' %}" alt="LUXA Collection">
+  <section class="hero">
+    <img src="{% static 'image/home.png' %}" alt="LUXA Collection" />
 
     <div class="hero-content">
-        <h1 class="luxa-title">LUXA COLLECTION</h1>
+      <h1 class="luxa-title">LUXA COLLECTION</h1>
 
-        <p class="subtitle animate-subtitle">
-            Collection For Luxury Design
-        </p>
+      <p class="subtitle animate-subtitle">Collection For Luxury Design</p>
     </div>
+  </section>
 
-</section>
-
- <script>
+<script>
 window.addEventListener("load", () => {
     setTimeout(() => {
         window.location.href = "/home/";
     }, 3500);
 });
 </script> 
-
 {% endblock %}

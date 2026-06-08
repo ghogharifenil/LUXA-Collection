@@ -6,247 +6,267 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base2.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <style>.navbar{
-    width: 100%;
-    height: 85px;
-    background: #ffffff;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 0 7%;
-
-    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-/* ================= LOGO ================= */
-
-.logo-section{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-icon{
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-
-    background: #111;
-    color: #fff;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.logo-text h2{
-    color: #111;
-    font-size: 26px;
-    letter-spacing: 2px;
-    line-height: 1;
-}
-
-.logo-text span{
-    color: #777;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-/* ================= MENU ================= */
-
-.nav-links{
-    display: flex;
-    list-style: none;
-    gap: 35px;
-}
-
-.nav-links a{
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
-
-    position: relative;
-    transition: .3s ease;
-}
-
-/* Hover underline */
-
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-
-    width:0%;
-    height:2px;
-
-    background:#111;
-
-    transition:.3s ease;
-}
-
-.nav-links a:hover{
-    color:#111;
-}
-
-.nav-links a:hover::after{
-    width:100%;
-}
-
-/* Active */
-
-.nav-links a.active{
-    color:#111;
-}
-
-.nav-links a.active::after{
-    width:100%;
-}
-
-/* ================= DROPDOWN ================= */
-
-.dropdown{
-    position: relative;
-}
-
-.dropdown-menu{
-    position: absolute;
-    top: 45px;
-    left: 0;
-
-    min-width: 200px;
-
-    background: #fff;
-
-    border: 1px solid #eee;
-    border-radius: 12px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-
-    list-style: none;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-
-    transition: .3s ease;
-
-    padding: 8px 0;
-
-    z-index: 1000;
-}
-
-.dropdown:hover .dropdown-menu{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dropdown-menu li{
-    width: 100%;
-}
-
-.dropdown-menu a{
-    display:block;
-    padding: 12px 18px;
-
-    color:#333;
-    font-size:14px;
-
-    text-decoration:none;
-
-    transition:.3s ease;
-}
-
-.dropdown-menu a:hover{
-    background:#111;
-    color:#fff;
-    padding-left:22px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-    .navbar{
-        height: 75px;
-        padding: 0 5%;
-    }
-
-    .logo-text h2{
-        font-size: 22px;
-    }
-
-    .nav-links{
-        gap: 18px;
-    }
-
-    .nav-links a{
+    <style>
+      .navbar {
+        width: 100%;
+        height: 85px;
+        background: #fff;
+      
+        display: flex;
+        align-items: center;
+      
+        padding: 0 40px;
+      
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+      
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      /* LOGO */
+      
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .logo-icon {
+        width: 45px;
+        height: 45px;
+      
+        border-radius: 50%;
+      
+        background: #111;
+        color: #fff;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        font-size: 20px;
+        font-weight: 700;
+      }
+      
+      .logo-text h2 {
+        font-size: 26px;
+        letter-spacing: 2px;
+        color: #111;
+      }
+      
+      .logo-text span {
+        font-size: 11px;
+        color: #888;
+        letter-spacing: 2px;
+      }
+      
+      /* SEARCH */
+      
+      .search-form {
+        width: 350px;
+        height: 46px;
+      
+        display: flex;
+      
+        margin-left: 40px;
+      
+        border: 2px solid #111;
+        border-radius: 50px;
+      
+        overflow: hidden;
+      }
+      
+      .search-form input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 0 18px;
+      }
+      
+      .search-form button {
+        width: 60px;
+        border: none;
+        background: #111;
+        color: #fff;
+        cursor: pointer;
+      }
+      
+      /* MENU */
+      
+      .nav-links {
+        display: flex;
+        list-style: none;
+      
+        gap: 28px;
+      
+        margin-left: 40px;
+      }
+      
+      .nav-links a {
+        text-decoration: none;
+        color: #222;
+      
+        font-size: 15px;
+        font-weight: 600;
+      
+        position: relative;
+      }
+      
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+      
+        left: 0;
+        bottom: -6px;
+      
+        width: 0;
+        height: 2px;
+      
+        background: #111;
+      
+        transition: 0.3s;
+      }
+      
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      
+      /* DROPDOWN */
+      
+      .dropdown {
+        position: relative;
+      }
+      
+      .dropdown-menu {
+        position: absolute;
+        top: 40px;
+        left: 0;
+      
+        width: 190px;
+      
+        background: #fff;
+      
+        border-radius: 12px;
+      
+        list-style: none;
+      
+        padding: 10px 0;
+      
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      
+        opacity: 0;
+        visibility: hidden;
+      
+        transition: 0.3s;
+      }
+      
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .dropdown-menu li a {
+        display: block;
+        padding: 10px 18px;
+      }
+      
+      .dropdown-menu li a:hover {
+        background: #111;
+        color: #fff;
+      }
+      
+      /* RIGHT SIDE */
+      
+      .nav-right {
+        margin-left: auto;
+      
+        display: flex;
+        align-items: center;
+      
+        gap: 15px;
+      }
+      
+      .cart-icon {
+        font-size: 24px;
+        color: #111;
+      }
+      
+      .profile-user {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .profile-user i {
+        font-size: 28px;
+        color: #111;
+      }
+      
+      .profile-user span {
+        font-size: 15px;
+        font-weight: 600;
+        color: #111;
+      }
+      
+      /* BUTTONS */
+      
+      .signup-btn {
+        text-decoration: none;
+      
+        background: #111;
+        color: #fff;
+      
+        padding: 10px 18px;
+      
+        border-radius: 30px;
+      
         font-size: 14px;
-    }
-
-    .dropdown-menu{
-        min-width: 180px;
-    }
-}</style>
+        font-weight: 600;
+      }
+      
+      .logout-btn {
+        text-decoration: none;
+      
+        background: #dc2626;
+        color: #fff;
+      
+        padding: 10px 18px;
+      
+        border-radius: 30px;
+      
+        font-size: 14px;
+        font-weight: 600;
+      }
+    </style>
     {% block head %}
 
     {% endblock %}
   </head>
   <body>
     <nav class="navbar">
+      <!-- LOGO -->
       <div class="logo-section">
         <div class="logo-icon">L</div>
+
         <div class="logo-text">
           <h2>LUXA</h2>
           <span>COLLECTION</span>
         </div>
       </div>
 
-      <form action="{% url 'search_product' %}" method="GET" style="
-      flex:1;
-      display:flex;
-      align-items:center;
-      margin:0 25px;
-      background:#ffffff;
-      border:2px solid #000000;
-      border-radius:40px;
-      overflow:hidden;
-      height:48px;
-">
-        <input type="text" name="q" placeholder="Search saree, jewellery, dress..." required style="
-        flex:1;
-        border:none;
-        outline:none;
-        background:transparent;
-        padding:0 20px;
-        font-size:15px;
-        color:#333;
-    " />
-
-        <button type="submit" style="
-        width:60px;
-        height:100%;
-        border:none;
-        background:#00000085;
-        cursor:pointer;
-        font-size:18px;
-    "><i class="fa-solid fa-magnifying-glass"></i></button>
+      <!-- SEARCH -->
+      <form action="{% url 'search_product' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search Product..." required />
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
+
+      <!-- MENU -->
       <ul class="nav-links">
         <li>
           <a href="{% url 'home' %}">Home</a>
         </li>
+
         <li class="dropdown">
           <a href="#">Product ▾</a>
 
@@ -277,6 +297,7 @@
             </li>
           </ul>
         </li>
+
         <li>
           <a href="{% url 'about' %}">About</a>
         </li>
@@ -286,23 +307,25 @@
         <li>
           <a href="{% url 'new_products' %}">New Collection</a>
         </li>
-       
-         <li>
-          <a href="{% url 'login' %}">Sign Up</a>
-        </li>
-         <li>
-          <a href="{% url 'logout' %}">LogOut</a>
-        </li>
       </ul>
-    </nav>
-    {% comment %} <footer>
-      <div class="footer">
-        <p>Mobile : 9963254187</p>
-        <p>Email : luxacollection@gmail.com</p>
-        <p>We provide elegant and stylish jewellery collections designed for girls and women. Quality, beauty and affordability are our priority.</p>
-        <p>© 2026 Luxa Collection Collection. All Rights Reserved.</p>
+
+      <!-- RIGHT SIDE -->
+      <div class="nav-right">
+       <a href="{% url 'cart' %}" class="cart-icon">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count">{{ cart_count }}</span>
+</a>
+
+        <div class="profile-user">
+          <i class="fa-solid fa-circle-user"></i>
+          <span>{{ request.session.customer_name }}</span>
+        </div>
+
+        <a href="{% url 'login' %}" class="signup-btn">Sign Up</a>
+
+        <a href="{% url 'customerlogout' %}" class="logout-btn">Logout</a>
       </div>
-    </footer> {% endcomment %}
+    </nav>
     {% block content %}
 
     {% endblock %}

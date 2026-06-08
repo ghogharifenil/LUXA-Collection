@@ -1,8 +1,10 @@
+from django.contrib.auth.hashers import check_password
 from .forms import ProductForm
 from .models import Product
-from .models import Order 
+from .models import Order
 from .models import contectmassage
 from .models import CustomerModel
+from .models import Cart
 from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate
@@ -16,6 +18,7 @@ from django.db.models import Q
 from .forms import CustomerRegisterForm
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
+from django.http import JsonResponse
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -31,20 +34,27 @@ def luxa(request):
 def home(request):
     return render(request, "html/home.html")
 
+
 def about(request):
     return render(request, "html/about.html")
 
 
-
 @customer_login_required
 def contectus(request):
+
+    customer = CustomerModel.objects.get(
+        id=request.session["customer_id"]
+    )
+
     if request.method == "POST":
+
         contectmassage.objects.create(
-            user=request.user,
+            user=customer,
             subject=request.POST.get("subject"),
             message=request.POST.get("message")
         )
-        return redirect("contect")
+
+        return redirect("contectus")
 
     return render(request, "html/contectus.html")
 
@@ -95,12 +105,178 @@ def new_products(request):
 
 
 @customer_login_required
-def add_to_cart(request):
-    return render(request, "html/add_to_cart.html")
+def cart(request):
+
+    customer_id = request.session.get("customer_id")
+
+    items = Cart.objects.filter(
+        customer_id=customer_id
+    )
+
+    subtotal = 0
+
+    for item in items:
+        subtotal += float(item.product.price) * item.quantity
+
+    shipping = 99 if subtotal > 0 else 0
+
+    total = subtotal + shipping
+
+    return render(
+        request,
+        "html/add_to_cart.html",
+        {
+            "items": items,
+            "subtotal": subtotal,
+            "shipping": shipping,
+            "total": total
+        }
+    )
+
+
+@customer_login_required
+def add_to_cart(request, product_name):
+
+    customer_id = request.session.get("customer_id")
+
+    if not customer_id:
+        return redirect("login")
+
+    product = get_object_or_404(
+        Product,
+        name=product_name
+    )
+
+    cart_item = Cart.objects.filter(
+        customer_id=customer_id,
+        product=product
+    ).first()
+
+    if cart_item:
+        cart_item.quantity += 1
+        cart_item.save()
+    else:
+        Cart.objects.create(
+            customer_id=customer_id,
+            product=product,
+            quantity=1
+        )
+
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
+
+from django.http import JsonResponse
+
+@customer_login_required
+def increase_qty(request, cart_id):
+
+    item = Cart.objects.get(id=cart_id)
+
+    item.quantity += 1
+    item.save()
+
+    customer_id = request.session.get("customer_id")
+
+    items = Cart.objects.filter(customer_id=customer_id)
+
+    subtotal = sum(
+        float(i.product.price) * i.quantity
+        for i in items
+    )
+
+    shipping = 99 if subtotal > 0 else 0
+    total = subtotal + shipping
+
+    return JsonResponse({
+        "quantity": item.quantity,
+        "item_total": float(item.product.price) * item.quantity,
+        "subtotal": subtotal,
+        "total": total
+    })
+
+
+@customer_login_required
+def decrease_qty(request, cart_id):
+
+    item = Cart.objects.get(id=cart_id)
+
+    if item.quantity > 1:
+        item.quantity -= 1
+        item.save()
+
+    customer_id = request.session.get("customer_id")
+
+    items = Cart.objects.filter(customer_id=customer_id)
+
+    subtotal = sum(
+        float(i.product.price) * i.quantity
+        for i in items
+    )
+
+    shipping = 99 if subtotal > 0 else 0
+    total = subtotal + shipping
+
+    return JsonResponse({
+        "quantity": item.quantity,
+        "item_total": float(item.product.price) * item.quantity,
+        "subtotal": subtotal,
+        "total": total
+    })
+
+
+@customer_login_required
+def remove_cart(request, cart_id):
+
+    customer_id = request.session.get('customer_id')
+
+    item = get_object_or_404(
+        Cart,
+        id=cart_id,
+        customer_id=customer_id
+    )
+
+    item.delete()
+
+    remaining_items = Cart.objects.filter(
+        customer_id=customer_id
+    )
+
+    subtotal = sum(
+        item.product.price * item.quantity
+        for item in remaining_items
+    )
+
+    shipping = 99 if subtotal > 0 else 0
+    total = subtotal + shipping
+
+    return JsonResponse({
+        "success": True,
+        "subtotal": subtotal,
+        "total": total
+    })
+
+
+@customer_login_required
+def cart_count(request):
+
+    count = 0
+
+    customer_id = request.session.get(
+        "customer_id"
+    )
+
+    if customer_id:
+        count = Cart.objects.filter(
+            customer_id=customer_id
+        ).count()
+
+    return {
+        "cart_count": count
+    }
 
 # -----------------+ Buy with Login  +----------------------
 
 
+@customer_login_required
 def buy(request, name):
 
     product = get_object_or_404(Product, name=name)
@@ -154,8 +330,6 @@ def register(request):
     return render(request, "html/registration.html", {"form": form})
 
 
-from django.contrib.auth.hashers import check_password
-
 def login(request):
     if request.method == "POST":
         email = request.POST.get("email")
@@ -181,8 +355,8 @@ def login(request):
 
 
 def customerlogout(request):
-    auth_logout(request)
-    return redirect('home')
+    request.session.flush()
+    return redirect("home")
 
 # --------------------------------------------------------------------------------
 # ------------------------+ Customer Show Detail +--------------------------------

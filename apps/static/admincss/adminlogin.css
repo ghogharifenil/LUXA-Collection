@@ -7,178 +7,203 @@
     font-family:'Poppins',sans-serif;
 }
 
+html,
 body{
-    background:#ffffff;
-    color:#111;
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
-/* ================= LOGIN SECTION ================= */
+/* ================= MAIN ================= */
 
 .login-container{
     width:100%;
-    min-height:70vh;
-
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
 
-    padding:50px 20px;
+    padding:20px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.65)
+    ),
+    url("{% static 'image/rgister.jpg' %}");
+
+    background-size:contain;
+    background-position:center;
+    background-repeat:repeat;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 
 .login-card{
     width:100%;
     max-width:450px;
 
-    background:#fff;
+    padding:45px 35px;
+    margin-right: 40%;
+    border-radius:24px;
 
-    padding:35px;
+    background:rgba(255,255,255,.08);
 
-    border-radius:16px;
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-    border:1px solid #eee;
+    border:1px solid rgba(255,255,255,.15);
 
-    box-shadow:0 10px 25px rgba(0,0,0,0.05);
-
-    transition:0.3s ease;
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.4);
 }
 
-.login-card:hover{
-    transform:translateY(-3px);
-}
+/* ================= LOGO ================= */
 
-/* TITLE */
-
-.login-card h1{
+.logo{
     text-align:center;
-    color:#111;
+    margin-bottom:15px;
+}
+
+.logo i{
+    font-size:42px;
+    color:#fff;
+}
+
+/* ================= TITLES ================= */
+
+.login-card h2{
+    text-align:center;
+    color:#fff;
+
     font-size:30px;
     font-weight:700;
+
+    letter-spacing:2px;
 
     margin-bottom:8px;
 }
 
-/* SUB TITLE */
-
-.sub-title{
+.login-card h3{
     text-align:center;
-    color:#777;
-    font-size:14px;
+
+    color:#d9d9d9;
+
+    font-size:13px;
+    font-weight:400;
+
+    letter-spacing:3px;
 
     margin-bottom:30px;
 }
 
-/* ================= INPUT ================= */
+/* ================= INPUTS ================= */
 
 .input-group{
     margin-bottom:18px;
 }
 
-.input-group label{
-    display:block;
-    margin-bottom:6px;
-
-    font-size:14px;
-    font-weight:600;
-
-    color:#111;
-}
-
 .input-group input{
     width:100%;
 
-    padding:12px 14px;
+    padding:15px 18px;
 
-    border:1px solid #ddd;
-    border-radius:10px;
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
 
     font-size:14px;
 
-    transition:0.25s ease;
+    outline:none;
+
+    transition:.3s;
+}
+
+.input-group input::placeholder{
+    color:#d1d1d1;
 }
 
 .input-group input:focus{
-    outline:none;
-    border-color:#111;
-    box-shadow:0 0 0 2px rgba(0,0,0,0.05);
+    border-color:#fff;
+
+    box-shadow:
+    0 0 18px rgba(255,255,255,.15);
 }
 
 /* ================= BUTTON ================= */
 
-.login-card button{
+.login-btn{
     width:100%;
 
-    padding:12px 14px;
+    padding:15px;
 
     border:none;
-    border-radius:10px;
+    border-radius:12px;
 
-    background:#111;
-    color:#fff;
+    cursor:pointer;
 
     font-size:15px;
     font-weight:600;
 
-    cursor:pointer;
-
-    transition:0.25s ease;
-}
-
-.login-card button:hover{
     background:#fff;
     color:#111;
-    border:1px solid #111;
-    transform:translateY(-2px);
+
+    transition:.3s;
 }
 
-/* ================= ABOUT SECTION ================= */
+.login-btn:hover{
+    background:#111;
+    color:#fff;
 
-.admin-about{
-    width:100%;
-    background:#fff;
+    border:1px solid #fff;
 
-    padding:80px 6%;
+    transform:translateY(-3px);
 }
 
-.about-container{
-    max-width:1000px;
-    margin:auto;
+/* ================= FOOTER ================= */
+
+.login-footer{
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#d1d1d1;
+
+    font-size:13px;
 }
 
-.about-container h2{
-    font-size:32px;
-    color:#111;
-
-    margin-bottom:20px;
-    font-weight:700;
+.login-footer span{
+    color:#fff;
+    font-weight:600;
 }
 
-.about-container p{
-    color:#555;
-    font-size:15px;
-    line-height:1.7;
-
-    margin-bottom:20px;
-}
-
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
-    .login-card{
-        padding:25px;
+    html,
+    body{
+        overflow:auto;
     }
 
-    .login-card h1{
+    .login-container{
+        padding:15px;
+    }
+
+    .login-card{
+        max-width:100%;
+        padding:30px 20px;
+    }
+
+    .login-card h2{
         font-size:24px;
     }
 
-    .about-container h2{
-        font-size:26px;
-    }
-
-    .about-container p{
-        font-size:14px;
+    .login-card h3{
+        font-size:12px;
     }
 }

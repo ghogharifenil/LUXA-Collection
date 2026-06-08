@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('register', views.register, name="register"),
     path('login', views.login, name="login"),
-    path('logout', views.customerlogout, name="logout"),
+    path('customerlogout', views.customerlogout, name="customerlogout"),
 
 
 
@@ -27,6 +27,12 @@ urlpatterns = [
 
     path('search/', views.search_product, name='search_product'),
     path('buy/<str:name>', views.buy, name="buy"),
+
+    path("add-to-cart/<str:product_name>/",views.add_to_cart,name="add_to_cart"),
+    path("cart/",views.cart,name="cart"),
+    path("increase/<int:cart_id>/",views.increase_qty,name="increase_qty"),
+    path("decrease/<int:cart_id>/",views.decrease_qty,name="decrease_qty"),
+    path("remove_cart/<int:cart_id>/", views.remove_cart,name="remove_cart"),
 
 
     path('admin/', views.adminuser, name='admin'),

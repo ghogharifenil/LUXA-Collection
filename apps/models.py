@@ -1,11 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-from django.conf import settings
 
-
-# ----------------------------------------------------------------------------
-# -------------------------- Product LIsting ---------------------------------
-# ----------------------------------------------------------------------------
 
 class Product(models.Model):
 
@@ -47,14 +42,23 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-# ----------------------------------------------------------------------------
-# -------------------+  Buy Product ( Order ) Model  +------------------------
-# ----------------------------------------------------------------------------
+
+
+class CustomerModel(models.Model):
+    email = models.EmailField(max_length=254, unique=True)
+    name = models.TextField(max_length=250)
+    city = models.TextField(max_length=250)
+    password = models.TextField(null=False)
+    is_seller = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+    
 
 
 class Order(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        CustomerModel,
         on_delete=models.CASCADE
     )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -73,10 +77,6 @@ class Order(models.Model):
         max_length=20,
         default='Pending'
     )
-
-# ----------------------------------------------------------------------------
-# -----------------------------+  Admin Model  +------------------------------
-# ----------------------------------------------------------------------------
 
 
 class UserManager(BaseUserManager):
@@ -131,21 +131,28 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_superuser
 
+class Cart(models.Model):
+    customer_id = models.IntegerField()
 
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+    )
 
+    quantity = models.PositiveIntegerField(default=1)
 
-class CustomerModel(models.Model):
-    email = models.EmailField(max_length=254, unique=True)
-    name = models.TextField(max_length=250)
-    city = models.TextField(max_length=250)
-    password = models.TextField(null=False)
-    is_seller = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def total_price(self):
+        return self.product.price * self.quantity
 
     def __str__(self):
-        return self.name
+        return self.product.name
+    
 
 class contectmassage(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomerModel, on_delete=models.CASCADE)
     subject = models.CharField(max_length=250)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
