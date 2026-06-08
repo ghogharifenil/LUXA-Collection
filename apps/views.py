@@ -19,6 +19,9 @@ from .forms import CustomerRegisterForm
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.http import JsonResponse
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
 
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
@@ -133,7 +136,6 @@ def cart(request):
         }
     )
 
-
 @customer_login_required
 def add_to_cart(request, product_name):
 
@@ -142,10 +144,7 @@ def add_to_cart(request, product_name):
     if not customer_id:
         return redirect("login")
 
-    product = get_object_or_404(
-        Product,
-        name=product_name
-    )
+    product = get_object_or_404(Product, name=product_name)
 
     cart_item = Cart.objects.filter(
         customer_id=customer_id,
@@ -162,9 +161,12 @@ def add_to_cart(request, product_name):
             quantity=1
         )
 
-    return redirect(request.META.get('HTTP_REFERER', 'home'))
+    # 🔥 BUY NOW CHECK
+    if request.GET.get("buy") == "1":
+        return redirect("checkout")
 
-from django.http import JsonResponse
+    # default
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 @customer_login_required
 def increase_qty(request, cart_id):
@@ -272,7 +274,73 @@ def cart_count(request):
     return {
         "cart_count": count
     }
+def send_order_email(customer_id, name, orders, total):
 
+    user_email = CustomerModel.objects.get(id=customer_id).email
+
+    subject = "🛍️ Your Order Confirmed - LUXA Collection"
+
+    html_content = render_to_string("html/sendmail.html", {
+        "name": name,
+        "orders": orders,
+        "total": total
+    })
+
+    email = EmailMultiAlternatives(
+        subject,
+        "",
+        settings.EMAIL_HOST_USER,
+        [user_email]
+    )
+
+    email.attach_alternative(html_content, "text/html")
+    email.send()
+
+@customer_login_required
+def checkout(request):
+
+    customer_id = request.session.get('customer_id')
+    cart_items = Cart.objects.filter(customer_id=customer_id)
+
+    if not cart_items.exists():
+        return redirect('cart')
+
+    subtotal = sum(item.total_price for item in cart_items)
+    shipping = 99
+    total = subtotal + shipping
+
+    if request.method == "POST":
+
+        name = request.POST.get("name")
+        phone = request.POST.get("phone")
+        address = request.POST.get("address")
+
+        orders = []   # 🔥 FIX 1: list banavyo
+
+        # create orders
+        for item in cart_items:
+            order = Order.objects.create(
+                user_id=customer_id,
+                product=item.product,
+                quantity=item.quantity,
+                total_price=item.total_price,
+            )
+            orders.append(order)   # 🔥 FIX 2
+
+        # clear cart
+        cart_items.delete()
+
+        # 🔥 FIX 3: correct total pass
+        send_order_email(customer_id, name, orders, total)
+
+        return redirect('home')
+
+    return render(request, 'html/checkout.html', {
+        'items': cart_items,
+        'subtotal': subtotal,
+        'shipping': shipping,
+        'total': total
+    })
 # -----------------+ Buy with Login  +----------------------
 
 

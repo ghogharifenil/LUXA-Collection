@@ -27,10 +27,26 @@
       <p class="description">{{ product.description }}</p>
 
       <div class="bottom-btns">
-              <a href="#" class="small-btn">Buy</a>
+              <a href="{% url 'buy' product.name %}" class="small-btn">Buy</a>
 
-              <a href="#" class="small-btn">Add To Cart</a>
+             <a href="{% url 'add_to_cart' product.name %}" onclick="addToCart({{ product.id }})"  class="small-btn">Add To Cart</a>
             </div>
     </div>
   </div>
+
+  
+<script>
+function addToCart(productId){
+
+    fetch(`/add-to-cart/${productId}/`)
+    .then(response => response.json())
+    .then(data => {
+
+        alert("Product Added To Cart");
+
+    });
+
+}
+</script>
+
 {% endblock %}

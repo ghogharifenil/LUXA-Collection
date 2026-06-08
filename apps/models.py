@@ -43,7 +43,6 @@ class Product(models.Model):
         return self.name
 
 
-
 class CustomerModel(models.Model):
     email = models.EmailField(max_length=254, unique=True)
     name = models.TextField(max_length=250)
@@ -53,14 +52,10 @@ class CustomerModel(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 
 class Order(models.Model):
-    user = models.ForeignKey(
-        CustomerModel,
-        on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(CustomerModel, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
@@ -131,6 +126,7 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_superuser
 
+
 class Cart(models.Model):
     customer_id = models.IntegerField()
 
@@ -149,7 +145,7 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.product.name
-    
+
 
 class contectmassage(models.Model):
     user = models.ForeignKey(CustomerModel, on_delete=models.CASCADE)

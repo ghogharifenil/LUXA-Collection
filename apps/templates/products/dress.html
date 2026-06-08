@@ -25,30 +25,25 @@
           <p class="product-description">{{ product.description }}</p>
 
           <div class="button-group">
-            <a href="{% url 'buy' product.name %}" class="buy-btn">Buy Now</a>
+            <a href="{% url 'add_to_cart' product.name %}?buy=1" class="buy-btn">Buy Now</a>
 
             <div class="bottom-btns">
               <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
 
-              <a href="{% url 'add_to_cart' product.name %}" onclick="addToCart({{ product.id }})"  class="small-btn">Add To Cart</a>
+              <a href="{% url 'add_to_cart' product.name %}" onclick="addToCart({{ product.name }})" class="small-btn">Add To Cart</a>
             </div>
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
-<script>
-function addToCart(productId){
-
-    fetch(`/add-to-cart/${productId}/`)
-    .then(response => response.json())
-    .then(data => {
-
-        alert("Product Added To Cart");
-
-    });
-
-}
-</script>
-
+  <script>
+    function addToCart(productId) {
+      fetch(`/add_to_cart/${productName}/`)
+        .then((response) => response.json())
+        .then((data) => {
+          alert('Product Added To Cart')
+        })
+    }
+  </script>
 {% endblock %}
