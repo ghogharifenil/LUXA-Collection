@@ -27,7 +27,7 @@
       <p class="description">{{ product.description }}</p>
 
       <div class="bottom-btns">
-              <a href="{% url 'buy' product.name %}" class="small-btn">Buy</a>
+             <a href="{% url 'add_to_cart' product.name %}?buy=1" class="small-btn">Buy Now</a>
 
              <a href="{% url 'add_to_cart' product.name %}" onclick="addToCart({{ product.id }})"  class="small-btn">Add To Cart</a>
             </div>

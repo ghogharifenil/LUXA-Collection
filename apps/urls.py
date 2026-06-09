@@ -26,7 +26,6 @@ urlpatterns = [
     path('collection_department/shoes/', views.shoes, name='shoes'),
 
     path('search/', views.search_product, name='search_product'),
-    path('buy/<str:name>', views.buy, name="buy"),
 
     path("add-to-cart/<str:product_name>/",views.add_to_cart,name="add_to_cart"),
     path("cart/",views.cart,name="cart"),

@@ -1,40 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:"Poppins",sans-serif;
 }
 
+html,
 body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
     background:#111;
-    overflow-x:hidden;
 }
-
-/* ================= MAIN ================= */
 
 .login-container{
     width:100%;
-    min-height:100vh;
+    height:100vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
+
+    padding:20px;
 
     background:
     linear-gradient(
         rgba(0,0,0,.55),
         rgba(0,0,0,.55)
     ),
-    url("{% static 'image/benner1.png' %}");
+    url("../image/rgister.jpg");
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 }
-
-/* ================= CARD ================= */
 
 .login-card{
     width:100%;
@@ -42,20 +43,18 @@ body{
 
     padding:40px;
 
+    margin-right:40%;
+
     background:rgba(255,255,255,.08);
 
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
 
     border:1px solid rgba(255,255,255,.15);
-
     border-radius:20px;
 
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.4);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
-
-/* ================= LOGO ================= */
 
 .logo{
     text-align:center;
@@ -63,11 +62,9 @@ body{
 }
 
 .logo i{
-    font-size:38px;
+    font-size:40px;
     color:#fff;
 }
-
-/* ================= TITLE ================= */
 
 .login-card h2{
     text-align:center;
@@ -77,56 +74,50 @@ body{
     letter-spacing:2px;
 }
 
-.login-card h3{
+.sub-title{
     text-align:center;
     color:#d1d1d1;
     font-size:13px;
     font-weight:400;
     margin-bottom:25px;
-    letter-spacing:3px;
+    letter-spacing:1px;
 }
 
-/* ================= INPUT ================= */
-
-.input-group{
+.form-group{
     margin-bottom:15px;
 }
 
-.input-group input{
+.form-group input{
     width:100%;
     padding:14px 18px;
 
-    border-radius:10px;
+    border-radius:12px;
     border:1px solid rgba(255,255,255,.15);
 
     background:rgba(255,255,255,.08);
-
     color:#fff;
-    font-size:14px;
 
+    font-size:14px;
     outline:none;
+
     transition:.3s;
 }
 
-.input-group input::placeholder{
-    color:#cfcfcf;
+.form-group input::placeholder{
+    color:#d1d1d1;
 }
 
-.input-group input:focus{
+.form-group input:focus{
     border-color:#fff;
-    box-shadow:
-    0 0 15px rgba(255,255,255,.15);
+    box-shadow:0 0 15px rgba(255,255,255,.15);
 }
 
-/* ================= BUTTON ================= */
-
-.login-btn{
+.sbbtn{
     width:100%;
-
     padding:14px;
 
     border:none;
-    border-radius:10px;
+    border-radius:12px;
 
     cursor:pointer;
 
@@ -139,36 +130,51 @@ body{
     transition:.3s;
 }
 
-.login-btn:hover{
+.sbbtn:hover{
     background:#111;
     color:#fff;
 
     border:1px solid #fff;
-
     transform:translateY(-3px);
 }
 
-/* ================= LINK ================= */
+.msg{
+    background:rgba(255,255,255,.08);
 
-.forgot-pass{
-    display:block;
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#fff;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+
+    text-align:center;
+}
+
+.register-link{
     text-align:center;
 
     margin-top:18px;
 
-    color:#fff;
-    text-decoration:none;
+    color:#d1d5db;
 
     font-size:14px;
-
-    transition:.3s;
 }
 
-.forgot-pass:hover{
-    color:#cfcfcf;
+.register-link a{
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
 }
 
-/* ================= ERROR ================= */
+.register-link a:hover{
+    text-decoration:underline;
+}
 
 .errorlist{
     list-style:none;
@@ -177,17 +183,42 @@ body{
     margin-top:5px;
 }
 
-/* ================= MOBILE ================= */
+@media (max-width:768px){
 
-@media(max-width:500px){
+    html,
+    body{
+        overflow:auto;
+    }
 
     .login-card{
-        width:92%;
-        padding:30px 20px;
+        margin-right:0;
+        max-width:90%;
+        padding:30px 25px;
+    }
+}
+
+@media (max-width:500px){
+
+    .login-container{
+        padding:15px;
+    }
+
+    .login-card{
+        width:100%;
+        max-width:100%;
+        margin-right:0;
+        padding:25px 20px;
     }
 
     .login-card h2{
         font-size:24px;
     }
 
+    .logo i{
+        font-size:34px;
+    }
+
+    .sub-title{
+        font-size:12px;
+    }
 }

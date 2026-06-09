@@ -2,15 +2,16 @@
 {% load static %}
 
 {% block head %}
-  <title>LUXA Collection | Shert</title>
+  <title>LUXA Collection | Admin | Shert</title>
   <link rel="stylesheet" href="{% static 'css/product.css' %}" />
 {% endblock %}
+
 {% block content %}
   <div class="product-container">
     {% for product in products %}
       <div class="product-card">
         <div class="image-wrapper">
-         <a href="{% url "product_detail" product.name  %}"> <img src="{{ product.image.url }}" alt="{{ product.name }}" /></a>
+          <a href="{% url "product_detail" product.name  %}"><img src="{{ product.image.url }}" alt="{{ product.name }}" /></a>
         </div>
         <div class="product-content">
           <h3 class="product-title">{{ product.name }}</h3>
@@ -21,18 +22,14 @@
           </div>
 
           <p class="product-price">₹{{ product.price }}</p>
-
+          <p class="stock">Stock : {{product.stock }}  Pieces </p>
+          
           <div class="button-group">
-            <a href="#" class="buy-btn">Buy Now</a>
-
-            <div class="bottom-btns">
-              <a href="{% url 'product_detail' product.name %}" class="small-btn">Details</a>
-
-              <a href="#" class="small-btn">Add To Cart</a>
-            </div>
+            <a href="{% url "editstock" product.name %}" class="buy-btn">Edit Stock</a>
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
 {% endblock %}
+

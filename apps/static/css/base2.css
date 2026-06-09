@@ -1,3 +1,5 @@
+/* ================= NAVBAR ================= */
+
 .navbar{
     width: 100%;
     height: 85px;
@@ -7,31 +9,13 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 7%;
+    padding: 0 40px;
 
     box-shadow: 0 2px 20px rgba(0,0,0,0.06);
 
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-.cart-icon{
-  position: relative;
-  font-size: 24px;
-  text-decoration: none;
-}
-
-.cart-badge{
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: red;
-  color: white;
-  border-radius: 50%;
-  padding: 3px 7px;
-  font-size: 12px;
-  font-weight: bold;
 }
 
 /* ================= LOGO ================= */
@@ -71,12 +55,44 @@
     letter-spacing: 2px;
 }
 
+/* ================= SEARCH ================= */
+
+.search-form{
+    width: 350px;
+    height: 46px;
+
+    display: flex;
+
+    margin-left: 40px;
+
+    border: 2px solid #111;
+    border-radius: 50px;
+
+    overflow: hidden;
+}
+
+.search-form input{
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0 18px;
+}
+
+.search-form button{
+    width: 60px;
+    border: none;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+}
+
 /* ================= MENU ================= */
 
 .nav-links{
     display: flex;
     list-style: none;
     gap: 35px;
+    margin-left: 40px;
 }
 
 .nav-links a{
@@ -88,8 +104,6 @@
     position: relative;
     transition: .3s ease;
 }
-
-/* Hover underline */
 
 .nav-links a::after{
     content:"";
@@ -112,8 +126,6 @@
 .nav-links a:hover::after{
     width:100%;
 }
-
-/* Active */
 
 .nav-links a.active{
     color:#111;
@@ -184,6 +196,99 @@
     padding-left:22px;
 }
 
+/* ================= RIGHT SIDE ================= */
+
+.nav-right{
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.cart-icon{
+    position: relative;
+    font-size: 24px;
+    color: #111;
+    text-decoration: none;
+}
+
+.cart-badge{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+
+    background: red;
+    color: white;
+
+    border-radius: 50%;
+
+    padding: 3px 7px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.profile-user{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-user i{
+    font-size: 28px;
+    color: #111;
+}
+
+.profile-user span{
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* ================= BUTTONS ================= */
+
+.signup-btn{
+    text-decoration: none;
+
+    background: #111;
+    color: #fff;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.signup-btn:hover{
+    opacity: .9;
+}
+
+.logout-btn{
+    text-decoration: none;
+
+    background: #dc2626;
+    color: #fff;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.logout-btn:hover{
+    opacity: .9;
+}
+
 /* ================= MOBILE ================= */
 
 @media(max-width:768px){
@@ -191,14 +296,21 @@
     .navbar{
         height: 75px;
         padding: 0 5%;
+        flex-wrap: wrap;
     }
 
     .logo-text h2{
         font-size: 22px;
     }
 
+    .search-form{
+        width: 220px;
+        margin-left: 15px;
+    }
+
     .nav-links{
         gap: 18px;
+        margin-left: 15px;
     }
 
     .nav-links a{
@@ -207,5 +319,122 @@
 
     .dropdown-menu{
         min-width: 180px;
+    }
+
+    .nav-right{
+        gap: 10px;
+    }
+}
+/* ================= MOBILE UI ================= */
+
+@media (max-width:768px){
+
+    .navbar{
+        height: auto;
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo-section{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-form{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .nav-links{
+        width: 100%;
+        margin-left: 0;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .nav-links a{
+        font-size: 14px;
+    }
+
+    .nav-right{
+        width: 100%;
+        margin-left: 0;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+    .signup-btn,
+    .logout-btn{
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    .profile-user span{
+        font-size: 14px;
+    }
+
+    .dropdown-menu{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .dropdown:hover .dropdown-menu{
+        transform: translateX(-50%);
+    }
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media (max-width:480px){
+
+    .logo-icon{
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    .logo-text h2{
+        font-size: 20px;
+    }
+
+    .logo-text span{
+        font-size: 9px;
+    }
+
+    .search-form{
+        height: 42px;
+    }
+
+    .search-form input{
+        font-size: 13px;
+    }
+
+    .nav-links{
+        gap: 12px;
+    }
+
+    .nav-links a{
+        font-size: 13px;
+    }
+
+    .cart-icon{
+        font-size: 22px;
+    }
+
+    .profile-user i{
+        font-size: 24px;
+    }
+
+    .profile-user span{
+        font-size: 13px;
     }
 }

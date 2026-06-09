@@ -342,40 +342,6 @@ def checkout(request):
         'shipping': shipping,
         'total': total
     })
-# -----------------+ Buy with Login  +----------------------
-
-
-@customer_login_required
-def buy(request, name):
-
-    product = get_object_or_404(Product, name=name)
-
-    if request.method == "POST":
-
-        quantity = int(request.POST.get("quantity", 1))
-
-        total_price = product.price * quantity
-
-        screenshot = request.FILES.get("payment_screenshot")
-
-        Order.objects.create(
-            user=request.user,
-            product=product,
-            quantity=quantity,
-            total_price=total_price,
-            payment_screenshot=screenshot,
-            status="Pending"
-        )
-
-        return redirect("home")
-
-    return render(
-        request,
-        "html/buy.html",
-        {
-            "product": product
-        }
-    )
 
 
 def register(request):
@@ -689,6 +655,7 @@ def add_product(request):
         request,
         'admin/addpro.html', {'form': form})
 
+@customer_login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
