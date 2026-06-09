@@ -1,13 +1,13 @@
+{% extends 'base/base2.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | LUXA Collection</title>
+
+{% block head %}
+ <title>About | LUXA Collection</title>
     <link rel="stylesheet" href="{% static 'css/about.css' %}" />
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <style>.hero {
         height: 60vh;
         background: url("{% static 'image/benner1.png' %}") center/cover no-repeat;
@@ -18,10 +18,13 @@
         justify-content: center;
         color: #fff;
       }</style>
-  </head>
+{% endblock %}
 
-  <body>
-    <!-- HERO -->
+{% block content %}
+
+
+
+      <!-- HERO -->
     <section class="hero">
       <div class="overlay"></div>
       <div class="hero-content">
@@ -80,5 +83,4 @@
         <p class="copy">© 2026 Luxa Collection. All Rights Reserved.</p>
       </div>
     </footer>
-  </body>
-</html>
+{% endblock %}

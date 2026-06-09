@@ -60,7 +60,7 @@ def contectus(request):
 
         return redirect("contectus")
 
-    return render(request, "html/contectus.html")
+    return render(request, "html/contectus.html" ,{"customer":customer})
 
 # ---------------+ Serch Bar +----------------------------
 

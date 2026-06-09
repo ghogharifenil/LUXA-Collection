@@ -4,19 +4,36 @@
 
   <title>LUXA Collection | Contact</title>
   <link rel="stylesheet" href="{% static "css/contectus.css" %}">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>.hero {
+        height: 60vh;
+        background: url("{% static 'image/benner1.png' %}") center/cover no-repeat;
+        cursor: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+  
+    </style>
 {% endblock %}
 {% block content %}
   <!-- HERO -->
-  <section class="hero">
-    <h1>Contact Us</h1>
-  </section>
+ <section class="hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>LUXA Collection</h1>
+        <p>Redefining Fashion with Elegance & Comfort</p>
+      </div>
+    </section>
 
   <!-- CONTACT -->
   <section class="contact-container">
     <!-- INFO -->
     <div class="contact-info">
-      <h2>Get In Touch</h2>
+      <h2>Contect Us</h2>
 
       <p>📞 Mobile: 9963254187</p>
       <p>📧 Email: luxacollection@gmail.com</p>
