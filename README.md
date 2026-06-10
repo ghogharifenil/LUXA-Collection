@@ -15,19 +15,21 @@ LUXA Collection is a modern Django-based fashion e-commerce platform designed fo
   - Dress
   - Shirt
   - Pant
+- Searching Product 
+- New Collection Exploler
 - Product Details Page
 - Add to Cart
-- Wishlist Support
 - Place Orders
-- Order History
-- Invoice Generation (PDF)
+- Order Confirm Mail 
 - Email Notifications
-- Contact Support
+- Contact Support By LUXA Admin 
+- About LUXA
 
 ### Admin Features
 - Secure Admin Login
 - Dashboard Overview
-- Add Products
+- Add Products (Listing Page)
+- Add New Product is New section Feture
 - Manage Products
 - View Orders
 - Update Order Status
@@ -44,7 +46,6 @@ LUXA Collection is a modern Django-based fashion e-commerce platform designed fo
 - HTML5
 - CSS3
 - JavaScript
-- Bootstrap
 - SMTP Email Services
 
 ---
