@@ -144,6 +144,9 @@ class contectmassage(models.Model):
     user = models.ForeignKey(CustomerModel, on_delete=models.CASCADE)
     subject = models.CharField(max_length=250)
     message = models.TextField()
+   
+    is_resolved = models.BooleanField(default=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

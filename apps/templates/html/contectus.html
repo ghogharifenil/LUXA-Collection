@@ -1,12 +1,11 @@
 {% extends 'base/base2.html' %}
 {% load static %}
 {% block head %}
-
   <title>LUXA Collection | Contact</title>
-  <link rel="stylesheet" href="{% static "css/contectus.css" %}">
+  <link rel="stylesheet" href="{% static 'css/contectus.css' %}" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <style>.hero {
+  <style>.hero {
         height: 60vh;
         background: url("{% static 'image/benner1.png' %}") center/cover no-repeat;
         cursor: none;
@@ -21,13 +20,13 @@
 {% endblock %}
 {% block content %}
   <!-- HERO -->
- <section class="hero">
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1>LUXA Collection</h1>
-        <p>Redefining Fashion with Elegance & Comfort</p>
-      </div>
-    </section>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>LUXA Collection</h1>
+      <p>Redefining Fashion with Elegance & Comfort</p>
+    </div>
+  </section>
 
   <!-- CONTACT -->
   <section class="contact-container">
@@ -46,12 +45,17 @@
     <div class="contact-form">
       <h2>Send Message</h2>
 
-      <form>
+      <form method="POST">
+        {% csrf_token %}
+
         <input type="text" value="{{ customer.name }}" readonly />
 
         <input type="email" value="{{ customer.email }}" readonly />
-        <input type="text" placeholder="Subject" />
-        <textarea placeholder="Your Message"></textarea>
+
+        <input type="text" name="subject" placeholder="Subject" required />
+
+        <textarea name="message" placeholder="Your Message" required></textarea>
+
         <button type="submit">Send Message</button>
       </form>
     </div>

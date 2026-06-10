@@ -1,0 +1,99 @@
+{% extends 'admin/base_admin.html' %}
+{% block head %}
+  <title>LUXA Collection | Admin | Contect LUXA</title>
+  <style>
+    .container {
+      padding: 30px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    
+    th {
+      background: #111;
+      color: #fff;
+    }
+    
+    tr:nth-child(even) {
+      background: #f8f8f8;
+    }
+    .resolve-btn {
+      background: #111;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    
+    .resolve-btn:hover {
+      opacity: 0.8;
+    }
+    
+    .done {
+      color: green;
+      font-weight: 600;
+    }
+    
+    .pending {
+      color: red;
+      font-weight: 600;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Customer Messages</h2>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+
+      {% for msg in messages %}
+        <tr>
+          <td>{{ msg.user.name }}</td>
+
+          <td>{{ msg.user.email }}</td>
+
+          <td>{{ msg.subject }}</td>
+
+          <td>{{ msg.message }}</td>
+
+          <td>{{ msg.created_at }}</td>
+          <td>
+            {% if msg.is_resolved %}
+              <span class="done">Resolved</span>
+            {% else %}
+              <span class="pending">Pending</span>
+            {% endif %}
+          </td>
+
+          <td>
+            {% if not msg.is_resolved %}
+              <a href="{% url 'resolve_message' msg.id %}" class="resolve-btn">Send Update</a>
+            {% else %}
+              ✓ Mail Sent
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

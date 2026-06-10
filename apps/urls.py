@@ -42,7 +42,8 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     path('order/', views.order, name="order"),
     path('admin/order/ship/<int:order_id>/', views.mark_shipped, name='mark_shipped'),
-
+    path('contact-messages/', views.contact_messages,name='contact_messages'),
+    path("resolve-message/<int:id>/",views.resolve_message,name="resolve_message"),
 
     path('editstock/<str:name>', views.editstock, name="editstock"),
     path('editproduct/<str:name>', views.editproduct, name="editproduct"),

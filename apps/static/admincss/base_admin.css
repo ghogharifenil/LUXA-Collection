@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@300;400;700&display=swap');
+
 *{
     margin:0;
     padding:0;
@@ -8,47 +9,11 @@
 }
 
 body{
-    background:#ffffff;
+    background:#fff;
     color:#111;
 }
 
-
-.admin-text{
-   font-family: "Averia Sans Libre", sans-serif;
-    font-style:italic;
-    font-size:12px;
-    color:#000000;
-    letter-spacing:2px;
-}
-/* ================= NAVBAR ================= */
-
-.navbar{
-    width:100%;
-    height:85px;
-
-    background:#fff;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:0 6%;
-
-    border-bottom:1px solid #eee;
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    transition:0.3s ease;
-}
-
-/* subtle hover shadow */
-.navbar:hover{
-    box-shadow:0 8px 25px rgba(0,0,0,0.06);
-}
-
-/* ================= LOGO ================= */
+/* LOGO */
 
 .logo-section{
     display:flex;
@@ -57,43 +22,70 @@ body{
 }
 
 .logo-icon{
-    width:50px;
-    height:50px;
+    width:55px;
+    height:55px;
     border-radius:50%;
+    overflow:hidden;
+}
 
-    background:#111;
-    color:#fff;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:22px;
-    font-weight:800;
-
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+.logo-icon img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .logo-text h2{
-    color:#111;
     font-size:24px;
-    letter-spacing:1px;
     line-height:1;
+    color:#111;
 }
 
 .logo-text span{
-    color:#777;
     font-size:11px;
     letter-spacing:3px;
+    color:#777;
 }
 
-/* ================= MENU ================= */
+.admin-text{
+    font-family:"Averia Sans Libre",sans-serif;
+    font-size:12px;
+    font-style:italic;
+    letter-spacing:2px;
+    color:#000;
+}
+
+/* MAIN NAVBAR */
+
+.navbar{
+    width:100%;
+    height:85px;
+    background:#fff;
+    border-bottom:1px solid #eee;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 6%;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    transition:.3s;
+}
+
+.navbar:hover{
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+/* MENU */
 
 .nav-links{
     display:flex;
     align-items:center;
-    list-style:none;
     gap:28px;
+    list-style:none;
 }
 
 .nav-links a{
@@ -101,34 +93,25 @@ body{
     color:#333;
     font-size:15px;
     font-weight:600;
-
     position:relative;
-    transition:0.3s ease;
 }
 
-/* underline animation */
 .nav-links a::after{
     content:"";
     position:absolute;
     left:0;
     bottom:-6px;
-
-    width:0%;
+    width:0;
     height:2px;
-
     background:#111;
-    transition:0.3s ease;
-}
-
-.nav-links a:hover{
-    color:#111;
+    transition:.3s;
 }
 
 .nav-links a:hover::after{
     width:100%;
 }
 
-/* ================= DROPDOWN ================= */
+/* DROPDOWN */
 
 .dropdown{
     position:relative;
@@ -139,26 +122,22 @@ body{
     top:55px;
     left:0;
 
-    min-width:200px;
+    min-width:220px;
 
     background:#fff;
-
     border:1px solid #eee;
     border-radius:12px;
 
+    padding:8px 0;
     list-style:none;
 
-    padding:8px 0;
-
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 
     opacity:0;
     visibility:hidden;
     transform:translateY(10px);
 
-    transition:0.25s ease;
-
-    z-index:1000;
+    transition:.25s;
 }
 
 .dropdown:hover .dropdown-menu{
@@ -170,20 +149,13 @@ body{
 .dropdown-menu a{
     display:block;
     padding:10px 18px;
-
-    color:#333;
-    font-size:14px;
-
-    transition:0.25s ease;
 }
 
 .dropdown-menu a:hover{
     background:#111;
     color:#fff;
-    padding-left:22px;
 }
 
-/* top bar accent */
 .dropdown-menu::before{
     content:"";
     position:absolute;
@@ -192,40 +164,89 @@ body{
 
     width:100%;
     height:3px;
-
     background:#111;
+
     border-radius:12px 12px 0 0;
 }
 
-/* ================= LOGOUT ================= */
+/* LOGOUT */
 
 .logout-btn{
     background:#111;
     color:#fff !important;
-
-    padding:8px 14px;
+    padding:8px 15px;
     border-radius:8px;
+}
 
-    transition:0.3s ease;
+.logout-btn::after{
+    display:none;
 }
 
 .logout-btn:hover{
-    background:#fff;
-    color:#111 !important;
-    border:1px solid #111;
+    background:#333;
 }
 
-/* ================= RESPONSIVE ================= */
+/* SUB NAVBAR */
+
+.sub-navbar{
+    width:100%;
+    background:#fafafa;
+    border-bottom:1px solid #eee;
+
+    padding:12px 6%;
+
+    position:sticky;
+    top:85px;
+    z-index:999;
+}
+
+.sub-nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    list-style:none;
+}
+
+.sub-nav-links a{
+    text-decoration:none;
+    color:#444;
+    font-size:14px;
+    font-weight:600;
+
+    position:relative;
+    padding-bottom:5px;
+}
+
+.sub-nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:2px;
+    background:#111;
+
+    transition:.3s;
+}
+
+.sub-nav-links a:hover::after,
+.sub-nav-links a.active::after{
+    width:100%;
+}
+
+.sub-nav-links a:hover,
+.sub-nav-links a.active{
+    color:#111;
+}
+
+/* RESPONSIVE */
 
 @media(max-width:768px){
 
     .navbar{
         padding:0 4%;
         height:75px;
-    }
-
-    .logo-text h2{
-        font-size:20px;
     }
 
     .nav-links{
@@ -236,7 +257,9 @@ body{
         font-size:13px;
     }
 
-    .dropdown-menu{
-        min-width:170px;
+    .sub-nav-links{
+        gap:20px;
+        flex-wrap:wrap;
     }
+
 }

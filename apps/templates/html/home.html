@@ -4,43 +4,61 @@
 {% block head %}
   <title>LUXA Collection | Home</title>
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  <style>
+    
+    .home-video video {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    pointer-events: none; 
+    display: block;
+}
+  </style>
 {% endblock %}
 
 {% block content %}
-  <div class="offers">
+
+<!-- 🔥 HERO VIDEO SECTION -->
+<div class="home-video">
+    <video autoplay muted loop playsinline disablePictureInPicture>
+        <source src="{% static 'vedio/vedio2.mp4' %}" type="video/mp4">
+    </video>
+</div>
+
+<!-- 🛍️ OFFERS SECTION -->
+<div class="offers">
     <div class="offer-card" onclick="window.location.href='{% url 'saree' %}'">
-      <img src="{% static 'image/offer1.jpg' %}" alt="" />
+        <img src="{% static 'image/offer1.jpg' %}" alt="" />
 
-      <div class="offer-overlay" style="text-decoration: none;">
-        <h1>Diwali Luxury Collection</h1>
-        <p>Celebrate the Festival in Style</p>
-        <p>Exclusive Offers Up To 50% OFF</p>
-        <a href="{% url 'saree' %}" class="shop-btn">Shop Collection</a>
-      </div>
-    </div></a>
-
-        <div class="offer-card" onclick="window.location.href='{% url 'dress' %}'">
-
-  <img src="{% static 'image/offer2.jpg' %}" alt="" />
-
-      <div class="offer-overlay">
-        <h1>Rakhi Special Edition</h1>
-        <p>Elegant Dresses For Every Celebration</p>
-        <p>Shop Above ₹20,000 & Enjoy Up To 60% OFF</p>
-        <a href="{% url 'dress' %}" class="shop-btn">Explore Dresses</a>
-      </div>
+        <div class="offer-overlay">
+            <h1>Diwali Luxury Collection</h1>
+            <p>Celebrate the Festival in Style</p>
+            <p>Exclusive Offers Up To 50% OFF</p>
+            <a href="{% url 'saree' %}" class="shop-btn">Shop Collection</a>
+        </div>
     </div>
 
-       <div class="offer-card" onclick="window.location.href='{% url 'new_products' %}'">
+    <div class="offer-card" onclick="window.location.href='{% url 'dress' %}'">
+        <img src="{% static 'image/offer2.jpg' %}" alt="" />
 
-     <img src="{% static 'image/new.jpg' %}" alt="Offer 3" />
-
-      <div class="offer-overlay">
-        <h1>New Arrivals 2026</h1>
-        <p>Fresh Styles Crafted For Modern Fashion</p>
-        <p>Discover The Latest Trends In Luxury Wear</p>
-        <a href="{% url 'new_products' %}" class="shop-btn">Discover Now</a>
-      </div>
+        <div class="offer-overlay">
+            <h1>Rakhi Special Edition</h1>
+            <p>Elegant Dresses For Every Celebration</p>
+            <p>Shop Above ₹20,000 & Enjoy Up To 60% OFF</p>
+            <a href="{% url 'dress' %}" class="shop-btn">Explore Dresses</a>
+        </div>
     </div>
-  </div>
+
+    <div class="offer-card" onclick="window.location.href='{% url 'new_products' %}'">
+        <img src="{% static 'image/new.jpg' %}" alt="Offer 3" />
+
+        <div class="offer-overlay">
+            <h1>New Arrivals 2026</h1>
+            <p>Fresh Styles Crafted For Modern Fashion</p>
+            <p>Discover The Latest Trends In Luxury Wear</p>
+            <a href="{% url 'new_products' %}" class="shop-btn">Discover Now</a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

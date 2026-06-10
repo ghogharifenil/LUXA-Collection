@@ -13,6 +13,13 @@ body {
   overflow-x: hidden;
 }
 
+.home-video video {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    pointer-events: none; /* ❌ click disable */
+    display: block;
+}
 /* ================= OFFERS SECTION ================= */
 
 .offers {

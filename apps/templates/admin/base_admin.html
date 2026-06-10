@@ -4,33 +4,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png"
-          href="{% static 'image/web3.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'image/web3.png' %}" />
     <link rel="stylesheet" href="{% static 'admincss/base_admin.css' %}" />
     <style>
-      .logo-icon{
-    width: 55px;
-    height: 55px;
-
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.logo-icon img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+      .logo-icon {
+        width: 55px;
+        height: 55px;
+      
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     </style>
     {% block head %}
 
     {% endblock %}
   </head>
   <body>
+    <!-- MAIN NAVBAR -->
     <nav class="navbar">
       <div class="logo-section">
         <div class="logo-icon">
-          <img src="{% static 'image/loxa.png' %}" alt="LUXA Logo" />
+          <img src="{% static 'image/web3.png' %}" alt="LUXA Logo" />
         </div>
 
         <div class="logo-text">
@@ -44,9 +44,11 @@
         <li>
           <a href="{% url 'home' %}">Home</a>
         </li>
+
         <li>
           <a href="{% url 'dashboard' %}">Dashboard</a>
         </li>
+
         <li class="dropdown">
           <a href="#">Manage ▾</a>
 
@@ -62,14 +64,51 @@
             <li>
               <a href="{% url 'home' %}">Customers</a>
             </li>
+            <li>
+              <a href="{% url 'contact_messages' %}">Customer Messages</a>
+            </li>
           </ul>
         </li>
 
         <li>
-          <a href="{% url 'logout' %}">Logout</a>
+          <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
         </li>
       </ul>
     </nav>
+
+    <!-- SUB NAVBAR -->
+    <nav class="sub-navbar">
+      <ul class="sub-nav-links">
+        <li>
+          <a href="{% url 'admin_saree' %}" class="{% if request.resolver_match.url_name == 'admin_saree' %}active{% endif %}">Saree</a>
+        </li>
+
+        <li>
+          <a href="{% url 'admin_dress' %}" class="{% if request.resolver_match.url_name == 'admin_dress' %}active{% endif %}">Dress</a>
+        </li>
+
+        <li>
+          <a href="{% url 'admin_shert' %}" class="{% if request.resolver_match.url_name == 'admin_shert' %}active{% endif %}">Shirt</a>
+        </li>
+
+        <li>
+          <a href="{% url 'admin_pent' %}" class="{% if request.resolver_match.url_name == 'admin_pent' %}active{% endif %}">Pant</a>
+        </li>
+        <li>
+          <a href="{% url 'admin_heels' %}" class="{% if request.resolver_match.url_name == 'admin_heels' %}active{% endif %}">Heels</a>
+        </li>
+        <li>
+          <a href="{% url 'admin_foowear' %}" class="{% if request.resolver_match.url_name == 'admin_foowear' %}active{% endif %}">Footwear</a>
+        </li>
+        <li>
+          <a href="{% url 'admin_shoes' %}" class="{% if request.resolver_match.url_name == 'admin_shoes' %}active{% endif %}">Shoes</a>
+        </li>
+        <li>
+          <a href="{% url 'admin_jwelery' %}" class="{% if request.resolver_match.url_name == 'admin_jwelery' %}active{% endif %}">Jwelery</a>
+        </li>
+      </ul>
+    </nav>
+
     {% block content %}
 
     {% endblock %}
