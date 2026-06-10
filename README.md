@@ -43,6 +43,12 @@ LUXA Collection is a modern Django-based fashion e-commerce platform designed fo
 
 ---
 
+### 👨‍💻 Developed By
+
+## Fenil
+
+# LUXA Collection © 2026 All Rights Reserved.
+
 ## 🛠 Built With
 
 - Python
