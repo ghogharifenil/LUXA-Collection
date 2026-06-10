@@ -5,8 +5,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base2.css' %}" />
+    <link rel="icon" type="image/png"
+          href="{% static 'image/web3.png' %}">
+          
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+    <style>
+      .cart-icon{
+    position: relative;
+    font-size: 24px;
+    color: #111;
+    text-decoration: none;
+}
+
+.cart-badge{
+    position: absolute;
+    top: -10px;
+    right: -12px;
+
+    min-width: 22px;
+    height: 22px;
+
+    background: red;
+    color: #fff;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.logo-icon{
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.logo-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    </style>
     {% block head %}
 
     {% endblock %}
@@ -14,14 +60,18 @@
   <body>
     <nav class="navbar">
       <!-- LOGO -->
-      <div class="logo-section">
-        <div class="logo-icon">L</div>
+     <div class="logo-section">
 
-        <div class="logo-text">
-          <h2>LUXA</h2>
-          <span>COLLECTION</span>
-        </div>
-      </div>
+    <div class="logo-icon">
+        <img src="{% static 'image/loxa.png' %}" alt="LUXA Logo">
+    </div>
+
+    <div class="logo-text">
+        <h2>LUXA</h2>
+        <span>COLLECTION</span>
+    </div>
+
+</div>
 
       <!-- SEARCH -->
       <form action="{% url 'search_product' %}" method="GET" class="search-form">
@@ -81,7 +131,10 @@
       <div class="nav-right">
         <a href="{% url 'cart' %}" class="cart-icon">
           <i class="fa-solid fa-cart-shopping"></i>
-          <span id="cart-badge">{{ cart_count }}</span>
+
+          {% if cart_count > 0 %}
+            <span class="cart-badge">{{ cart_count }}</span>
+          {% endif %}
         </a>
 
         <div class="profile-user">
