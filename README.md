@@ -15,6 +15,11 @@ LUXA Collection is a modern Django-based fashion e-commerce platform designed fo
   - Dress
   - Shirt
   - Pant
+  - Footwear
+  - Heels
+  - Shoes
+  - Jwelary
+  - ADDING New Product Categories Coming Soon
 - Searching Product 
 - New Collection Exploler
 - Product Details Page
