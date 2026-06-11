@@ -24,7 +24,12 @@ INSTALLED_APPS = [
     
 ]
 
+INSTALLED_APPS += [
+    'cloudinary',
+    'cloudinary_storage',
+]
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # ================= MIDDLEWARE =================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,8 +102,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # ================= MEDIA FILES =================
+import os
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # ================= AUTH =================
@@ -123,3 +130,13 @@ ADMIN_EMAIL = config('ADMIN_EMAIL', default='')
 ADMIN_PASSWORD = config('ADMIN_PASSWORD', default='')
 ADMIN_NAME = config('ADMIN_NAME', default='Fenil')
 ADMIN_CITY = config('ADMIN_CITY', default='Surat')
+
+import cloudinary
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET')
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
