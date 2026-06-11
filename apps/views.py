@@ -564,7 +564,7 @@ def adminuser(request):
             password=password
         )
 
-        if user is not None and user.is_seller:
+        if user is not None and user.is_active:
             auth_login(request, user)
             return redirect('dashboard')
 
