@@ -105,11 +105,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME': 'dm1e3zocd',
+    'API_KEY': '947887254397262',
+    'API_SECRET': 'IsG8rd4U4m9KzhP8qHFNYFAtt4I',
 }
-
 
 # ================= AUTH =================
 AUTH_USER_MODEL = 'apps.User'
