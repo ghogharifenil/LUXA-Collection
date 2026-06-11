@@ -590,6 +590,35 @@ def adminuser(request):
 
     return render(request, "admin/adminlogin.html")
 
+from django.contrib.auth import get_user_model
+from django.shortcuts import render, redirect
+
+User = get_user_model()
+
+def create_admin(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        name = request.POST.get("name")
+        city = request.POST.get("city")
+
+        if not User.objects.filter(email=email).exists():
+            User.objects.create_superuser(
+                email=email,
+                name=name,
+                city=city,
+                password=password
+            )
+            return render(request, "admin/create_admin.html", {
+                "success": "Admin created successfully!"
+            })
+
+        return render(request, "admin/create_admin.html", {
+            "error": "User already exists"
+        })
+
+    return render(request, "admin/create_admin.html")
+
 # --------------------------------------------------------------------------------
 # ----------------------------+ Admin Dashboard +---------------------------------
 # --------------------------------------------------------------------------------
