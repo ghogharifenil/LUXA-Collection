@@ -7,7 +7,7 @@
 }
 
 /* HERO */
-.hero {
+/* .hero {
   height: 60vh;
   background: url("{% static 'image/benner1.png' %}") center/cover no-repeat;
   cursor: none;
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-}
+} */
 
 .overlay {
   position: absolute;
