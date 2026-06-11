@@ -8,7 +8,7 @@ class AppsConfig(AppConfig):
         from django.contrib.auth import get_user_model
         User = get_user_model()
 
-        if not User.objects.filter(email="admin@gmail.com").exists():
+        if not User.objects.filter(email="ghogharifenil601@gmail.com").exists():
             User.objects.create_superuser(
                 email="ghogharifenil601@gmail.com",
                 name="Fenil",
