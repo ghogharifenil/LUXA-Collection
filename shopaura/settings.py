@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
 if os.environ.get('CREATE_SUPERUSER') == 'true':
-    from django.contrib.auth.models import User
+    from apps.models import User
     if not User.objects.filter(username='Fenil').exists():
         User.objects.create_superuser('Fenil', 'ghogharifenil601@gmail.com', 'fenil121')
 
