@@ -1,8 +1,8 @@
 from pathlib import Path
 from decouple import config
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # ================= SECURITY =================
 SECRET_KEY = config('SECRET_KEY')
@@ -20,21 +20,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.apps.AppsConfig',
-    
-]
 
-INSTALLED_APPS += [
+    'apps.apps.AppsConfig',
+
+    # cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # ================= MIDDLEWARE =================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
-    # static files in production
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,15 +62,18 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'shopaura.wsgi.application'
 
 
-# ================= DATABASE =================
+# ================= DATABASE (POSTGRESQL) =================
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', default='5432'),
     }
 }
 
@@ -101,11 +101,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-# ================= MEDIA FILES =================
-import os
+# ================= MEDIA (CLOUDINARY) =================
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+}
 
 
 # ================= AUTH =================
@@ -126,17 +129,11 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
+# ================= CUSTOM ADMIN SETTINGS =================
 ADMIN_EMAIL = config('ADMIN_EMAIL', default='')
 ADMIN_PASSWORD = config('ADMIN_PASSWORD', default='')
 ADMIN_NAME = config('ADMIN_NAME', default='Fenil')
 ADMIN_CITY = config('ADMIN_CITY', default='Surat')
 
-import cloudinary
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
-    'API_KEY': os.getenv('API_KEY'),
-    'API_SECRET': os.getenv('API_SECRET')
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3', } }
