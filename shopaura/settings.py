@@ -117,3 +117,9 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+ADMIN_EMAIL = config('ADMIN_EMAIL', default='')
+ADMIN_PASSWORD = config('ADMIN_PASSWORD', default='')
+ADMIN_NAME = config('ADMIN_NAME', default='Fenil')
+ADMIN_CITY = config('ADMIN_CITY', default='Surat')
