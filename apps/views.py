@@ -595,7 +595,7 @@ def adminuser(request):
 # --------------------------------------------------------------------------------
 
 
-@seller_required
+
 def dashboard(request):
     products = Product.objects.all()
     return render(request, 'admin/dashboard.html', {"products": products})
