@@ -550,28 +550,43 @@ def shoes(request):
 # ---------------------------+ Admin login +------------------------------------
 # --------------------------------------------------------------------------------
 
-# @customer_login_required
+# # @customer_login_required
+# def adminuser(request):
+
+#     if request.method == 'POST':
+
+#         email = request.POST.get("email")
+#         password = request.POST.get("password")
+
+#         user = authenticate(
+#             request,
+#             email=email,
+#             password=password
+#         )
+
+#         if user is not None and user.is_superuser:
+#             auth_login(request, user)
+#             return redirect('dashboard')
+
+#     return render(
+#         request,
+#         "admin/adminlogin.html"
+#     )
+
 def adminuser(request):
 
     if request.method == 'POST':
-
         email = request.POST.get("email")
         password = request.POST.get("password")
 
-        user = authenticate(
-            request,
-            email=email,
-            password=password
-        )
+        user = authenticate(request, username=email, password=password)
 
-        if user is not None and user.is_superuser:
-            auth_login(request, user)
-            return redirect('dashboard')
+        if user is not None:
+            if user.is_active and (user.is_seller or user.is_superuser):
+                auth_login(request, user)
+                return redirect('dashboard')
 
-    return render(
-        request,
-        "admin/adminlogin.html"
-    )
+    return render(request, "admin/adminlogin.html")
 
 # --------------------------------------------------------------------------------
 # ----------------------------+ Admin Dashboard +---------------------------------
@@ -580,11 +595,8 @@ def adminuser(request):
 
 @seller_required
 def dashboard(request):
-    if not request.user.is_seller:
-        return redirect('home')
     products = Product.objects.all()
     return render(request, 'admin/dashboard.html', {"products": products})
-
 
 # -------------------------------+ Logout +---------------------------------------
 

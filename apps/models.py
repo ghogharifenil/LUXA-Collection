@@ -67,38 +67,97 @@ class Order(models.Model):
     is_shipped = models.BooleanField(default=False)
 
 
+# class UserManager(BaseUserManager):
+#     def create_user(self, email, name, city, password=None):
+#         if not email:
+#             raise ValueError("Email is required")
+#         user = self.model(
+#             email=self.normalize_email(email),
+#             name=name,
+#             city=city
+#         )
+#         user.set_password(password)
+#         user.save(using=self._db)
+#         return user
+
+#     def create_superuser(self, email, name, city, password=None):
+#         user = self.create_user(
+#             email=email,
+#             name=name,
+#             city=city,
+#             password=password
+#         )
+#         user.is_superuser = True
+#         user.is_staff = True
+#         user.is_active = True
+#         user.is_seller = True
+#         user.save(using=self._db)
+#         return user
+
+
+# class User(AbstractBaseUser):
+#     email = models.EmailField(max_length=254, unique=True)
+#     name = models.TextField(max_length=250)
+#     city = models.TextField(max_length=250)
+
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+#     is_superuser = models.BooleanField(default=False)
+#     is_seller = models.BooleanField(default=False)
+
+#     objects = UserManager()
+
+#     USERNAME_FIELD = "email"
+#     REQUIRED_FIELDS = ['name', 'city']
+
+#     def __str__(self):
+#         return self.email
+
+#     def has_perm(self, perm, obj=None):
+#         return self.is_superuser
+
+#     def has_module_perms(self, app_label):
+#         return self.is_superuser
+
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.db import models
+
 class UserManager(BaseUserManager):
-    def create_user(self, email, name, city, password=None):
+    def create_user(self, email, name, city, password=None, is_seller=False):
         if not email:
-            raise ValueError("Email is required")
+            raise ValueError("Email required")
+
         user = self.model(
             email=self.normalize_email(email),
             name=name,
-            city=city
+            city=city,
+            is_seller=is_seller
         )
+
         user.set_password(password)
+        user.is_active = True
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, name, city, password=None):
+    def create_superuser(self, email, name="Fenil", city="Surat", password=None):
         user = self.create_user(
             email=email,
             name=name,
             city=city,
-            password=password
+            password=password,
+            is_seller=True
         )
+
         user.is_superuser = True
         user.is_staff = True
-        user.is_active = True
-        user.is_seller = True
         user.save(using=self._db)
         return user
 
 
-class User(AbstractBaseUser):
-    email = models.EmailField(max_length=254, unique=True)
-    name = models.TextField(max_length=250)
-    city = models.TextField(max_length=250)
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True)
+    name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -108,18 +167,10 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['name', 'city']
+    REQUIRED_FIELDS = ["name", "city"]
 
     def __str__(self):
         return self.email
-
-    def has_perm(self, perm, obj=None):
-        return self.is_superuser
-
-    def has_module_perms(self, app_label):
-        return self.is_superuser
-
-
 class Cart(models.Model):
     customer_id = models.IntegerField()
 
