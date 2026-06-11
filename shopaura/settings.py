@@ -4,8 +4,6 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-
 # ================= SECURITY =================
 SECRET_KEY = config('SECRET_KEY')
 
@@ -22,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.apps.AppsConfig',
     'apps',
 ]
 
