@@ -36,7 +36,7 @@ def test_email(request):
         "Test Email",
         "Hello from Django",
         settings.EMAIL_HOST_USER,
-        ["taroemail@gmail.com"],
+        ["ffg001002003@gmail.com"],
         fail_silently=False,
     )
     return HttpResponse("Email Sent")
