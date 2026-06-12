@@ -63,4 +63,7 @@ urlpatterns = [
 
     path("create_admin/", views.create_admin, name="create_admin"),
 
+    path("test_email/", views.test_email, name="test_email"),
+
+
 ]

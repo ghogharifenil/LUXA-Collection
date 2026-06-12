@@ -25,6 +25,23 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import send_mail
 from .models import contectmassage
+
+
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponse
+
+def test_email(request):
+    send_mail(
+        "Test Email",
+        "Hello from Django",
+        settings.EMAIL_HOST_USER,
+        ["taroemail@gmail.com"],
+        fail_silently=False,
+    )
+    return HttpResponse("Email Sent")
+
+
 # --------------------------------------------------------------------------------
 # --------------------+ Main Page Of LUXA Collection +----------------------------
 # --------------------------------------------------------------------------------
