@@ -61,7 +61,6 @@ urlpatterns = [
 
     path('product_detail/<str:name>/', views.detail, name="product_detail"),
 
-
     path("create_admin/", views.create_admin, name="create_admin"),
 
 ]

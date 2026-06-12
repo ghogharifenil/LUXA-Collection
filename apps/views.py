@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
 from .forms import ProductForm
 from .models import Product
@@ -311,7 +312,10 @@ def send_order_email(customer_id, name, orders, total):
     )
 
     email.attach_alternative(html_content, "text/html")
-    email.send()
+    try:
+        email.send()
+    except Exception as e:
+        print(e)
 
 
 @customer_login_required
@@ -590,10 +594,9 @@ def adminuser(request):
 
     return render(request, "admin/adminlogin.html")
 
-from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
 
 User = get_user_model()
+
 
 def create_admin(request):
     if request.method == "POST":
@@ -630,6 +633,7 @@ def dashboard(request):
     return render(request, 'admin/dashboard.html', {"products": products})
 
 # -------------------------------+ Logout +---------------------------------------
+
 
 @seller_required
 def logout(request):
