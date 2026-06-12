@@ -32,14 +32,17 @@ from django.conf import settings
 from django.http import HttpResponse
 
 def test_email(request):
-    send_mail(
-        "Test Email",
-        "Hello from Django",
-        settings.EMAIL_HOST_USER,
-        ["ffg001002003@gmail.com"],
-        fail_silently=False,
-    )
-    return HttpResponse("Email Sent")
+    try:
+        send_mail(
+            "Test Email",
+            "Hello from Django",
+            settings.EMAIL_HOST_USER,
+            ["ffg001002003@gmail.com"],
+            fail_silently=False,
+        )
+        return HttpResponse("Email Sent")
+    except Exception as e:
+        return HttpResponse(str(e))
 
 
 # --------------------------------------------------------------------------------
