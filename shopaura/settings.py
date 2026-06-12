@@ -1,6 +1,5 @@
 from pathlib import Path
 from decouple import config
-import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +22,7 @@ INSTALLED_APPS = [
 
     'apps.apps.AppsConfig',
 
-    # cloudinary
+    # Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
@@ -45,6 +44,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'shopaura.urls'
 
+
 # ================= TEMPLATES =================
 TEMPLATES = [
     {
@@ -65,7 +65,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'shopaura.wsgi.application'
 
 
-# ================= DATABASE (POSTGRESQL) =================
+# ================= DATABASE =================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -98,13 +98,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# ================= MEDIA (CLOUDINARY) =================
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -114,11 +107,14 @@ STORAGES = {
     },
 }
 
+
+# ================= CLOUDINARY =================
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dm1e3zocd',
-    'API_KEY': '947887254397262',
-    'API_SECRET': 'IsG8rd4U4m9KzhP8qHFNYFAtt4I',
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
+
 
 # ================= AUTH =================
 AUTH_USER_MODEL = 'apps.User'
@@ -145,4 +141,5 @@ ADMIN_NAME = config('ADMIN_NAME', default='Fenil')
 ADMIN_CITY = config('ADMIN_CITY', default='Surat')
 
 
-# DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3', } }
+# ================= DEFAULT PK =================
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
