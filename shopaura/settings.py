@@ -22,7 +22,6 @@ INSTALLED_APPS = [
 
     'apps.apps.AppsConfig',
 
-    # Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
@@ -131,10 +130,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 10
 
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-
+RESEND_API_KEY = config('RESEND_API_KEY')
 # ================= CUSTOM ADMIN SETTINGS =================
 ADMIN_EMAIL = config('ADMIN_EMAIL', default='')
 ADMIN_PASSWORD = config('ADMIN_PASSWORD', default='')

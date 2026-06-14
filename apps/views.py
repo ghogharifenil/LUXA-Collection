@@ -24,13 +24,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import send_mail
-from .models import contectmassage
-
-
-from django.core.mail import send_mail
-from django.conf import settings
 from django.http import HttpResponse
-
+import resend
 def test_email(request):
     try:
         send_mail(
@@ -332,10 +327,7 @@ def send_order_email(customer_id, name, orders, total):
     )
 
     email.attach_alternative(html_content, "text/html")
-    try:
-        email.send()
-    except Exception as e:
-        print(e)
+    resend.Emails.send()
 
 
 @customer_login_required
