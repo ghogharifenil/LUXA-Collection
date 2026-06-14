@@ -2,85 +2,88 @@
 {% load static %}
 
 {% block head %}
- <title>About | LUXA Collection</title>
-    <link rel="stylesheet" href="{% static 'css/about.css' %}" />
+  <title>About | LUXA Collection</title>
+  <link rel="stylesheet" href="{% static 'css/about.css' %}" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <style>.hero {
-        height: 60vh;
-        background: black;
-        cursor: none;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-      }</style>
+  <style>
+    .hero {
+      height: 60vh;
+      background: black;
+      cursor: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
+  <!-- HERO -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>LUXA Collection</h1>
+      <p>Redefining Fashion with Elegance & Comfort</p>
+    </div>
+  </section>
 
+  <!-- ABOUT -->
+  <section class="about-container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>LUXA Collection is a modern fashion brand committed to premium quality clothing.</p>
+        <p>We focus on style, comfort and affordability for everyone.</p>
+        <p>Every design is crafted with passion to give a luxury experience.</p>
 
-
-      <!-- HERO -->
-    <section class="hero">
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1>LUXA Collection</h1>
-        <p>Redefining Fashion with Elegance & Comfort</p>
+        <p class="creator">
+          Crafted with ❤️ by <span>Ghoghari Fenil</span>
+        </p>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section class="about-container">
-      <div class="about-grid">
-        <div class="about-text">
-          <h2>About Us</h2>
-          <p>LUXA Collection is a modern fashion brand committed to premium quality clothing.</p>
-          <p>We focus on style, comfort and affordability for everyone.</p>
-          <p>Every design is crafted with passion to give a luxury experience.</p>
-        </div>
-
-        <div class="about-img">
-          <img src="{% static 'image/size.png' %}" alt="about image" style=""/>
-        </div>
+      <div class="about-img">
+        <img src="{% static 'image/size.png' %}" alt="about image" />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- STATS -->
-    <section class="stats">
-      <div class="stat-box">
-        <h2>500+</h2><p>Products</p>
-      </div>
-      <div class="stat-box">
-        <h2>10K+</h2><p>Customers</p>
-      </div>
-      <div class="stat-box">
-        <h2>5★</h2><p>Rating</p>
-      </div>
-      <div class="stat-box">
-        <h2>24/7</h2><p>Support</p>
-      </div>
-    </section>
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-box">
+      <h2>500+</h2><p>Products</p>
+    </div>
+    <div class="stat-box">
+      <h2>10K+</h2><p>Customers</p>
+    </div>
+    <div class="stat-box">
+      <h2>5★</h2><p>Rating</p>
+    </div>
+    <div class="stat-box">
+      <h2>24/7</h2><p>Support</p>
+    </div>
+  </section>
 
-    <!-- CTA -->
-    <section class="cta">
-      <h2>Experience Premium Fashion</h2>
-      <a href="{% url "home" %}">Shop Now</a>
-    </section>
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Experience Premium Fashion</h2>
+    <a href="{% url 'home' %}">Shop Now</a>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer">
-        <h3>LUXA Collection</h3>
-        <p>📞 Mobile : 9963254187</p>
-        <p>📧 Email : luxacollection@gmail.com</p>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer">
+      <h3>LUXA Collection</h3>
+      <p>📞 Mobile : 9963254187</p>
+      <p>📧 Email : luxacollection@gmail.com</p>
 
-        <p class="desc">We provide elegant jewellery collections designed for girls and women. Quality, beauty and affordability are our priority.</p>
+      <p class="desc">We provide elegant jewellery collections designed for girls and women. Quality, beauty and affordability are our priority.</p>
 
-        <p class="copy">© 2026 Luxa Collection. All Rights Reserved.</p>
-      </div>
-    </footer>
+      <p class="copy">© 2026 Luxa Collection. All Rights Reserved.</p>
+    </div>
+  </footer>
 {% endblock %}

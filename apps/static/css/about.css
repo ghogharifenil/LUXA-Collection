@@ -68,6 +68,20 @@
   font-size: 15px;
 }
 
+/* Created By */
+.creator {
+  margin-top: 25px;
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+}
+
+.creator span {
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 /* IMAGE RIGHT */
 .about-img {
   flex: 1;
@@ -80,11 +94,30 @@
   border-radius: 15px;
   object-fit: cover;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transition: 0.3s;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 0.5s;
 }
 
+/* Hover */
 .about-img img:hover {
   transform: scale(1.03);
+}
+
+/* Left to Right Animation */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* STATS */
