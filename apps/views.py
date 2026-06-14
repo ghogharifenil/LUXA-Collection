@@ -679,33 +679,35 @@ def contact_messages(request):
 
 @seller_required
 def resolve_message(request, id):
-
     msg = get_object_or_404(contectmassage, id=id)
 
-    send_mail(
-        subject="LUXA Collection - Support Update",
-        message=f"""
-Hello {msg.user.name},
+    try:
+        resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": msg.user.email,
+            "subject": "LUXA Collection - Support Update",
+            "html": f"""
+            <h2>Hello {msg.user.name},</h2>
 
-Thank you for contacting LUXA Collection.
+            <p>Thank you for contacting <b>LUXA Collection</b>.</p>
 
-We have received your message regarding:
+            <p>We have received your message regarding:</p>
 
-{msg.subject}
+            <p><b>{msg.subject}</b></p>
 
-Our support team is currently working on your request and will get back to you as soon as possible.
+            <p>Our support team is currently working on your request and will get back to you as soon as possible.</p>
 
-Thank you for your patience.
+            <p>Thank you for your patience.</p>
 
-LUXA Collection Team
-        """,
-        from_email="luxacollection@gmail.com",
-        recipient_list=[msg.user.email],
-        fail_silently=False,
-    )
+            <p><b>LUXA Collection Team</b></p>
+            """
+        })
 
-    msg.is_resolved = True
-    msg.save()
+        msg.is_resolved = True
+        msg.save()
+
+    except Exception as e:
+        print("Email Error:", e)
 
     return redirect("contact_messages")
 # --------------------------------------------------------------------------------
@@ -726,28 +728,31 @@ def order(request):
         {'orders': orders}
     )
 
-
+@seller_required
 def mark_shipped(request, order_id):
     order = get_object_or_404(Order, id=order_id)
 
     order.is_shipped = True
     order.save()
 
-    # email send
-    send_mail(
-        subject="Your Order is Shipped 🚚",
-        message=f"""
-Hi {order.user.name},
+    try:
+        resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": order.user.email,
+            "subject": "Your Order is Shipped 🚚",
+            "html": f"""
+            <h2>Hi {order.user.name},</h2>
 
-Your product "{order.product.name}" is now shipped.
-Please collect it within 24 hours.
+            <p>Your product <b>{order.product.name}</b> is now shipped.</p>
 
-Thank you for shopping with LUXA Collection.
-""",
-        from_email="yourshop@gmail.com",
-        recipient_list=[order.user.email],
-        fail_silently=False,
-    )
+            <p>Please collect it within 24 hours.</p>
+
+            <p>Thank you for shopping with <b>LUXA Collection</b>. 🛍️</p>
+            """
+        })
+
+    except Exception as e:
+        print("Email Error:", e)
 
     return redirect('order')
 # --------------------------------------------------------------------------------
