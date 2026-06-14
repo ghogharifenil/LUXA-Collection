@@ -322,7 +322,7 @@ def send_order_email(customer_id, name, orders, total):
     email = EmailMultiAlternatives(
         subject,
         "",
-        settings.EMAIL_HOST_USER,
+        settings.RESEND_API_KEY,
         [user_email]
     )
 
