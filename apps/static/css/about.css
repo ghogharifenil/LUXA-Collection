@@ -99,7 +99,7 @@
   opacity: 0;
   transform: translateX(-100px);
   animation: slideLeft 1s ease forwards;
-  animation-delay: 0.5s;
+  animation-delay: 2s;
 }
 
 /* Hover */
