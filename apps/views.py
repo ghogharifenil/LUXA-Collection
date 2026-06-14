@@ -306,28 +306,34 @@ def cart_count(request):
         "cart_count": count
     }
 
+resend.api_key = settings.RESEND_API_KEY
+
 
 def send_order_email(customer_id, name, orders, total):
+    try:
+        user = CustomerModel.objects.get(id=customer_id)
+        user_email = user.email
 
-    user_email = CustomerModel.objects.get(id=customer_id).email
+        html_content = render_to_string(
+            "html/sendmail.html",
+            {
+                "name": name,
+                "orders": orders,
+                "total": total,
+            }
+        )
 
-    subject = "🛍️ Your Order Confirmed - LUXA Collection"
+        resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": user_email,
+            "subject": "🛍️ Your Order Confirmed - LUXA Collection",
+            "html": html_content,
+        })
 
-    html_content = render_to_string("html/sendmail.html", {
-        "name": name,
-        "orders": orders,
-        "total": total
-    })
+        print("Email sent successfully!")
 
-    email = EmailMultiAlternatives(
-        subject,
-        "",
-        settings.RESEND_API_KEY,
-        [user_email]
-    )
-
-    email.attach_alternative(html_content, "text/html")
-    resend.Emails.send()
+    except Exception as e:
+        print("Email Error:", e)
 
 
 @customer_login_required
