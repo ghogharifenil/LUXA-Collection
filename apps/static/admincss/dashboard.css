@@ -11,9 +11,6 @@ body{
     background:#ffffff;
     color:#111;
 }
-
-/* ================= CONTAINER ================= */
-
 .dashboard-container{
     width:95%;
     margin:30px auto 50px;
@@ -25,9 +22,6 @@ body{
     color:#111;
     margin-bottom:20px;
 }
-
-/* ================= TABLE WRAPPER ================= */
-
 table{
     width:100%;
     border-collapse:collapse;
@@ -40,9 +34,6 @@ table{
 
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
-
-/* ================= HEADER ================= */
-
 thead{
     background:#111;
 }
@@ -56,9 +47,6 @@ th{
     text-transform:uppercase;
     letter-spacing:1px;
 }
-
-/* ================= BODY ================= */
-
 td{
     padding:16px;
     text-align:center;
@@ -76,9 +64,6 @@ tbody tr{
 tbody tr:hover{
     background:#f9f9f9;
 }
-
-/* ================= IMAGE ================= */
-
 td img{
     width:65px;
     height:65px;
@@ -87,9 +72,6 @@ td img{
     border-radius:10px;
     border:1px solid #eee;
 }
-
-/* ================= PRICE ================= */
-
 .price{
     font-weight:700;
     color:#111;
@@ -100,9 +82,6 @@ td img{
     font-weight:600;
     font-size:13px;
 }
-
-/* ================= BUTTONS ================= */
-
 .edit-btn,
 .delete-btn{
     padding:8px 14px;
@@ -118,7 +97,6 @@ td img{
     display:inline-block;
 }
 
-/* EDIT */
 .edit-btn{
     background:#111;
     color:#fff;
@@ -131,7 +109,6 @@ td img{
     transform:translateY(-2px);
 }
 
-/* DELETE */
 .delete-btn{
     background:#fff;
     color:#111;
@@ -143,9 +120,6 @@ td img{
     color:#fff;
     transform:translateY(-2px);
 }
-
-/* ================= RESPONSIVE ================= */
-
 @media(max-width:900px){
 
     .dashboard-container{

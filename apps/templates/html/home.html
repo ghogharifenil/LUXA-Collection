@@ -18,14 +18,13 @@
 
 {% block content %}
 
-<!-- 🔥 HERO VIDEO SECTION -->
+
 <div class="home-video">
     <video autoplay muted loop playsinline disablePictureInPicture>
         <source src="{% static 'vedio/vedio2.mp4' %}" type="video/mp4">
     </video>
 </div>
 
-<!-- 🛍️ OFFERS SECTION -->
 <div class="offers">
     <div class="offer-card" onclick="window.location.href='{% url 'saree' %}'">
         <img src="{% static 'image/offer1.jpg' %}" alt="" />

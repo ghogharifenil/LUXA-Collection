@@ -12,8 +12,6 @@ body{
   color:#111;
 }
 
-/* ================= FORM CARD ================= */
-
 form{
   width:520px;
   margin:120px auto;
@@ -36,8 +34,6 @@ form:hover{
   transform:translateY(-3px);
   box-shadow:0 15px 35px rgba(0,0,0,0.08);
 }
-
-/* ================= INPUTS ================= */
 
 form select,
 form input,
@@ -67,8 +63,6 @@ form textarea{
   min-height:100px;
 }
 
-/* ================= BUTTON ================= */
-
 form button{
   padding:12px;
 
@@ -92,8 +86,6 @@ form button:hover{
   transform:translateY(-2px);
 }
 
-/* ================= NUMBER INPUT FIX ================= */
-
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button{
   -webkit-appearance:none;
@@ -103,9 +95,6 @@ input[type="number"]::-webkit-inner-spin-button{
 input[type="number"]{
   appearance:textfield;
 }
-
-/* ================= TOGGLE ================= */
-
 .toggle-box{
   display:flex;
   align-items:center;
@@ -118,9 +107,6 @@ input[type="number"]{
   font-weight:500;
   color:#111;
 }
-
-/* SWITCH */
-
 .switch{
   position:relative;
   display:inline-block;
@@ -164,8 +150,6 @@ input[type="number"]{
 .switch input:checked + .slider::before{
   transform:translateX(25px);
 }
-
-/* ================= RESPONSIVE ================= */
 
 @media(max-width:600px){
   form{

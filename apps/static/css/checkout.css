@@ -14,7 +14,6 @@ body{
 }
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     
-    /* ================= MAIN PAGE ================= */
     .checkout-page {
       background: #f5f7fb;
       min-height: 100vh;
@@ -22,7 +21,6 @@ body{
       font-family: 'Poppins', sans-serif;
     }
     
-    /* TITLE */
     .checkout-title {
       text-align: center;
       font-size: 30px;
@@ -31,7 +29,6 @@ body{
       font-weight: 600;
     }
     
-    /* ================= FLEX CONTAINER ================= */
     .checkout-container {
       display: flex;
       gap: 20px;
@@ -40,7 +37,6 @@ body{
       align-items: flex-start;
     }
     
-    /* ================= LEFT SIDE PRODUCTS ================= */
     .checkout-left {
       flex: 1;
       background: #fff;
@@ -55,7 +51,6 @@ body{
       color: #333;
     }
     
-    /* PRODUCT ROW */
     .product-row {
       display: flex;
       gap: 15px;
@@ -71,7 +66,6 @@ body{
       border-radius: 10px;
     }
     
-    /* PRODUCT INFO */
     .product-info h4 {
       margin: 0;
       font-size: 15px;
@@ -83,13 +77,10 @@ body{
       margin: 2px 0;
       color: #555;
     }
-    
-    /* ================= RIGHT SIDE FORM ================= */
     .checkout-right {
       flex: 1;
     }
     
-    /* FORM CARD */
     .checkout-form {
       background: #fff;
       padding: 25px;
@@ -97,7 +88,6 @@ body{
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     }
     
-    /* LABEL */
     .checkout-form label {
       display: block;
       margin: 12px 0 5px;
@@ -105,7 +95,6 @@ body{
       color: #333;
     }
     
-    /* INPUT + TEXTAREA */
     .checkout-form input,
     .checkout-form textarea {
       width: 100%;
@@ -123,32 +112,27 @@ body{
       box-shadow: 0 0 8px rgba(255, 77, 77, 0.2);
     }
     
-    /* TEXTAREA */
     .checkout-form textarea {
       min-height: 90px;
       resize: none;
     }
     
-    /* HEADINGS */
     .checkout-form h3 {
       margin-top: 15px;
       font-size: 18px;
       color: #222;
     }
     
-    /* TEXT */
     .checkout-form p {
       font-size: 13px;
       color: #555;
       margin: 5px 0;
     }
     
-    /* COD HIGHLIGHT */
     .checkout-form p b {
       color: #27ae60;
     }
     
-    /* BUTTON */
     .checkout-form button {
       width: 100%;
       margin-top: 20px;
@@ -168,7 +152,6 @@ body{
       box-shadow: 0 12px 25px rgba(255, 77, 77, 0.3);
     }
     
-    /* ================= RESPONSIVE ================= */
     @media (max-width: 900px) {
       .checkout-container {
         flex-direction: column;

@@ -12,8 +12,6 @@ body{
   color:#111;
 }
 
-/* ================= SECTION ================= */
-
 .product-container {
   width: 90%;
   margin: 40px auto;
@@ -22,7 +20,6 @@ body{
   gap: 25px;
 }
 
-/* ================= CARD ================= */
 
 .product-card {
   position: relative;
@@ -46,7 +43,6 @@ body{
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
 }
 
-/* ================= IMAGE ================= */
 
 .image-wrapper {
   width: 190px;
@@ -60,7 +56,6 @@ body{
   border-radius: 10px;
 }
 
-/* ================= BADGE ================= */
 
 .product-badge {
   position: absolute;
@@ -76,8 +71,6 @@ body{
   font-size: 12px;
   font-weight: 700;
 }
-
-/* ================= CONTENT ================= */
 
 .product-content {
   display: flex;
@@ -98,7 +91,6 @@ body{
   margin: 10px 0;
 }
 
-/* PRICE */
 
 .product-price {
   font-size: 22px;
@@ -119,7 +111,6 @@ body{
   font-weight: 600;
 }
 
-/* ================= BUTTONS ================= */
 
 .button-group {
   margin-top: auto;
@@ -128,7 +119,6 @@ body{
   gap: 10px;
 }
 
-/* BUY BUTTON */
 
 .buy-btn {
   display:block;
@@ -154,7 +144,6 @@ body{
   transform:translateY(-3px);
 }
 
-/* SMALL BUTTONS */
 
 .bottom-btns {
   display:flex;
@@ -183,8 +172,6 @@ body{
   background:#111;
   color:#fff;
 }
-
-/* ================= BANNER ================= */
 
 .collection-banner {
   width: 90%;
@@ -229,8 +216,6 @@ body{
 
   margin-bottom:10px;
 }
-
-/* ================= RESPONSIVE ================= */
 
 @media(max-width:1200px){
   .product-container{

@@ -11,9 +11,6 @@ body{
     background:#ffffff;
     color:#111;
 }
-
-/* ================= CONTAINER ================= */
-
 .dashboard-container{
     width:95%;
     margin:30px auto 50px;
@@ -29,9 +26,6 @@ body{
 
     color:#111;
 }
-
-/* ================= TABLE ================= */
-
 table{
     width:100%;
     border-collapse:collapse;
@@ -44,9 +38,6 @@ table{
 
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
-
-/* HEADER */
-
 thead{
     background:#111;
     color:#fff;
@@ -60,9 +51,6 @@ thead th{
     font-weight:600;
     text-align:center;
 }
-
-/* BODY */
-
 tbody td{
     padding:14px;
     text-align:center;
@@ -80,9 +68,6 @@ tbody tr{
 tbody tr:hover{
     background:#f9f9f9;
 }
-
-/* IMAGE */
-
 tbody img{
     width:65px;
     height:65px;
@@ -91,9 +76,6 @@ tbody img{
     border-radius:10px;
     border:1px solid #eee;
 }
-
-/* SCREENSHOT BUTTON */
-
 tbody a{
     display:inline-block;
 
@@ -117,9 +99,6 @@ tbody a:hover{
     border:1px solid #111;
     transform:translateY(-2px);
 }
-
-/* ================= STATUS ================= */
-
 .status-pending{
     color:#111;
     font-weight:600;
@@ -136,9 +115,6 @@ tbody a:hover{
     font-weight:600;
     opacity:0.4;
 }
-
-/* ================= EMPTY ================= */
-
 .empty-row{
     text-align:center;
     padding:20px;
@@ -152,7 +128,6 @@ h2 {
   font-size: 26px;
 }
 
-/* TABLE DESIGN */
 .order-table {
   width: 100%;
   border-collapse: collapse;
@@ -173,14 +148,11 @@ h2 {
   background: black;
   color: white;
 }
-
-/* SHIPPED ROW EFFECT (THIS IS MAIN) */
 .shipped-row td {
   text-decoration: line-through;
   opacity: 0.5;
 }
 
-/* SHIP BUTTON */
 .ship-btn {
   padding: 6px 12px;
   background: #000;
@@ -195,13 +167,10 @@ h2 {
   background: #333;
 }
 
-/* SHIPPED TEXT */
 .shipped-text {
   color: green;
   font-weight: bold;
 }
-/* ================= RESPONSIVE ================= */
-
 @media (max-width:992px){
 
     .dashboard-container{

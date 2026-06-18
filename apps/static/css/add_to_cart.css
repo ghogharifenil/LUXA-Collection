@@ -12,8 +12,6 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= CART WRAPPER ================= */
-
 .cart-wrapper{
     max-width:1400px;
     margin:40px auto;
@@ -23,9 +21,6 @@ body{
     grid-template-columns:2fr 1fr;
     gap:30px;
 }
-
-/* ================= LEFT SIDE ================= */
-
 .cart-left{
     display:flex;
     flex-direction:column;
@@ -37,8 +32,6 @@ body{
     font-weight:700;
     color:#111;
 }
-
-/* ================= CART CARD ================= */
 
 .cart-card{
     background:#fff;
@@ -67,8 +60,6 @@ body{
     border:1px solid #eee;
 }
 
-/* ================= PRODUCT DETAILS ================= */
-
 .cart-details{
     display:flex;
     flex-direction:column;
@@ -92,17 +83,12 @@ body{
     color:#666;
 }
 
-/* ================= ACTIONS ================= */
-
 .cart-actions{
     display:flex;
     flex-direction:column;
     gap:15px;
     align-items:flex-end;
 }
-
-/* ================= QUANTITY ================= */
-
 .qty-box{
     display:flex;
     align-items:center;
@@ -133,8 +119,6 @@ body{
     font-weight:600;
 }
 
-/* ================= REMOVE BUTTON ================= */
-
 .remove-btn{
     border:none;
 
@@ -155,9 +139,6 @@ body{
 .remove-btn:hover{
     background:#e0281f;
 }
-
-/* ================= SUMMARY ================= */
-
 .summary-card{
     background:#fff;
     padding:30px;
@@ -195,9 +176,6 @@ body{
     font-weight:700;
     color:#111;
 }
-
-/* ================= CHECKOUT ================= */
-
 .checkout-btn{
     display:block;
     width:100%;
@@ -220,9 +198,6 @@ body{
 .checkout-btn:hover{
     transform:translateY(-2px);
 }
-
-/* ================= EMPTY CART ================= */
-
 .empty-cart{
     background:#fff;
 
@@ -248,9 +223,6 @@ body{
 .empty-cart p{
     color:#666;
 }
-
-/* ================= TABLET ================= */
-
 @media (max-width:992px){
 
     .cart-wrapper{
@@ -261,9 +233,6 @@ body{
         position:static;
     }
 }
-
-/* ================= MOBILE ================= */
-
 @media (max-width:768px){
 
     .cart-wrapper{
@@ -304,9 +273,6 @@ body{
         font-size:22px;
     }
 }
-
-/* ================= SMALL MOBILE ================= */
-
 @media (max-width:480px){
 
     .cart-wrapper{

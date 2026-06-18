@@ -26,6 +26,9 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.http import HttpResponse
 import resend
+
+
+
 def test_email(request):
     try:
         send_mail(
@@ -383,6 +386,11 @@ def checkout(request):
     })
 
 
+# --------------------------------------------------------------------------------
+# -----------------------+ Customer Register +------------------------------------
+# --------------------------------------------------------------------------------
+
+
 def register(request):
     if request.method == "POST":
         form = CustomerRegisterForm(request.POST)
@@ -402,6 +410,12 @@ def register(request):
         form = CustomerRegisterForm()
 
     return render(request, "html/registration.html", {"form": form})
+
+
+
+# --------------------------------------------------------------------------------
+# ---------------------------+ Customer login +-----------------------------------
+# --------------------------------------------------------------------------------
 
 
 def login(request):
@@ -709,7 +723,10 @@ def resolve_message(request, id):
     except Exception as e:
         print("Email Error:", e)
 
+ 
     return redirect("contact_messages")
+
+
 # --------------------------------------------------------------------------------
 # ---------------------------+ Show Order +---------------------------------------
 # --------------------------------------------------------------------------------
@@ -727,6 +744,8 @@ def order(request):
         'admin/order.html',
         {'orders': orders}
     )
+
+
 
 @seller_required
 def mark_shipped(request, order_id):
@@ -785,6 +804,7 @@ def add_product(request):
     return render(
         request,
         'admin/addpro.html', {'form': form})
+
 
 
 @customer_login_required
@@ -863,6 +883,7 @@ def editproduct(request, name):
 
         return redirect('dashboard')
 
+   
     return render(
         request,
         "admin/editproduct.html",
