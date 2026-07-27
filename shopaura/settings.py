@@ -121,8 +121,6 @@ AUTH_USER_MODEL = 'apps.User'
 AUTHENTICATION_BACKENDS = [
     'apps.backends.EmailBackend',
 ]
-
-
 # ================= EMAIL =================
 
 RESEND_API_KEY = config('RESEND_API_KEY')
