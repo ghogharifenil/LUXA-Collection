@@ -125,31 +125,6 @@ def search_product(request):
 
 
 
-
-def search_product(request):
-    query = request.GET.get('q', '').strip()
-
-    products = Product.objects.none()
-
-    if query:
-        words = query.split()
-        q_filter = Q()
-
-        for word in words:
-            q_filter &= (
-                Q(name__icontains=word) |
-                Q(tags__icontains=word) |
-                Q(description__icontains=word)
-            )
-
-        products = Product.objects.filter(q_filter)
-
-    return render(request, 'html/search.html', {
-        'products': products,
-        'query': query,
-    })
-
-
 # ---------------+ New Collection Department +----------------
 
 
