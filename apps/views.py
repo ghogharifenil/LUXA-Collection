@@ -109,7 +109,7 @@ def search_product(request):
         for word in words:
             q_filter &= (
                 Q(name__icontains=word) |
-                Q(tags__icontains=word) |
+              #  Q(tags__icontains=word) |
                 Q(description__icontains=word)
             )
 
