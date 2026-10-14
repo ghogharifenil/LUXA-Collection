@@ -1007,3 +1007,4 @@ def admin_shoes(request):
             'products': products
         }
     )
+
