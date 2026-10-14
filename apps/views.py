@@ -96,31 +96,31 @@ def contectus(request):
 # ---------------+ Serch Bar +----------------------------
 
 
-# def search_product(request):
-#     query = request.GET.get('q', '').strip()
+def search_product(request):
+    query = request.GET.get('q', '').strip()
 
-#     products = Product.objects.none()
+    products = Product.objects.none()
 
-#     if query:
-#         words = query.split()
+    if query:
+        words = query.split()
 
-#         q_filter = Q()
+        q_filter = Q()
 
-#         for word in words:
-#             q_filter &= (
-#                 Q(name__icontains=word) |
-#               #  Q(tags__icontains=word) |
-#                 Q(description__icontains=word)
-#             )
+        for word in words:
+            q_filter &= (
+                Q(name__icontains=word) |
+                Q(tags__icontains=word) |
+                Q(description__icontains=word)
+            )
 
-#         products = Product.objects.filter(q_filter)
+        products = Product.objects.filter(q_filter)
 
-#     context = {
-#         'products': products,
-#         'query': query
-#     }
+    context = {
+        'products': products,
+        'query': query
+    }
 
-#     return render(request, 'html/search.html', context)
+    return render(request, 'html/search.html', context)
 
 
 
